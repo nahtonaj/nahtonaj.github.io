@@ -8,26 +8,47 @@
     width: 100%
 } */
 body, html {
-    height: 100%
+    height: 100%;
+    /* The image used */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0,0,0,0.2), rgba(0,0,0,0.6), rgba(0,0,0,1)), url("images/me.JPG");
+    /* Create the parallax scrolling effect */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: repeat, no-repeat;
+    background-attachment: fixed, fixed;
+    background-position: center;
+    color: #000;
+    background-color: #333;
 }
 
 
 
-.parallax {
-    /* The image used */
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0, #000000), url("images/me.JPG");
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
 
 .aboutme h1{
     padding-top: 30%;
+    font-family: 'Courier New', Courier, monospace;
 }
+
+.text-shadow {
+    text-shadow: 1px 1px 20px #1a1a1a, 2px 2px 6px #666666 ;
+}
+
+.connect h5{
+    color: rgb(121, 121, 121);
+}
+
 .aboutme p {
     color: rgb(167, 167, 167);
+}
+
+.socialmedia {
+    background: none;
+}
+
+.fa-facebook, .fa-instagram, .fa-linkedin, .fa-github {
+    color: #d1d1d1f3;
 }
 
 /*---Media Queries --*/
