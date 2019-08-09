@@ -1,7 +1,7 @@
 body, html {
     height: 100%;
     /* The image used */
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0,0,0,0.2), rgba(0,0,0,1), rgba(0,0,0,1)); /*, url("images/me.JPG");*/    
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0,0,0,0.4), rgba(0,0,0,1), rgba(0,0,0,1)); /*, url("images/me.JPG");*/    
     /* Create the parallax scrolling effect */
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -15,7 +15,7 @@ body, html {
 }
 
 .parallax {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0,0,0,0.4), rgba(0,0,0,.9), rgba(0,0,0,1)), url("images/me.JPG");    
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0,0,0,0.3), rgba(0,0,0,.9), rgba(0,0,0,1)), url("images/me.JPG");    
     /* Create the parallax scrolling effect */
     -webkit-background-size: cover;
     -moz-background-size: cover;
