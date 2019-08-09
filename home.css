@@ -1,7 +1,21 @@
 body, html {
     height: 100%;
     /* The image used */
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0,0,0,0.2), rgba(0,0,0,0.6), rgba(0,0,0,1)), url("images/me.JPG");
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0,0,0,0.2), rgba(0,0,0,0.6), rgba(0,0,0,1)); /*, url("images/me.JPG");*/    
+    /* Create the parallax scrolling effect */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: repeat, no-repeat;
+    background-attachment: fixed, fixed;
+    background-position: center;
+    color: #000;
+    background-color: #333;
+}
+
+.parallax {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0,0,0,0.2), rgba(0,0,0,0.6), rgba(0,0,0,1)), url("images/me.JPG");    
     /* Create the parallax scrolling effect */
     -webkit-background-size: cover;
     -moz-background-size: cover;
