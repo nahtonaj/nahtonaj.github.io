@@ -11,10 +11,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="parallax.css">
     <link rel="stylesheet" href="home.css">
 
+    <!-- jQuery library -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -25,65 +24,134 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/8ab9700224.js"></script>
+    <script src="js/navigation.js"></script>
 
     <title>Jonathan Gao</title>
-    
+
 </head>
 
 <body>
-    <div class="container-fluid h-100">
-        <nav class="navbar navbar-dark navbar-expand-sm sticky-top text-left">
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="nav navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="aboutme.html">About me</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="projects.html">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages.html">Pages</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <div class="container-fluid aboutme">
-            <div class="text-light text-center text-shadow ">
-                <h1 class="display-4">Hello, I'm Jonathan Gao</h1>
-                <p>Electrical and Computer Engineering student at Cornell University</p>
+    <nav class="navbar navbar-dark navbar-expand-sm sticky-top text-left" role="navigation">
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="nav navbar-nav mr-auto" role="tablist">
+                <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+                    <a class="nav-link active" href="#home" role="tab" data-toggle="tab">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#dropdownMenu" href="#"
+                        role="button" aria-haspopup="true" aria-expanded="false">About me</a>
+                    <div class="dropdown-menu bg-dark" id="dropdownMenu">
+                        <div data-toggle="collapse" data-target=".navbar-collapse.show">
+                            <a class="dropdown-item" href="#personal" role="tab" data-toggle="tab">Personal</a>
+                        </div>
+                        <div data-toggle="collapse" data-target=".navbar-collapse.show">
+                            <a class="dropdown-item" href="#experience" role="tab" data-toggle="tab">Experience</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+                    <a class="nav-link" href="#projects" role="tab" data-toggle="tab">Projects</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="tab-content">
+
+        <div role="tabpanel" class="tab-pane fade show active" id="home">
+            <div class="container-fluid h-100">
+                <div class="container-fluid aboutme">
+                    <div class="text-light text-center text-shadow ">
+                        <h1 class="display-4">Hello, I'm Jonathan Gao</h1>
+                        <p>Electrical and Computer Engineering student at Cornell University</p>
+                    </div>
+                </div>
+
+                <div class="connect text-center">
+                    <h5>Find me here</h5>
+                </div>
+                <div class="container-fluid socialmedia">
+                    <div class="row text-center padding">
+                        <div class="col-xs-12 col-sm-6 col-lg-3 mt-3">
+                            <a href="https://www.facebook.com/jonathan.gao.58"><i class="fab fa-facebook fa-6x"
+                                    aria-hidden="true"></i></a>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-3 mt-3">
+                            <a href="https://www.instagram.com/jongao_"><i class="fab fa-instagram fa-6x"
+                                    aria-hidden="true"></i></a>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-3 mt-3">
+                            <a href="https://www.linkedin.com/in/jonathan-gao"><i class="fab fa-linkedin fa-6x"
+                                    aria-hidden="true"></i></a>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-3 mt-3">
+                            <a href="https://www.github.com/nahtonaj"><i class="fab fa-github fa-6x"
+                                    aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <div class="connect text-center">
-            <h5>Find me here</h5>
+        <div role="tabpanel" class="tab-pane fade" id="personal">
+            <div class="container-fluid info text-white">
+                <div class="row">
+                    <div class="col col-xs-6 col-sm-3 col-md-3 col-lg-3 col-3 mx-auto">
+                        <img class="img-fluid rounded float-left" src="images/propic.jpg" alt="Responsive Image">
+                    </div>
+                    <div class="col col-xs-12 col-sm-10 col-md-8 col-lg-6 col-12 mx-auto">
+                        <p>Hi! I'm currently a student pursuing a Bachelors of Science in Electrical and Computer
+                            Engineering at
+                            Cornell University.</p>
+                        <p>I am currently in my 3rd year as an undergraduate but planning to graduate my 4th year with a
+                            Masters
+                            degree in Computer Science.</p>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="row">
+                </div>
+            </div>
         </div>
-        <div class="container-fluid socialmedia">
-            <div class="row text-center padding">
-                <div class="col-xs-12 col-sm-6 col-lg-3">
-                    <a href="https://www.facebook.com/jonathan.gao.58"><i class="fab fa-facebook fa-6x"
-                            aria-hidden="true"></i></a>
+
+        <div role="tabpanel" class="tab-pane fade" id="experience">
+                <div class="container-fluid info text-white">
+                    <div class="row">
+                        <div class="col col-xs-6 col-sm-3 col-md-3 col-lg-3 col-3 mx-auto">
+                            <img class="img-fluid rounded float-left" src="images/propic.jpg" alt="Responsive Image">
+                        </div>
+                        <div class="col col-xs-12 col-sm-10 col-md-8 col-lg-6 col-12 mx-auto">
+                            <p>Hi! I'm currently a student pursuing a Bachelors of Science in Electrical and Computer
+                                Engineering at
+                                Cornell University.</p>
+                            <p>I am currently in my 3rd year as an undergraduate but planning to graduate my 4th year with a
+                                Masters
+                                degree in Computer Science.</p>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                    </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-lg-3">
-                    <a href="https://www.instagram.com/jongao_"><i class="fab fa-instagram fa-6x"
-                            aria-hidden="true"></i></a>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-lg-3">
-                    <a href="https://www.linkedin.com/in/jonathan-gao"><i class="fab fa-linkedin fa-6x"
-                            aria-hidden="true"></i></a>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-lg-3">
-                    <a href="https://www.github.com/nahtonaj"><i class="fab fa-github fa-6x" aria-hidden="true"></i></a>
+            </div>
+
+        <div role="tabpanel" class="tab-pane fade" id="projects">
+            <div class="text-center container-fluid text-white">
+                <div class="about-me">
+                    <p>These are my projects.</p>
                 </div>
             </div>
         </div>
 
     </div>
+
+
+
 
 </body>
 
