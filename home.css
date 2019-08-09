@@ -21,13 +21,7 @@ body, html {
 .navbar-nav > li > .dropdown-menu a{
     color: #FFFFFF;
 }
-
-.navbar-default .navbar-nav > .open > a, 
-.navbar-default .navbar-nav > .open > a:focus,
-.navbar-default .navbar-nav > .open > a:hover {
-    color: #FFFFFF;
-    background-color: #FF000000;
-}   
+ 
 
 .aboutme h1{
     padding-top: 30%;
