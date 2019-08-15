@@ -64,22 +64,26 @@
                 <div class="connect text-center">
                     <h5>Find me here</h5>
                 </div>
-                <div class="container-fluid socialmedia">
-                    <div class="row text-center padding">
-                        <div class="col-xs-12 col-sm-6 col-lg-3 mt-3">
-                            <a href="https://www.facebook.com/jonathan.gao.58"><i class="fab fa-facebook fa-6x"
+                <div class="container-fluid socialmedia mx-auto">
+                    <div class="row text-center justify-content-center">
+                        <div class="p-2 col-xs-12 col-sm-4 col-lg-2 mt-3">
+                            <a href="https://www.facebook.com/jonathan.gao.58" target="_blank"><i
+                                    class="fab fa-facebook fa-6x" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="p-2 col-xs-12 col-sm-4 col-lg-2 mt-3">
+                            <a href="https://www.instagram.com/jongao_" target="_blank"><i
+                                    class="fab fa-instagram fa-6x" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="p-2 col-xs-12 col-sm-4 col-lg-2 mt-3">
+                            <a href="https://www.linkedin.com/in/jonathan-gao" target="_blank"><i
+                                    class="fab fa-linkedin fa-6x" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="p-2 col-xs-12 col-sm-4 col-lg-2 mt-3">
+                            <a href="https://www.github.com/nahtonaj" target="_blank"><i class="fab fa-github fa-6x"
                                     aria-hidden="true"></i></a>
                         </div>
-                        <div class="col-xs-12 col-sm-6 col-lg-3 mt-3">
-                            <a href="https://www.instagram.com/jongao_"><i class="fab fa-instagram fa-6x"
-                                    aria-hidden="true"></i></a>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-lg-3 mt-3">
-                            <a href="https://www.linkedin.com/in/jonathan-gao"><i class="fab fa-linkedin fa-6x"
-                                    aria-hidden="true"></i></a>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-lg-3 mt-3">
-                            <a href="https://www.github.com/nahtonaj"><i class="fab fa-github fa-6x"
+                        <div class="p-2 col-xs-12 col-sm-4 col-lg-2 mt-3">
+                            <a href="mailto:jg992@cornell.edu" target="_blank"><i class="fas fa-envelope fa-6x"
                                     aria-hidden="true"></i></a>
                         </div>
                     </div>
@@ -90,12 +94,13 @@
 
         <div role="tabpanel" class="tab-pane fade" id="personal">
             <div class="container-fluid info text-white">
-                <div class="row">
-                    <div class="p-3 col col-xs-10 col-sm-6 col-md-3 col-lg-3 col-3 mx-auto my-auto">
+                <div class="row justify-content-center">
+                    <div class="p-3 col col-xs-10 col-sm-6 col-md-3 col-lg-3 mx-auto my-auto">
                         <img class="img-fluid rounded float-left" src="images/propic.jpg" alt="Responsive Image">
                     </div>
                     <div class="p-3 col col-xs-12 col-sm-10 col-md-8 col-lg-6 col-12 mx-auto my-auto">
-                        <p>Hi! I'm currently a student pursuing a Bachelors of Science in Electrical and Computer
+                        <p class="lead">Hi! I'm currently a student pursuing a Bachelors of Science in Electrical and
+                            Computer
                             Engineering at
                             Cornell University.</p>
                         <p>I am currently in my 3rd year as an undergraduate but planning to graduate my 4th year with a
@@ -104,20 +109,23 @@
                         <p>These are some of things I am part of and like to do!</p>
                     </div>
                 </div>
+                <hr class="bg-dark">
                 <div class="row">
-                    <div class="p-3 col col-xs-10 col-sm-6 col-md-3 col-lg-3 col-3 mx-auto my-auto">
+                    <div class="p-3 col col-xs-10 col-sm-6 col-md-3 col-lg-3 mx-auto my-auto">
                         <img class="img-fluid rounded float-left" src="images/lokologo.jpg">
                     </div>
                     <div class="p-3 col col-xs-12 col-sm-10 col-md-8 col-lg-6 col-12 mx-auto my-auto">
                         <h4>Cornell LOKO</h4>
                         <p>I'm part of a dance team on campus called LOKO. We do korean hip hop and pop dances on
                             campus!</p>
-                        <p>Find us <a href="https://www.youtube.com/channel/UCQ5IdyAl5C6NBjaScIrwlJw">here</a> on our
+                        <p>Find us <a href="https://www.youtube.com/channel/UCQ5IdyAl5C6NBjaScIrwlJw"
+                                target="_blank">here</a> on our
                             YouTube channel!</p>
                     </div>
                 </div>
+                <hr class="bg-dark">
                 <div class="row">
-                    <div class="p-3 col col-xs-10 col-sm-6 col-md-3 col-lg-3 col-3 mx-auto my-auto">
+                    <div class="p-3 col col-xs-10 col-sm-6 col-md-3 col-lg-3 mx-auto my-auto">
                         <img class="img-fluid rounded float-left" src="images/cornellracinglogo.jpg">
                     </div>
                     <div class="p-3 col col-xs-12 col-sm-10 col-md-8 col-lg-6 col-12 mx-auto my-auto">
@@ -126,11 +134,18 @@
                             systems on the a formula style racecar each year.</p>
                         <p>Since our transition to electric, I helped design the low-voltage fusebox for the car. I
                             learned a lot about PCB design, solid state switching, and soldering!</p>
-                        <p>Find us <a href="https://cornellracing.org/">here</a> on our website!</p>
+                        <p class="lead">Low-voltage fusebox</p>
+                        <p>For the LV fusebox, I iterated on the design from the previous year. Because we switched to
+                            electric vehicle, I had to redesign the fusebox for different requirements. For the design,
+                            I chose to use n-channel MOSFETs with a gate driver chip for switching for lower onstate resistance, as
+                            there were failures due to overheating in previous iterations.
+                        </p>
+                        <p>Find us <a href="https://cornellracing.org/" target="_blank">here</a> on our website!</p>
                     </div>
                 </div>
+                <hr class="bg-dark">
                 <div class="row">
-                    <div class="p-3 col col-xs-10 col-sm-6 col-md-3 col-lg-3 col-3 mx-auto my-auto">
+                    <div class="p-3 col col-xs-10 col-sm-6 col-md-3 col-lg-3 mx-auto my-auto">
                         <img class="img-fluid rounded float-left" src="images/cornelllfelogo.jpg">
                     </div>
                     <div class="p-3 col col-xs-12 col-sm-10 col-md-8 col-lg-6 col-12 mx-auto my-auto">
@@ -139,7 +154,8 @@
                             Asian culture on campus and beyond.</p>
                         <p>This brotherhood has become a family and a home for me, helping me grow as a person and
                             professionally.</p>
-                        <p>Find us <a href="https://www.facebook.com/aklphie/">here</a> on our Facebook!</p>
+                        <p>Find us <a href="https://www.facebook.com/aklphie/" target="_blank">here</a> on our Facebook!
+                        </p>
                     </div>
                 </div>
                 <hr class="bg-dark">
@@ -155,21 +171,79 @@
 
         <div role="tabpanel" class="tab-pane fade" id="experience">
             <div class="container-fluid info text-white">
-                <div class="row text-center">
+                <div class="row text-center justify-content-center">
                     <div class="col mx-auto my-auto">
                         <h3 class="display-4">Work Experience</h3>
+                        <p class="lead">Find my resume <a
+                                href="https://drive.google.com/file/d/1H3L3_YbZD3bI0hyX_RKBFmcn6JZjEF78/view?usp=sharing"
+                                target="_blank">here</a>!
+                        </p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="p-3 col col-xs-10 col-sm-6 col-md-3 col-lg-3 col-12 mx-auto my-auto">
-                        <img class="img-fluid rounded float-left" src="images/mathworkslogo.jpg">
+                    <div class="p-3 col col-xs-10 col-sm-6 col-md-3 col-lg-5 col-12 mx-auto my-auto">
+                        <img class="img-fluid rounded mx-auto d-block" src="images/mathworkslogo.jpg">
                     </div>
                     <div class="p-3 col col-xs-12 col-sm-10 col-md-8 col-lg-6 col-12 mx-auto my-auto">
                         <h4>MathWorks</h4>
-                        <p></p>
+                        <p class="lead">EDG Intern - Software Engineering</p>
+                        <p class="text-indent"> During my time at MathWorks, I worked primarily on two projects. I loved
+                            my time there as an
+                            intern; the company culture is amazingly friendly and enthusiastic where the work is also
+                            impactful
+                            and specialized.</p>
+                        <p>From June to August of 2019, I worked on the following projects:</p>
+                        <p class="lead">USB over network hardware test infrastructure</p>
+                        <p>I worked across multiple teams to set up internal infrastructure for connecting hardware
+                            boards over the network.
+                            This improved the testing framework by reducing overhead and inefficiencies due to physical
+                            board testing limitations. Furthermore,
+                            the new testing framework extended hardware board testing to any user on the network,
+                            enabling hardware testing anywhere accessible by network.
+                        </p>
+                        <p class="lead">Custom board support framework</p>
+                        <p>I worked with QE engineers to rebuild the custom board support framework API, leveraging
+                            objected-oriented design to help QE engineers build software objects for hardware testing.
+                            The new framework reduced test writing time drastically, enabling 2 years of tests to be
+                            written in a week.
+                        </p>
                     </div>
                 </div>
+                <hr class="bg-dark">
                 <div class="row">
+                    <div class="p-3 col col-xs-10 col-sm-6 col-md-3 col-lg-5 col-12 mx-auto my-auto">
+                        <img class="img-fluid rounded mx-auto d-block" src="images/whitefoxlogo.jpg">
+                    </div>
+                    <div class="p-3 col col-xs-12 col-sm-10 col-md-8 col-lg-6 col-12 mx-auto my-auto">
+                        <h4>White Fox Scooters</h4>
+                        <p class="lead">Hardware Engineer</p>
+                        <p class="text-indent"></p>
+                        <p>Over the winter of 2018-2019, I helped to install GPS tracking devices in 12 ride-share
+                            electric scooters.</p>
+                        <p>The process involved splicing off existing power wires to power the GPS units, then securing
+                            and insulating the connection to the unit.</p>
+                    </div>
+                </div>
+                <hr class="bg-dark">
+                <div class="row">
+                    <div class="p-3 col col-xs-10 col-sm-6 col-md-3 col-lg-5 col-12 mx-auto my-auto">
+                        <img class="img-fluid rounded mx-auto d-block p-lg-5" src="images/inservelogo.jpg">
+                    </div>
+                    <div class="p-3 col col-xs-12 col-sm-10 col-md-8 col-lg-6 col-12 mx-auto my-auto">
+                        <h4>inServe</h4>
+                        <p class="lead">Full-stack software engineer</p>
+                        <p class="text-indent"></p>
+                        <p>InServe is a mobile and web application aimed at streamlining and simplifying volunteering,
+                            offering a platform for volunteers and volunteer organizations to manage, track, and
+                            advertise events and activities. Features include geo-fencing for events, connecting with
+                            social media, and special utilities for corporations or universities.</p>
+                        <p>Over the summer of 2018, I worked as the lead software engineer for a local startup,
+                            inServe.
+                            I helped build the web application using Angular 5 with the Google Firebase backend. As a
+                            move to market towards colleges, I helped build the user interface and backend for
+                            managing
+                            volunteer activities and members for Greek life on college campuses.</p>
+                    </div>
                 </div>
             </div>
         </div>
