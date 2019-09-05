@@ -137,7 +137,8 @@
                         <p class="lead">Low-voltage fusebox</p>
                         <p>For the LV fusebox, I iterated on the design from the previous year. Because we switched to
                             electric vehicle, I had to redesign the fusebox for different requirements. For the design,
-                            I chose to use n-channel MOSFETs with a gate driver chip for switching for lower onstate resistance, as
+                            I chose to use n-channel MOSFETs with a gate driver chip for switching for lower onstate
+                            resistance, as
                             there were failures due to overheating in previous iterations.
                         </p>
                         <p>Find us <a href="https://cornellracing.org/" target="_blank">here</a> on our website!</p>
@@ -250,8 +251,31 @@
 
         <div role="tabpanel" class="tab-pane fade" id="projects">
             <div class="text-center container-fluid text-white">
-                <div class="about-me">
-                    <p>These are my projects.</p>
+                <div class="container-fluid info text-white">
+                    <div class="row text-center justify-content-center">
+                        <div class="col mx-auto my-auto">
+                            <h3 class="display-4">Projects</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="p-3 col col-xs-10 col-sm-6 col-md-3 col-lg-5 col-12 mx-auto my-auto">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/8qrIVaZiNZA"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+                        <div class="p-3 col col-xs-12 col-sm-10 col-md-8 col-lg-6 col-12 mx-auto my-auto text-left">
+                            <h4>Snake</h4>
+                            <p class="lead">ECE 3140 Embedded Systems</p>
+                            <p class="text-indent">With a partner, we recreated the classic arcade game Snake on a
+                                microcontroller. Using the K64F platform with an Arm chip, we programmed the game logic,
+                                rendering functions, and the control logic in C and C++. We took advantage of some
+                                existing mbed libraries, but only as skeleton to build off from. The snake game starts
+                                as a single dot, and grows in size as more food is eaten. The direction the snake moves
+                                towards is controlled by the onboard accelerometer on the K64F. </p>
+                            <p>Find our report <a href="images/ECE3140SnakeReport.pdf">here</a>!</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
