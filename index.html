@@ -517,8 +517,27 @@
 								<div class="container-fluid">
 									<div class="mx-auto my-auto text-left">
 										<h4>Neural Network Drone</h4>
-										<p class="lead"></p>
-										<p class="text-indent"></p>
+										<p class="lead">Personal Project</p>
+										<p class="text-indent">
+											Using two webcams attached to a Raspberry Pi controlled RC car, I wrote a
+											python program implementing OpenCV, numPy, and PyBrain to train a
+											back-propagating neural network that can detect obstacles and control the
+											vehicle.
+											Using stereoscopic cameras, the difference between each image was used to
+											discern obstacles in front of the vehicle. By training a neural network to
+											transform a left image to a right image, the difference between a
+											transformed right image and an image from the right camera would
+											approximately determine the location of the obstacle.
+										</p>
+										<p>
+											This project took inspiration from a CMU graduate study using a simple
+											neural network for obstacle detection with a similar stereoscopic camera
+											setup.
+										</p>
+										<p>Find my github repo for this project <a
+												href="https://github.com/nahtonaj/neuralnetworkdrone">here</a>!</p>
+										<p>This code was pretty messy as I took examples from online sources and spent a
+											lot of time messing around with code to learn about neural networks.</p>
 									</div>
 								</div>
 								<button class="btn btn-success" type="button" data-dismiss="modal">
@@ -561,8 +580,23 @@
 											accurate treatments and behavior predictions.
 										</p>
 										<p>
-											With a team of 3, 
+											With a team of 3, <a href="https://nicoleslin.github.io">Nicole Lin</a>,
+											Annie Kimmel, and I worked on making an IoT
+											adapter for the popular e-cigarette product Juul. The adapter measures the
+											amount of current drawn from the device and can collect usage data. By
+											providing users with data on their habits, users become more aware of how
+											much nicotine they are ingesting. This provides both a platform for IoT
+											driven plans for quitting nicotine addiction and a way for users to track
+											their usage.
 										</p>
+										<p>
+											To integrate data collection to the Google Cloud platform, we used an
+											Arduino microcontroller with WiFi to upload statistics to the cloud each
+											time the Juul device was activated.
+										</p>
+										<p>Find out more about our project on our devpost <a
+												href="https://devpost.com/software/juul-io">here</a>!</p>
+										<img class="img-fluid rounded mx-auto d-block p-2" src="images/juulio.jpg">
 									</div>
 								</div>
 								<button class="btn btn-success" type="button" data-dismiss="modal">
