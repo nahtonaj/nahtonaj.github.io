@@ -1,307 +1,1049 @@
-<!doctype html>
-<!-- html5 doctype -->
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <!-- Responsive meta tag -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Jonathan Gao</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="home.css">
+	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
 
-    <title>Jonathan Gao</title>
+	<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+	<link rel="stylesheet" href="css/animate.css">
 
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="css/magnific-popup.css">
+
+	<link rel="stylesheet" href="css/aos.css">
+
+	<link rel="stylesheet" href="css/ionicons.min.css">
+
+	<link rel="stylesheet" href="css/flaticon.css">
+	<link rel="stylesheet" href="css/icomoon.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="propic.png">
 </head>
 
-<body>
-    <nav class="navbar navbar-dark navbar-expand-sm sticky-top text-left" role="navigation">
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive"
-            aria-controls="navbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="nav navbar-nav mr-auto" role="tablist">
-                <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                    <a class="nav-link active" href="#home" role="tab" data-toggle="tab">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#dropdownMenu" href="#"
-                        role="button" aria-haspopup="true" aria-expanded="false">About me</a>
-                    <div class="dropdown-menu bg-dark" id="dropdownMenu">
-                        <div data-toggle="collapse" data-target=".navbar-collapse.show">
-                            <a class="dropdown-item" href="#personal" role="tab" data-toggle="tab">Personal</a>
-                        </div>
-                        <div data-toggle="collapse" data-target=".navbar-collapse.show">
-                            <a class="dropdown-item" href="#experience" role="tab" data-toggle="tab">Experience</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                    <a class="nav-link" href="#projects" role="tab" data-toggle="tab">Projects</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="tab-content">
-
-        <div role="tabpanel" class="parallax tab-pane fade show active" id="home">
-            <div class="container-fluid h-100">
-                <div class="container-fluid aboutme">
-                    <div class="text-light text-center text-shadow ">
-                        <h1 class="typewrite display-4" data-period="2000"
-                            data-type='[ "I am innovative.", "I am creative.", "I am Jonathan Gao."]'>
-                            <span class="wrap"></span>
-                        </h1>
-                        <p>Electrical and Computer Engineering student at Cornell University</p>
-                    </div>
-                </div>
-
-                <div class="connect text-center">
-                    <h5>Find me here</h5>
-                </div>
-                <div class="container-fluid socialmedia mx-auto">
-                    <div class="row text-center justify-content-center">
-                        <div class="p-2 col-xs-12 col-sm-4 col-lg-2 mt-3">
-                            <a href="https://www.facebook.com/jonathan.gao.58" target="_blank"><i
-                                    class="fab fa-facebook fa-6x" aria-hidden="true"></i></a>
-                        </div>
-                        <div class="p-2 col-xs-12 col-sm-4 col-lg-2 mt-3">
-                            <a href="https://www.instagram.com/jongao_" target="_blank"><i
-                                    class="fab fa-instagram fa-6x" aria-hidden="true"></i></a>
-                        </div>
-                        <div class="p-2 col-xs-12 col-sm-4 col-lg-2 mt-3">
-                            <a href="https://www.linkedin.com/in/jonathan-gao" target="_blank"><i
-                                    class="fab fa-linkedin fa-6x" aria-hidden="true"></i></a>
-                        </div>
-                        <div class="p-2 col-xs-12 col-sm-4 col-lg-2 mt-3">
-                            <a href="https://www.github.com/nahtonaj" target="_blank"><i class="fab fa-github fa-6x"
-                                    aria-hidden="true"></i></a>
-                        </div>
-                        <div class="p-2 col-xs-12 col-sm-4 col-lg-2 mt-3">
-                            <a href="mailto:jg992@cornell.edu" target="_blank"><i class="fas fa-envelope fa-6x"
-                                    aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div role="tabpanel" class="tab-pane fade" id="personal">
-            <div class="container-fluid info text-white">
-                <div class="row justify-content-center">
-                    <div class="p-3 col col-xs-10 col-sm-6 col-md-3 col-lg-3 mx-auto my-auto">
-                        <img class="img-fluid rounded float-left" src="images/propic.jpg" alt="Responsive Image">
-                    </div>
-                    <div class="p-3 col col-xs-12 col-sm-10 col-md-8 col-lg-6 col-12 mx-auto my-auto">
-                        <p class="lead">Hi! I'm currently a student pursuing a Bachelors of Science in Electrical and
-                            Computer
-                            Engineering at
-                            Cornell University.</p>
-                        <p>I am currently in my 3rd year as an undergraduate but planning to graduate my 4th year with a
-                            Masters
-                            degree in Computer Science.</p>
-                        <p>These are some of things I am part of and like to do!</p>
-                    </div>
-                </div>
-                <hr class="bg-dark">
-                <div class="row">
-                    <div class="p-3 col col-xs-10 col-sm-6 col-md-3 col-lg-3 mx-auto my-auto">
-                        <img class="img-fluid rounded float-left" src="images/lokologo.jpg">
-                    </div>
-                    <div class="p-3 col col-xs-12 col-sm-10 col-md-8 col-lg-6 col-12 mx-auto my-auto">
-                        <h4>Cornell LOKO</h4>
-                        <p>I'm part of a dance team on campus called LOKO. We do korean hip hop and pop dances on
-                            campus!</p>
-                        <p>Find us <a href="https://www.youtube.com/channel/UCQ5IdyAl5C6NBjaScIrwlJw"
-                                target="_blank">here</a> on our
-                            YouTube channel!</p>
-                    </div>
-                </div>
-                <hr class="bg-dark">
-                <div class="row">
-                    <div class="p-3 col col-xs-10 col-sm-6 col-md-3 col-lg-3 mx-auto my-auto">
-                        <img class="img-fluid rounded float-left" src="images/cornellracinglogo.jpg">
-                    </div>
-                    <div class="p-3 col col-xs-12 col-sm-10 col-md-8 col-lg-6 col-12 mx-auto my-auto">
-                        <h4>Cornell Formula Racing SAE</h4>
-                        <p>I'm on the electrical team of Cornell FSAE, helping to design and build the electrical
-                            systems on the a formula style racecar each year.</p>
-                        <p>Since our transition to electric, I helped design the low-voltage fusebox for the car. I
-                            learned a lot about PCB design, solid state switching, and soldering!</p>
-                        <p class="lead">Low-voltage fusebox</p>
-                        <p>For the LV fusebox, I iterated on the design from the previous year. Because we switched to
-                            electric vehicle, I had to redesign the fusebox for different requirements. For the design,
-                            I chose to use n-channel MOSFETs with a gate driver chip for switching for lower onstate
-                            resistance, as
-                            there were failures due to overheating in previous iterations.
-                        </p>
-                        <p>Find us <a href="https://cornellracing.org/" target="_blank">here</a> on our website!</p>
-                    </div>
-                </div>
-                <hr class="bg-dark">
-                <div class="row">
-                    <div class="p-3 col col-xs-10 col-sm-6 col-md-3 col-lg-3 mx-auto my-auto">
-                        <img class="img-fluid rounded float-left" src="images/cornelllfelogo.jpg">
-                    </div>
-                    <div class="p-3 col col-xs-12 col-sm-10 col-md-8 col-lg-6 col-12 mx-auto my-auto">
-                        <h4>Cornell Lambda Phi Epsilon</h4>
-                        <p>Lambda Phi Epsilon is an Asian interest fraternity that aims to promote Asian awareness and
-                            Asian culture on campus and beyond.</p>
-                        <p>This brotherhood has become a family and a home for me, helping me grow as a person and
-                            professionally.</p>
-                        <p>Find us <a href="https://www.facebook.com/aklphie/" target="_blank">here</a> on our Facebook!
-                        </p>
-                    </div>
-                </div>
-                <hr class="bg-dark">
-                <div class="row">
-                    <div class="p-3 col mx-auto my-auto">
-                        <p>This website is an ongoing project: a portfolio, biography, or blog. I started building this
-                            website the summer of 2019, learning HTML and CSS with the Boostrap 4 framework from
-                            scratch.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div role="tabpanel" class="tab-pane fade" id="experience">
-            <div class="container-fluid info text-white">
-                <div class="row text-center justify-content-center">
-                    <div class="col mx-auto my-auto">
-                        <h3 class="display-4">Work Experience</h3>
-                        <p class="lead">Find my resume <a
-                                href="https://drive.google.com/file/d/1H3L3_YbZD3bI0hyX_RKBFmcn6JZjEF78/view?usp=sharing"
-                                target="_blank">here</a>!
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="p-3 col col-xs-10 col-sm-6 col-md-3 col-lg-5 col-12 mx-auto my-auto">
-                        <img class="img-fluid rounded mx-auto d-block" src="images/mathworkslogo.jpg">
-                    </div>
-                    <div class="p-3 col col-xs-12 col-sm-10 col-md-8 col-lg-6 col-12 mx-auto my-auto">
-                        <h4>MathWorks</h4>
-                        <p class="lead">EDG Intern - Software Engineering</p>
-                        <p class="text-indent"> During my time at MathWorks, I worked primarily on two projects. I loved
-                            my time there as an
-                            intern; the company culture is amazingly friendly and enthusiastic where the work is also
-                            impactful
-                            and specialized.</p>
-                        <p>From June to August of 2019, I worked on the following projects:</p>
-                        <p class="lead">USB over network hardware test infrastructure</p>
-                        <p>I worked across multiple teams to set up internal infrastructure for connecting hardware
-                            boards over the network.
-                            This improved the testing framework by reducing overhead and inefficiencies due to physical
-                            board testing limitations. Furthermore,
-                            the new testing framework extended hardware board testing to any user on the network,
-                            enabling hardware testing anywhere accessible by network.
-                        </p>
-                        <p class="lead">Custom board support framework</p>
-                        <p>I worked with QE engineers to rebuild the custom board support framework API, leveraging
-                            objected-oriented design to help QE engineers build software objects for hardware testing.
-                            The new framework reduced test writing time drastically, enabling 2 years of tests to be
-                            written in a week.
-                        </p>
-                    </div>
-                </div>
-                <hr class="bg-dark">
-                <div class="row">
-                    <div class="p-3 col col-xs-10 col-sm-6 col-md-3 col-lg-5 col-12 mx-auto my-auto">
-                        <img class="img-fluid rounded mx-auto d-block" src="images/whitefoxlogo.jpg">
-                    </div>
-                    <div class="p-3 col col-xs-12 col-sm-10 col-md-8 col-lg-6 col-12 mx-auto my-auto">
-                        <h4>White Fox Scooters</h4>
-                        <p class="lead">Hardware Engineer</p>
-                        <p class="text-indent"></p>
-                        <p>Over the winter of 2018-2019, I helped to install GPS tracking devices in 12 ride-share
-                            electric scooters.</p>
-                        <p>The process involved splicing off existing power wires to power the GPS units, then securing
-                            and insulating the connection to the unit.</p>
-                    </div>
-                </div>
-                <hr class="bg-dark">
-                <div class="row">
-                    <div class="p-3 col col-xs-10 col-sm-6 col-md-3 col-lg-5 col-12 mx-auto my-auto">
-                        <img class="img-fluid rounded mx-auto d-block p-lg-5" src="images/inservelogo.jpg">
-                    </div>
-                    <div class="p-3 col col-xs-12 col-sm-10 col-md-8 col-lg-6 col-12 mx-auto my-auto">
-                        <h4>inServe</h4>
-                        <p class="lead">Full-stack software engineer</p>
-                        <p class="text-indent"></p>
-                        <p>InServe is a mobile and web application aimed at streamlining and simplifying volunteering,
-                            offering a platform for volunteers and volunteer organizations to manage, track, and
-                            advertise events and activities. Features include geo-fencing for events, connecting with
-                            social media, and special utilities for corporations or universities.</p>
-                        <p>Over the summer of 2018, I worked as the lead software engineer for a local startup,
-                            inServe.
-                            I helped build the web application using Angular 5 with the Google Firebase backend. As a
-                            move to market towards colleges, I helped build the user interface and backend for
-                            managing
-                            volunteer activities and members for Greek life on college campuses.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div role="tabpanel" class="tab-pane fade" id="projects">
-            <div class="text-center container-fluid text-white">
-                <div class="container-fluid info text-white">
-                    <div class="row text-center justify-content-center">
-                        <div class="col mx-auto my-auto">
-                            <h3 class="display-4">Projects</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="p-3 col col-xs-10 col-sm-6 col-md-3 col-lg-5 col-12 mx-auto my-auto">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/8qrIVaZiNZA"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                        </div>
-                        <div class="p-3 col col-xs-12 col-sm-10 col-md-8 col-lg-6 col-12 mx-auto my-auto text-left">
-                            <h4>Snake</h4>
-                            <p class="lead">ECE 3140 Embedded Systems</p>
-                            <p class="text-indent">With a partner, we recreated the classic arcade game Snake on a
-                                microcontroller. Using the K64F platform with an Arm chip, we programmed the game logic,
-                                rendering functions, and the control logic in C and C++. We took advantage of some
-                                existing mbed libraries, but only as skeleton to build off from. The snake game starts
-                                as a single dot, and grows in size as more food is eaten. The direction the snake moves
-                                towards is controlled by the onboard accelerometer on the K64F. </p>
-                            <p>Find our report <a href="images/ECE3140SnakeReport.pdf">here</a>!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr class="bg-dark">
-            <div class="text-center container-fluid text-white">
-                <p>This page is a work in progress! I'm currently in school and have not had the time to fully complete this list. Stay tuned... or send me an <a href="mailto:jg992@cornell.edu">email</a> to learn more!</p>
-            </div>
-        </div>
-
-    </div>
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
 
+	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
+		id="ftco-navbar">
+		<div class="container">
+			<a class="navbar-brand" href="index.html">Jon<span>Gao</span></a>
+			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse"
+				data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
 
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav nav ml-auto">
+					<li class="nav-item"><a href="#home-section" class="nav-link" data-toggle="collapse"
+							data-target=".navbar-collapse.show"><span>Home</span></a></li>
+					<li class="nav-item"><a href="#services-section" class="nav-link" data-toggle="collapse"
+							data-target=".navbar-collapse.show"><span>Experience</span></a></li>
+					<li class="nav-item"><a href="#projects-section" class="nav-link" data-toggle="collapse"
+							data-target=".navbar-collapse.show"><span>Projects</span></a></li>
+					<li class="nav-item"><a href="#about-section" class="nav-link" data-toggle="collapse"
+							data-target=".navbar-collapse.show"><span>About Me</span></a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<section id="home-section" class="hero">
+		<h3 class="vr"></h3>
+		<div class="home-slider js-fullheight owl-carousel">
+			<div class="slider-item js-fullheight">
+				<div class="overlay"></div>
+				<div class="container-fluid p-0">
+					<div class="row d-md-flex no-gutters slider-text js-fullheight align-items-center justify-content-end"
+						data-scrollax-parent="true">
+						<div class="one-third order-md-last img js-fullheight"
+							style="background-image:linear-gradient(to bottom, #ffffffaa, #ffffff22, #ffffff00, #ffffff00, #ffffff00), url(images/me.JPG);">
+							<div class="overlay"></div>
+						</div>
+						<div class="one-forth d-flex js-fullheight align-items-center ftco-animate"
+							data-scrollax=" properties: { translateY: '70%' }">
+							<div class="text">
+								<span class="subheading">Hello, I am</span>
+								<h1 class="mb-4 mt-3">Jonathan <span>Gao</span></h1>
+								<p class="lead">
+									ECE and CS student at Cornell University
+								</p>
+								<div class="row mb-5">
+									<div class="col-md">
+										<div class="ftco-footer-widget mt-4">
+											<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+												<li class=""><a href="https://www.linkedin.com/in/jonathan-gao"><span
+															class="icon-linkedin"></span></a></li>
+												<li class=""><a href="https://www.github.com/nahtonaj"><span
+															class="icon-github"></span></a></li>
+												<li class=""><a href="https://www.facebook.com/jonathan.gao.58"><span
+															class="icon-facebook"></span></a></li>
+												<li class=""><a href="https://www.instagram.com/jongao_"><span
+															class="icon-instagram"></span></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="ftco-section ftco-no-pb ftco-no-pt ftco-services bg-light" id="services-section">
+		<div class="container">
+			<div class="row no-gutters">
+				<div class="col-md-4 ftco-animate py-5 nav-link-wrap">
+					<h1 class="display-4 ml-3 p-4 text-white">
+						Work Experience
+					</h1>
+					<div class="ml-3 nav ftco-animate flex-column nav-pills" id="v-pills-tab" role="tablist"
+						aria-orientation="vertical">
+						<a class="nav-link px-4 active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1"
+							role="tab" aria-controls="v-pills-1" aria-selected="true">MathWorks</a>
+
+						<a class="nav-link px-4" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab"
+							aria-controls="v-pills-2" aria-selected="false">White Fox Scooters</a>
+
+						<a class="nav-link px-4" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab"
+							aria-controls="v-pills-3" aria-selected="false">InServe</a>
+
+						<a class="nav-link px-4" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab"
+							aria-controls="v-pills-4" aria-selected="false">Stony Brook Laboratory for Computational
+							Neurodiagnostics</a>
+
+						<a class="nav-link px-4" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab"
+							aria-controls="v-pills-5" aria-selected="false">Reesink Laboratory Cornell College of
+							Veterinary Medicine</a>
+					</div>
+				</div>
+				<div class="col-md-8 ftco-animate p-4 p-md-5 d-flex align-items-center">
+
+					<div class="tab-content pl-md-5" id="v-pills-tabContent">
+
+						<div class="tab-pane fade ftco-animate show active py-5" id="v-pills-1" role="tabpanel"
+							aria-labelledby="v-pills-1-tab">
+							<img class="img-fluid rounded mx-auto d-block" src="images/mathworkslogo.jpg">
+							<h1 class="mt-4">MathWorks</h1>
+							<h2 class="mb-4">EDG Intern - Software Engineering</h2>
+							<p class="text-indent"> During my time at MathWorks, I worked primarily on two projects. I
+								loved my time there as an intern; the company culture is amazingly friendly and
+								enthusiastic.</p>
+							<p>From June to August of 2019, I worked on the following projects:</p>
+							<h2 class="lead">USB over network hardware test infrastructure</h2>
+							<p>To improve hardware development workflow, I worked to set up hardware leasing over
+								network as a service on the internal MathWorks network.</p>
+							<p>I worked across multiple teams to set up internal infrastructure for connecting hardware
+								boards over the network.
+								With this new infrastructure, devs no longer need a physical board connected to their
+								machine; instead, they can lease an available board through a client which will emulate
+								a serial connection over ethernet. Furthermore,
+								the new testing framework extended hardware board testing to any user on the network,
+								enabling hardware testing anywhere accessible by network.
+							</p>
+							<h2 class="lead">Custom board support framework</h2>
+							<p>I worked with QE engineers to rebuild the custom board support framework API, leveraging
+								objected-oriented design to help QE engineers build software objects for hardware
+								testing.
+								These software objects were required for emulation of hardware and deployment of code to
+								hardware.
+								The new framework reduced test writing time drastically, enabling 2 years of tests to be
+								written in a week.
+							</p>
+						</div>
+
+						<div class="tab-pane ftco-animate fade py-5" id="v-pills-2" role="tabpanel"
+							aria-labelledby="v-pills-2-tab">
+							<img class="img-fluid rounded mx-auto d-block" src="images/whitefoxlogo.jpg">
+							<h1>White Fox Scooters</h1>
+							<h2 class="mb-4">Hardware Engineering Intern</h2>
+							<p>Over the winter of 2018-2019, I helped to install GPS tracking devices in 12 ride-share
+								electric scooters.</p>
+							<p>The process involved splicing off existing power wires to power the GPS units, then
+								securing
+								and insulating the connection to the unit.</p>
+						</div>
+
+						<div class="tab-pane fade ftco-animate py-5" id="v-pills-3" role="tabpanel"
+							aria-labelledby="v-pills-3-tab">
+							<img class="img-fluid rounded mx-auto d-block w-50" src="images/inservelogo.jpg">
+							<h1 class="mt-4">InServe</h1>
+							<h2 class="mb-4">Full-stack Software Engineering Intern</h2>
+							<p>InServe is a mobile and web application aimed at streamlining and simplifying
+								volunteering,
+								offering a platform for volunteers and volunteer organizations to manage, track, and
+								advertise events and activities. Features include geo-fencing for events, connecting
+								with
+								social media, and special utilities for corporations or universities.</p>
+							<p>Over the summer of 2018, I worked as the lead software engineer for this local startup.
+								I helped build the web application using Angular 5 with the Google Firebase backend. As
+								a
+								move to market towards colleges, I helped build the user interface and backend for
+								managing volunteer activities and members for Greek life on college campuses.</p>
+						</div>
+
+						<div class="tab-pane fade ftco-animate py-5" id="v-pills-4" role="tabpanel"
+							aria-labelledby="v-pills-4-tab">
+							<img class="img-fluid rounded mx-auto d-block w-50" src="images/lcneuro.jpg">
+							<h1 class="mt-4">Stony Brook Laboratory for Computational Neurodiagnostics</h1>
+							<h2 class="mb-4">Research Assistant</h2>
+							<p>From the summer of 2016 to January of 2017, I worked with Dr. Lilianne Mujica-Parodi to
+								simulate regulatory dynamics in the fear response circuit in the brain. Using MatLab
+								Simulink, I modeled Dr. Mujica-Parodi's theory that recklessness and anxiety lie on a
+								spectrum of hyper- and hypo-regulation of the fear response. Using the same statistical
+								analysis on this model as with previous medical data, we obtained matching results,
+								providing
+								support for this theory.</p>
+							<p>Creating and using a computer-simulated regulatory circuit present for fear in the brain,
+								we were able to unify the regulatory dynamics previously seen across the spectrum for
+								threat detection under one theory. Through this control systems approach, we demonstrate
+								the effectiveness of such an approach for studying and diagnosing regulatory systems
+								within the body.</p>
+							<p>This paper was published in Frontiers Sys. Neuroscience.</p>
+							<p><a href="https://www.frontiersin.org/articles/10.3389/fnsys.2017.00018/full"
+									class="btn btn-primary px-4 py-3">Learn More</a></p>
+						</div>
+
+						<div class="tab-pane fade ftco-animate py-5" id="v-pills-5" role="tabpanel"
+							aria-labelledby="v-pills-5-tab">
+							<img class="img-fluid rounded mx-auto d-block w-100" src="images/cornellvetmedicine.png">
+							<h2 class="mb-4">Reesink Laboratory</h2>
+							<p>Since September 2019, I have been working in the Reesink Lab to help process micro-CT
+								scans
+								to extract meaningful parameters. This data is being use to predict bone fracture in
+								horses,
+								as a leg fracture is fatal. Such features include bone volume, tissue volume, and size
+								dimensions. These CT scans are processed by filtering, thresholding, then segmenting in
+								3D
+								spatial domain to calculate these dimensions.</p>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- <section class="ftco-section-2 img" style="background-image: url(images/bg_3.jpg);">
+		<div class="container">
+			<div class="row d-md-flex justify-content-end">
+				<div class="col-md-6">
+					<div class="row">
+						<div class="col-md-12">
+							<a href="#" class="services-wrap ftco-animate">
+								<div class="icon d-flex justify-content-center align-items-center">
+									<span class="ion-ios-arrow-back"></span>
+									<span class="ion-ios-arrow-forward"></span>
+								</div>
+								<h2>Market Research</h2>
+								<p>Even the all-powerful Pointing has no control about the blind.</p>
+							</a>
+							<a href="#" class="services-wrap ftco-animate">
+								<div class="icon d-flex justify-content-center align-items-center">
+									<span class="ion-ios-arrow-back"></span>
+									<span class="ion-ios-arrow-forward"></span>
+								</div>
+								<h2>Financial Services</h2>
+								<p>Even the all-powerful Pointing has no control about the blind.</p>
+							</a>
+							<a href="#" class="services-wrap ftco-animate">
+								<div class="icon d-flex justify-content-center align-items-center">
+									<span class="ion-ios-arrow-back"></span>
+									<span class="ion-ios-arrow-forward"></span>
+								</div>
+								<h2>Online Marketing</h2>
+								<p>Even the all-powerful Pointing has no control about the blind.</p>
+							</a>
+							<a href="#" class="services-wrap ftco-animate">
+								<div class="icon d-flex justify-content-center align-items-center">
+									<span class="ion-ios-arrow-back"></span>
+									<span class="ion-ios-arrow-forward"></span>
+								</div>
+								<h2>24/7 Help &amp; Support</h2>
+								<p>Even the all-powerful Pointing has no control about the blind.</p>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section> -->
+
+	<section class="ftco-section ftco-project bg-light" id="projects-section">
+		<div class="container px-md-5">
+			<div class="row justify-content-center pb-5">
+				<div class="col-md-12 heading-section text-center ftco-animate">
+					<span class="subheading">Accomplishments</span>
+					<h2 class="mb-4">Projects</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 testimonial">
+					<div class="carousel-project owl-carousel">
+						<div class="item">
+							<div class="project">
+								<div class="img">
+									<img src="images/snake.png" class="img-fluid" alt="Snake Game">
+									<div class="text px-4">
+										<h3><a href="#portfolioModal1" data-toggle="modal">Snake Game</a></h3>
+										<span>Embedded Systems Programming</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="item">
+							<div class="project">
+								<div class="img">
+									<img src="images/LVFusebox.png" class="img-fluid" alt="Cornell FSAE">
+									<div class="text px-4">
+										<h3><a href="#portfolioModal2" data-toggle="modal">Cornell FSAE LV Fusebox</a>
+										</h3>
+										<span>Electrical Engineering</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="item">
+							<div class="project">
+								<div class="img">
+									<img src="images/fsaecar.png" class="img-fluid" alt="Cornell FSAE">
+									<div class="text px-4">
+										<h3><a href="#portfolioModal3" data-toggle="modal">Cornell FSAE ECU</a></h3>
+										<span>Electrical Engineering</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="item">
+							<div class="project">
+								<div class="img">
+									<img src="images/nnrccar.jpg" class="img-fluid" alt="Neural Network Driven Drone">
+									<div class="text px-4">
+										<h3><a href="#portfolioModal4" data-toggle="modal">Neural Network Driven RC
+												Drone</a></h3>
+										<span>Embedded Software</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="item">
+							<div class="project">
+								<div class="img">
+									<img src="images/juulio.jpg" class="img-fluid" alt="juul.io">
+									<div class="text px-4">
+										<h3><a href="#portfolioModal5" data-toggle="modal">Juul.io</a></h3>
+										<span>Hackathon Project</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog mw-100 w-100" role="document">
+			<div class="modal-content">
+				<div class="close-modal" data-dismiss="modal">
+					<div class="lr">
+						<div class="rl"></div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 mx-auto">
+							<div class="modal-body">
+								<div class="container-fluid">
+									<div
+										class="container-fluid mx-auto my-auto embed-responsive embed-responsive-16by9">
+										<iframe class="embed-responsive-item"
+											src="https://www.youtube.com/embed/8qrIVaZiNZA" frameborder="0"
+											allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+											allowfullscreen></iframe>
+									</div>
+									<div class="mx-auto my-auto text-left">
+										<h4>Snake</h4>
+										<p class="lead">ECE 3140 Embedded Systems</p>
+										<p class="text-indent">With a partner, we recreated the classic arcade game
+											Snake on a
+											microcontroller. Using the K64F platform with an Arm chip, we programmed the
+											game logic,
+											rendering functions, and the control logic in C and C++. We took advantage
+											of some
+											existing mbed libraries, but only as skeleton to build off from. The snake
+											game starts
+											as a single dot, and grows in size as more food is eaten. The direction the
+											snake moves
+											towards is controlled by the onboard accelerometer on the K64F. </p>
+										<p>Find our report <a href="images/ECE3140SnakeReport.pdf">here</a>!</p>
+									</div>
+								</div>
+								<button class="btn btn-success" type="button" data-dismiss="modal">
+									<i class="fa fa-times"></i>
+									Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog mw-100 w-100" role="document">
+			<div class="modal-content">
+				<div class="close-modal" data-dismiss="modal">
+					<div class="lr">
+						<div class="rl"></div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 mx-auto">
+							<div class="modal-body">
+								<div class="container-fluid">
+									<div class="mx-auto my-auto text-left">
+										<h4>LV Fusebox</h4>
+										<p class="lead">Cornell FSAE</p>
+										<p class="text-indent">
+											As part of the electrical team on FSAE for ARG19 (our 2019 car), I designed
+											and manufactured the Low Voltage fusebox.
+										</p>
+										<p>
+											The low voltage fusebox's primary functionality is to distribute power to
+											the components of the car while providing switching, fusing, and current
+											monitoring. The primary challenge for this year was converting our old
+											fusebox design from our previous combustion car for our new all-electric
+											system.
+										</p>
+										<p>
+											As we previously had overheating issues with our previous fusebox due to
+											high on-state resistance using p-channel MOSFETs, I decided to switch to
+											n-channel MOSFETs for lower on-state resistance.
+											With the n-channel MOSFETs, I needed gate drivers to bring MOSFETs into
+											saturation.
+										</p>
+										<p>
+											For current monitoring, I used a STMF0 microcontroller with Hall-effect
+											sensing chips. However, the current monitoring development was cut short due
+											to other failures in the accumulator design preventing ARG19 from driving.
+										</p>
+										<p>Check out the schematic and PCB layout!</p>
+										<img class="img-fluid rounded mx-auto d-block p-2" src="images/LVFusebox.png"
+											caption="Fusebox PCB Layout">
+										<img class="img-fluid rounded mx-auto d-block p-2"
+											src="images/LVFuseboxschematic.png">
+										<img class="img-fluid rounded mx-auto d-block p-2"
+											src="images/LVFuseboxschematic2.png">
+									</div>
+								</div>
+								<button class="btn btn-success" type="button" data-dismiss="modal">
+									<i class="fa fa-times"></i>
+									Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog mw-100 w-100" role="document">
+			<div class="modal-content">
+				<div class="close-modal" data-dismiss="modal">
+					<div class="lr">
+						<div class="rl"></div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 mx-auto">
+							<div class="modal-body">
+								<div class="container-fluid">
+									<div class="mx-auto my-auto text-left">
+										<h4>Electronics Control Unit</h4>
+										<p class="lead">Cornell FSAE</p>
+										<p class="text-indent">
+											For ARG20, the 2020 FSAE car, I am working on designing and manufacturing
+											the Electronics Control Unit along with my partner, Nicole Lin (find her <a
+												href="https://nicoleslin.github.io/">here</a>!) This component's primary
+											function is to act as
+											the brain of the car, sending control signals and ensuring the car operates
+											normally. This logic includes throttle control, shutdown circuitry, brake
+											plausibility detection, and any other processing required.
+										</p>
+										<p>
+											We are beginning testing for our new design, taking inspiration from a
+											prototype from last year as well as from Wisconsin Racing.
+										</p>
+									</div>
+								</div>
+								<button class="btn btn-success" type="button" data-dismiss="modal">
+									<i class="fa fa-times"></i>
+									Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog mw-100 w-100" role="document">
+			<div class="modal-content">
+				<div class="close-modal" data-dismiss="modal">
+					<div class="lr">
+						<div class="rl"></div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 mx-auto">
+							<div class="modal-body">
+								<div class="container-fluid">
+									<div class="mx-auto my-auto text-left">
+										<h4>Neural Network Drone</h4>
+										<p class="lead"></p>
+										<p class="text-indent"></p>
+									</div>
+								</div>
+								<button class="btn btn-success" type="button" data-dismiss="modal">
+									<i class="fa fa-times"></i>
+									Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog mw-100 w-100" role="document">
+			<div class="modal-content">
+				<div class="close-modal" data-dismiss="modal">
+					<div class="lr">
+						<div class="rl"></div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 mx-auto">
+							<div class="modal-body">
+								<div class="container-fluid">
+									<div class="mx-auto my-auto text-left">
+										<h4>Juul.io</h4>
+										<p class="lead">Big\\Red Hacks 2019 Hardware Hack Winner</p>
+										<p class="text-indent">
+											Recent news headlines have brought to light the growing teenage vaping
+											epidemic. The uncontrolled usage of addictive nicotine e-cigarettes has
+											flocked the country, with companies like Juul focusing advertising on
+											younger audiences. Especially on college campuses, nicotine addiction is
+											becoming ever more prevalent. Juul.io is a solution to curb and reduce
+											nicotine addiction by allowing Juul users to better understand their
+											e-cigarette usage by tracking it in real time. It would also collect and
+											distribute crucial health data (that Juul itself has been reluctant to
+											provide) about a relatively new, niche, and unknown market leading to more
+											accurate treatments and behavior predictions.
+										</p>
+										<p>
+											With a team of 3, 
+										</p>
+									</div>
+								</div>
+								<button class="btn btn-success" type="button" data-dismiss="modal">
+									<i class="fa fa-times"></i>
+									Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb" id="about-section">
+		<div class="container">
+			<div class="row d-flex">
+				<div class="col-md-6 col-lg-5 d-flex">
+					<div class="img d-flex align-self-stretch align-items-center"
+						style="background-image:url(images/propic.png);">
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-7 pl-lg-5 py-5">
+					<div class="py-md-5">
+						<div class="row justify-content-start pb-3">
+							<div class="col-md-12 heading-section ftco-animate">
+								<span class="subheading">About me</span>
+								<h2 class="mb-4" style="font-size: 34px; text-transform: capitalize;">Hi! I'm Jonathan
+									Gao</h2>
+								<p>I grew up loving tech, always tinkering with my computer, phone, or any other
+									electrical device. I grew up learning about tech by experimenting with my
+									gadgets, using the internet and old books to mess around with my devices. Coming
+									into Cornell, I knew I wanted to study either ECE or CS. But, while taking all the
+									classes I wanted, I ended up managing to satisfy the credits for both!</p>
+								<p>I am disciplined and hard-working, ambitious and driven, and curious to learn
+									all I can. I thrive in challenging and rapid work environments - places where I
+									learn from mistakes and adapt to improve.</p>
+								<p>I'm interested in everything from hardware to software, and the ECE CS
+									double major allows me to study everything in between! However, I am currently
+									looking primarily for a <b>software engineering</b> or <b>embedded software</b>
+									position where I am able to contribute my interdisciplinary skills to work on
+									creative and innovative projects.</p>
+								<h3 class="typewrite" data-period="1000" data-type='["HKN Honor Society", "National Merit Finalist", "Big\\\\Red Hacks 2019 Hardware Hack Winner", 
+									"Bloomberg Puzzle Race Cornell 2019 Winner", "Lacroute Family Scholarship Award Recipient"]'>
+									<span class="wrap"></span>
+								</h3>
+							</div>
+						</div>
+						<!-- <div class="counter-wrap ftco-animate d-flex mt-md-3">
+							<div class="text p-4 bg-primary">
+								<p class="mb-0">
+									<span class="number" data-number="20">0</span>
+									<span>Years of experience</span>
+								</p>
+							</div>
+						</div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- <section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center pb-5">
+				<div class="col-md-6 heading-section text-center ftco-animate">
+					<span class="subheading">About Us</span>
+					<h2 class="mb-4">Our Staff</h2>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-lg-3 ftco-animate">
+					<div class="staff">
+						<div class="img-wrap d-flex align-items-stretch">
+							<div class="img align-self-stretch" style="background-image: url(images/staff-1.jpg);">
+							</div>
+						</div>
+						<div class="text d-flex align-items-center pt-3 text-center">
+							<div>
+								<h3 class="mb-2">Lloyd Wilson</h3>
+								<span class="position mb-4">CEO, Founder</span>
+								<div class="faded">
+									<ul class="ftco-social text-center">
+										<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+										<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a>
+										</li>
+										<li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a>
+										</li>
+										<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-3 ftco-animate">
+					<div class="staff">
+						<div class="img-wrap d-flex align-items-stretch">
+							<div class="img align-self-stretch" style="background-image: url(images/staff-2.jpg);">
+							</div>
+						</div>
+						<div class="text d-flex align-items-center pt-3 text-center">
+							<div>
+								<h3 class="mb-2">Rachel Parker</h3>
+								<span class="position mb-4">Web Designer</span>
+								<div class="faded">
+									<ul class="ftco-social text-center">
+										<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+										<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a>
+										</li>
+										<li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a>
+										</li>
+										<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-3 ftco-animate">
+					<div class="staff">
+						<div class="img-wrap d-flex align-items-stretch">
+							<div class="img align-self-stretch" style="background-image: url(images/staff-3.jpg);">
+							</div>
+						</div>
+						<div class="text d-flex align-items-center pt-3 text-center">
+							<div>
+								<h3 class="mb-2">Ian Smith</h3>
+								<span class="position mb-4">Web Developer</span>
+								<div class="faded">
+									<ul class="ftco-social text-center">
+										<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+										<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a>
+										</li>
+										<li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a>
+										</li>
+										<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-3 ftco-animate">
+					<div class="staff">
+						<div class="img-wrap d-flex align-items-stretch">
+							<div class="img align-self-stretch" style="background-image: url(images/staff-4.jpg);">
+							</div>
+						</div>
+						<div class="text d-flex align-items-center pt-3 text-center">
+							<div>
+								<h3 class="mb-2">Alicia Henderson</h3>
+								<span class="position mb-4">Graphic Designer</span>
+								<div class="faded">
+									<ul class="ftco-social text-center">
+										<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+										<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a>
+										</li>
+										<li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a>
+										</li>
+										<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section> -->
+
+	<!-- <section class="ftco-section testimony-section" id="testimony-section">
+		<div class="container">
+			<div class="row justify-content-center pb-3">
+				<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+					<h2 class="mb-4">Happy Clients</h2>
+				</div>
+			</div>
+			<div class="row ftco-animate justify-content-center">
+				<div class="col-md-12">
+					<div class="carousel-testimony owl-carousel ftco-owl">
+						<div class="item">
+							<div class="testimony-wrap text-center py-4 pb-5">
+								<div class="user-img" style="background-image: url(images/person_1.jpg)">
+									<span class="quote d-flex align-items-center justify-content-center">
+										<i class="icon-quote-left"></i>
+									</span>
+								</div>
+								<div class="text px-4 pb-5">
+									<p class="mb-4">Far far away, behind the word mountains, far from the countries
+										Vokalia and Consonantia, there live the blind texts.</p>
+									<p class="name">John Fox</p>
+									<span class="position">Businessman</span>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="testimony-wrap text-center py-4 pb-5">
+								<div class="user-img" style="background-image: url(images/person_2.jpg)">
+									<span class="quote d-flex align-items-center justify-content-center">
+										<i class="icon-quote-left"></i>
+									</span>
+								</div>
+								<div class="text px-4 pb-5">
+									<p class="mb-4">Far far away, behind the word mountains, far from the countries
+										Vokalia and Consonantia, there live the blind texts.</p>
+									<p class="name">John Fox</p>
+									<span class="position">Businessman</span>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="testimony-wrap text-center py-4 pb-5">
+								<div class="user-img" style="background-image: url(images/person_3.jpg)">
+									<span class="quote d-flex align-items-center justify-content-center">
+										<i class="icon-quote-left"></i>
+									</span>
+								</div>
+								<div class="text px-4 pb-5">
+									<p class="mb-4">Far far away, behind the word mountains, far from the countries
+										Vokalia and Consonantia, there live the blind texts.</p>
+									<p class="name">John Fox</p>
+									<span class="position">Businessman</span>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="testimony-wrap text-center py-4 pb-5">
+								<div class="user-img" style="background-image: url(images/person_4.jpg)">
+									<span class="quote d-flex align-items-center justify-content-center">
+										<i class="icon-quote-left"></i>
+									</span>
+								</div>
+								<div class="text px-4 pb-5">
+									<p class="mb-4">Far far away, behind the word mountains, far from the countries
+										Vokalia and Consonantia, there live the blind texts.</p>
+									<p class="name">John Fox</p>
+									<span class="position">Businessman</span>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="testimony-wrap text-center py-4 pb-5">
+								<div class="user-img" style="background-image: url(images/person_3.jpg)">
+									<span class="quote d-flex align-items-center justify-content-center">
+										<i class="icon-quote-left"></i>
+									</span>
+								</div>
+								<div class="text px-4 pb-5">
+									<p class="mb-4">Far far away, behind the word mountains, far from the countries
+										Vokalia and Consonantia, there live the blind texts.</p>
+									<p class="name">John Fox</p>
+									<span class="position">Businessman</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section> -->
+
+	<!-- <section class="ftco-section bg-light" id="blog-section">
+		<div class="container">
+			<div class="row justify-content-center mb-5 pb-5">
+				<div class="col-md-7 heading-section text-center ftco-animate">
+					<span class="subheading">Blog</span>
+					<h2 class="mb-4">Our Blog</h2>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+				</div>
+			</div>
+			<div class="row d-flex">
+				<div class="col-md-4 d-flex ftco-animate">
+					<div class="blog-entry justify-content-end">
+						<a href="single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
+						</a>
+						<div class="text mt-3 float-right d-block">
+							<div class="d-flex align-items-center pt-2 mb-4 topp">
+								<div class="one mr-2">
+									<span class="day">12</span>
+								</div>
+								<div class="two">
+									<span class="yr">2019</span>
+									<span class="mos">March</span>
+								</div>
+							</div>
+							<h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a>
+							</h3>
+							<p>A small river named Duden flows by their place and supplies it with the necessary
+								regelialia.</p>
+							<div class="d-flex align-items-center mt-4 meta">
+								<p class="mb-0"><a href="#" class="btn btn-primary">Read More <span
+											class="ion-ios-arrow-round-forward"></span></a></p>
+								<p class="ml-auto mb-0">
+									<a href="#" class="mr-2">Admin</a>
+									<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 d-flex ftco-animate">
+					<div class="blog-entry justify-content-end">
+						<a href="single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
+						</a>
+						<div class="text mt-3 float-right d-block">
+							<div class="d-flex align-items-center pt-2 mb-4 topp">
+								<div class="one mr-2">
+									<span class="day">10</span>
+								</div>
+								<div class="two">
+									<span class="yr">2019</span>
+									<span class="mos">March</span>
+								</div>
+							</div>
+							<h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a>
+							</h3>
+							<p>A small river named Duden flows by their place and supplies it with the necessary
+								regelialia.</p>
+							<div class="d-flex align-items-center mt-4 meta">
+								<p class="mb-0"><a href="#" class="btn btn-primary">Read More <span
+											class="ion-ios-arrow-round-forward"></span></a></p>
+								<p class="ml-auto mb-0">
+									<a href="#" class="mr-2">Admin</a>
+									<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 d-flex ftco-animate">
+					<div class="blog-entry">
+						<a href="single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
+						</a>
+						<div class="text mt-3 float-right d-block">
+							<div class="d-flex align-items-center pt-2 mb-4 topp">
+								<div class="one mr-2">
+									<span class="day">05</span>
+								</div>
+								<div class="two">
+									<span class="yr">2019</span>
+									<span class="mos">March</span>
+								</div>
+							</div>
+							<h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a>
+							</h3>
+							<p>A small river named Duden flows by their place and supplies it with the necessary
+								regelialia.</p>
+							<div class="d-flex align-items-center mt-4 meta">
+								<p class="mb-0"><a href="#" class="btn btn-primary">Read More <span
+											class="ion-ios-arrow-round-forward"></span></a></p>
+								<p class="ml-auto mb-0">
+									<a href="#" class="mr-2">Admin</a>
+									<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section> -->
+
+	<!-- <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
+		<div class="container">
+			<div class="row justify-content-center mb-5 pb-3">
+				<div class="col-md-7 heading-section text-center ftco-animate">
+					<span class="subheading">Contact</span>
+					<h2 class="mb-4">Contact Us</h2>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+				</div>
+			</div>
+			<div class="row d-flex contact-info mb-5">
+				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
+					<div class="align-self-stretch box p-4 text-center">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="icon-map-signs"></span>
+						</div>
+						<h3 class="mb-4">Address</h3>
+						<p>198 West 21th Street, Suite 721 New York NY 10016</p>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
+					<div class="align-self-stretch box p-4 text-center">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="icon-phone2"></span>
+						</div>
+						<h3 class="mb-4">Contact Number</h3>
+						<p><a href="tel://1234567920">+ 1235 2355 98</a></p>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
+					<div class="align-self-stretch box p-4 text-center">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="icon-paper-plane"></span>
+						</div>
+						<h3 class="mb-4">Email Address</h3>
+						<p><a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
+					<div class="align-self-stretch box p-4 text-center">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="icon-globe"></span>
+						</div>
+						<h3 class="mb-4">Website</h3>
+						<p><a href="#">yoursite.com</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="row no-gutters block-9">
+				<div class="col-md-6 order-md-last d-flex">
+					<form action="#" class="bg-light p-5 contact-form">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Your Name">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Your Email">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Subject">
+						</div>
+						<div class="form-group">
+							<textarea name="" id="" cols="30" rows="7" class="form-control"
+								placeholder="Message"></textarea>
+						</div>
+						<div class="form-group">
+							<input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+						</div>
+					</form>
+
+				</div>
+
+				<div class="col-md-6 d-flex">
+					<div id="map" class="bg-white"></div>
+				</div>
+			</div>
+		</div>
+	</section> -->
+
+
+
+	<footer class="ftco-footer ftco-section">
+		<div class="container-fluid ftco-animate scroll-top d-lg-none">
+			<a class="btn btn-primary js-scroll-trigger mx-auto" href="#home-section">
+				<i class="fa fa-chevron-up p-3 text-light">Back to top</i>
+			</a>
+		</div>
+	</footer>
+
+
+
+	<!-- loader -->
+	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+				stroke="#F96D00" /></svg></div>
+
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.stellar.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/aos.js"></script>
+	<script src="js/jquery.animateNumber.min.js"></script>
+	<script src="js/scrollax.min.js"></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="js/google-map.js"></script>
+
+	<script src="js/main.js"></script>
 
 </body>
-
-<!-- jQuery library -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-<script src="https://kit.fontawesome.com/8ab9700224.js"></script>
-<script src="js/navigation.js"></script>
 
 </html>
