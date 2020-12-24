@@ -18,8 +18,8 @@
   --white: #fff;
   --gray: #6c757d;
   --gray-dark: #343a40;
-  --primary: #b0d6ff;
-  --secondary: #9ac1e2;
+  --primary: #368de9;
+  --secondary: #0485ee;
   --success: #28a745;
   --info: #17a2b8;
   --warning: #ffc107;
@@ -57,7 +57,7 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fff; }
+  background-color: #ddd; }
 
 [tabindex="-1"]:focus {
   outline: 0 !important; }
@@ -8258,6 +8258,7 @@ h1, h2, h3, h4, h5,
   .navbar-brand span {
     font-weight: 900; }
 
+
 .hero h3.vr {
   -webkit-writing-mode: vertical-lr;
   -ms-writing-mode: tb-lr;
@@ -8421,7 +8422,8 @@ h1, h2, h3, h4, h5,
           -webkit-text-fill-color: transparent; }
         .owl-carousel.home-slider .slider-item .slider-text .text {
           position: relative;
-          z-index: 1; }
+          z-index: 1;
+          width: 100% }
         .owl-carousel.home-slider .slider-item .slider-text h1 {
           font-size: 44px;
           color: #000000;
@@ -8690,6 +8692,8 @@ h1, h2, h3, h4, h5,
   .project .img {
     position: relative;
     overflow: hidden;
+    width: 400px;
+    height: 400px;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
@@ -9120,6 +9124,10 @@ textarea.form-control {
     font-weight: 400;
     color: #000000; }
 
+.ftco-footer-social {
+  width: 100%;
+  margin: auto;
+}
 .ftco-footer-social li {
   list-style: none;
   margin: 0 10px 0 0;
