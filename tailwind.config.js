@@ -14,11 +14,13 @@ export default {
                 primary: 'var(--color-primary)',
                 muted: 'var(--color-muted)',
                 accent: 'var(--color-accent)',
-                'accent-hover': 'var(--color-accent-hover)',
+                'accent-secondary': 'var(--color-accent-secondary)',
             },
             fontFamily: {
                 sans: ['Inter', 'sans-serif'],
                 mono: ['JetBrains Mono', 'monospace'],
+                display: ['Anton', 'sans-serif'],
+                serif: ['Playfair Display', 'serif'],
             }
         },
     },

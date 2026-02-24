@@ -4,23 +4,25 @@
 
 @layer base {
   :root {
-    --color-background: #FFFFFF;
-    --color-surface: #F5F5F5;
-    --color-border: #E5E5E5;
+    --color-background: #FAFAFA;
+    --color-surface: #F0F0F0;
+    --color-border: #111111;
     --color-primary: #0A0A0A;
-    --color-muted: #737373;
-    --color-accent: #0070F3;
-    --color-accent-hover: #0051CC;
+    --color-muted: #555555;
+    --color-accent: #00FFCC;
+    /* Neon Turquoise */
+    --color-accent-secondary: #00F0FF;
+    /* Neon Cyan */
   }
 
   .dark {
     --color-background: #0A0A0A;
-    --color-surface: #111111;
-    --color-border: #222222;
+    --color-surface: #141414;
+    --color-border: #333333;
     --color-primary: #FAFAFA;
-    --color-muted: #737373;
-    --color-accent: #0070F3;
-    --color-accent-hover: #338EF7;
+    --color-muted: #888888;
+    --color-accent: #00FFCC;
+    --color-accent-secondary: #00F0FF;
   }
 
   html {
@@ -33,33 +35,25 @@
 }
 
 @layer utilities {
-  .animate-blob {
-    animation: blob 15s infinite alternate ease-in-out;
+  .shadow-brutal {
+    box-shadow: 4px 4px 0px var(--color-primary);
   }
 
-  .animation-delay-2000 {
-    animation-delay: 2s;
+  .shadow-brutal-hover {
+    box-shadow: 6px 6px 0px var(--color-accent);
   }
 
-  .animation-delay-4000 {
-    animation-delay: 4s;
+  .animate-marquee {
+    animation: marquee 25s linear infinite;
   }
 }
 
-@keyframes blob {
+@keyframes marquee {
   0% {
-    transform: translate(0px, 0px) scale(1);
-  }
-
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
+    transform: translateX(0%);
   }
 
   100% {
-    transform: translate(0px, 0px) scale(1);
+    transform: translateX(-50%);
   }
 }
