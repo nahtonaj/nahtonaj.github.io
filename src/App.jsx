@@ -276,8 +276,8 @@ export default function App() {
                         <CircuitBoard key="i3" size={40} />, <Keyboard key="i4" size={40} />, <Mountain key="i5" size={40} />,
                         <Snowflake key="i6" size={40} />, <Gamepad2 key="i7" size={40} />, <Dumbbell key="i8" size={40} />,
                     ];
-                    const rows = 50;
-                    const cols = 12;
+                    const rows = 100;
+                    const cols = 20;
                     return (
                         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
                             {/* Gradient fade-in at top */}
@@ -290,7 +290,7 @@ export default function App() {
                                             return (
                                                 <div
                                                     key={c}
-                                                    className="flex-shrink-0 flex items-center justify-center text-border opacity-[0.2]"
+                                                    className="flex-shrink-0 flex items-center justify-center text-border opacity-[0.5]"
                                                     style={{ width: '10rem', height: '8rem' }}
                                                 >
                                                     {icons[idx]}

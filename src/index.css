@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --color-background: #FAFAFA;
+    --color-background: #e7fbfd;
     --color-surface: #F0F0F0;
     --color-border: #111111;
     --color-primary: #0A0A0A;
@@ -19,10 +19,10 @@
     --color-background: #0A0A0A;
     --color-surface: #141414;
     --color-border: #333333;
-    --color-primary: #FAFAFA;
+    --color-primary: #ace8de;
     --color-muted: #888888;
-    --color-accent: #00FFCC;
-    --color-accent-secondary: #00F0FF;
+    --color-accent: #284741;
+    --color-accent-secondary: #41777b;
   }
 
   html {
