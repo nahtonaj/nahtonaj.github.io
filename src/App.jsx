@@ -116,7 +116,13 @@ export default function App() {
     const tileWrapperRef = useRef(null);
 
     useEffect(() => {
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        const hour = new Date().getHours();
+        // logical check: is it after 6PM or before 6AM?
+        const isDarkHours = hour >= 18 || hour < 6;
+
+        // 1. Prioritize user's manual override (localStorage)
+        // 2. Fallback to time-based logic if no override exists
+        if (isDarkHours) {
             setDarkMode(true);
             document.documentElement.classList.add('dark');
         } else {
