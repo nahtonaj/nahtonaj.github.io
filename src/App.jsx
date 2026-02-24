@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Github, Linkedin, ExternalLink, Moon, Sun, Menu, X, Mail, Mountain, Snowflake, Gamepad2, Keyboard, Dumbbell, Code, Terminal, Cpu, CircuitBoard } from 'lucide-react';
+import { Github, Linkedin, ExternalLink, Moon, Sun, Menu, X, Mail, Mountain, Snowflake, Gamepad2, Keyboard, Dumbbell, Code, Terminal, Cpu, CircuitBoard, Cat, Dog, Car } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -210,7 +210,7 @@ export default function App() {
                         <button onClick={toggleDarkMode} className="text-primary hover:text-accent transition-colors duration-150 p-2 border-2 border-transparent hover:border-primary shadow-none hover:shadow-brutal" aria-label="Toggle Dark Mode">
                             {darkMode ? <Sun size={18} strokeWidth={3} /> : <Moon size={18} strokeWidth={3} />}
                         </button>
-                        <a href="mailto:jg992@cornell.edu" className="hidden md:flex border-2 border-primary bg-accent text-primary px-4 py-1.5 font-mono text-xs font-bold uppercase shadow-brutal hover:bg-accent-secondary hover:-translate-y-0.5 transition-transform duration-150">
+                        <a href="mailto:jonathan-gao@hotmail.com" className="hidden md:flex border-2 border-primary bg-accent text-primary px-4 py-1.5 font-mono text-xs font-bold uppercase shadow-brutal hover:bg-accent-secondary hover:-translate-y-0.5 transition-transform duration-150">
                             Get in Touch
                         </a>
                         <button className="md:hidden text-primary p-2 border-2 border-primary shadow-brutal" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
@@ -275,6 +275,7 @@ export default function App() {
                         <Code key="i0" size={40} />, <Terminal key="i1" size={40} />, <Cpu key="i2" size={40} />,
                         <CircuitBoard key="i3" size={40} />, <Keyboard key="i4" size={40} />, <Mountain key="i5" size={40} />,
                         <Snowflake key="i6" size={40} />, <Gamepad2 key="i7" size={40} />, <Dumbbell key="i8" size={40} />,
+                        <Dog key="i9" size={40} />, <Cat key="i10" size={40} />, <Car key="i11" size={40} />,
                     ];
                     const rows = 100;
                     const cols = 20;
