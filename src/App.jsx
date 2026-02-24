@@ -113,6 +113,7 @@ export default function App() {
     const [darkMode, setDarkMode] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const mainRef = useRef(null);
+    const tileWrapperRef = useRef(null);
 
     useEffect(() => {
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -135,6 +136,21 @@ export default function App() {
             setDarkMode(true);
         }
     };
+
+    // Mouse glow effect on tiled background
+    useEffect(() => {
+        const handleMouseMove = (e) => {
+            const grid = document.querySelector('.parallax-tile-grid');
+            if (!grid) return;
+            const rect = grid.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            grid.style.maskImage = `radial-gradient(500px circle at ${x}px ${y}px, rgba(0,0,0,1) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.04) 100%)`;
+            grid.style.webkitMaskImage = `radial-gradient(500px circle at ${x}px ${y}px, rgba(0,0,0,1) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.04) 100%)`;
+        };
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, []);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -263,7 +279,7 @@ export default function App() {
                     const rows = 50;
                     const cols = 12;
                     return (
-                        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0" style={{ top: 0, bottom: 0 }}>
+                        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
                             {/* Gradient fade-in at top */}
                             <div className="absolute top-0 left-0 w-full h-48 z-10 pointer-events-none" style={{ background: 'linear-gradient(to bottom, var(--color-background) 0%, transparent 100%)' }}></div>
                             <div className="parallax-tile-grid absolute -top-[10%] -left-[15%] w-[130%]" style={{ minHeight: '110%' }}>
@@ -274,7 +290,7 @@ export default function App() {
                                             return (
                                                 <div
                                                     key={c}
-                                                    className="flex-shrink-0 flex items-center justify-center text-border opacity-[0.08]"
+                                                    className="flex-shrink-0 flex items-center justify-center text-border opacity-[0.2]"
                                                     style={{ width: '10rem', height: '8rem' }}
                                                 >
                                                     {icons[idx]}
