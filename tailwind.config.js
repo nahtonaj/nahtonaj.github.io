@@ -4,18 +4,21 @@ export default {
         "./index.html",
         "./src/**/*.{js,ts,jsx,tsx}",
     ],
+    darkMode: 'class',
     theme: {
         extend: {
             colors: {
-                primary: "#0D0D12",
-                accent: "#C9A84C",
-                background: "#FAF8F5",
-                "text-dark": "#2A2A35",
+                background: 'var(--color-background)',
+                surface: 'var(--color-surface)',
+                border: 'var(--color-border)',
+                primary: 'var(--color-primary)',
+                muted: 'var(--color-muted)',
+                accent: 'var(--color-accent)',
+                'accent-hover': 'var(--color-accent-hover)',
             },
             fontFamily: {
-                heading: ['Inter', 'sans-serif'],
-                drama: ['Playfair Display', 'serif'],
-                data: ['"JetBrains Mono"', 'monospace'],
+                sans: ['Inter', 'sans-serif'],
+                mono: ['JetBrains Mono', 'monospace'],
             }
         },
     },

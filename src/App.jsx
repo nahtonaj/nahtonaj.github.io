@@ -1,369 +1,401 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import { Github, Linkedin, ExternalLink, Moon, Sun, Menu, X, Mail } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Github, Linkedin, Mail, ExternalLink, ArrowRight, Activity } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// --- NAVBAR ---
-function Navbar() {
-    const [scrolled, setScrolled] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    return (
-        <nav className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 rounded-full px-6 py-3 flex items-center justify-between w-[90%] max-w-3xl ${scrolled ? 'bg-background/80 backdrop-blur-xl border border-text-dark/10 shadow-lg text-text-dark' : 'bg-transparent text-background'}`}>
-            <div className="font-heading font-bold text-lg tracking-tight">JG.</div>
-            <div className="hidden md:flex items-center gap-6 text-sm font-medium">
-                <a href="#experience" className="hover:-translate-y-[1px] transition-transform">Experience</a>
-                <a href="#projects" className="hover:-translate-y-[1px] transition-transform">Projects</a>
-                <a href="#publications" className="hover:-translate-y-[1px] transition-transform">Publications</a>
-                <a href="#about" className="hover:-translate-y-[1px] transition-transform">About</a>
-            </div>
-            <a href="mailto:jg992@cornell.edu" className="group relative overflow-hidden rounded-full bg-accent text-primary px-5 py-2 text-sm font-semibold transition-transform hover:scale-[1.03] duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
-                <span className="relative z-10 flex items-center gap-2">Get in Touch</span>
-            </a>
-        </nav>
-    );
-}
-
-// --- HERO ---
-function Hero() {
-    const heroRef = useRef(null);
-
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from('.hero-elem', {
-                y: 40,
-                opacity: 0,
-                duration: 1.2,
-                stagger: 0.15,
-                ease: 'power3.out',
-                delay: 0.2
-            });
-        }, heroRef);
-        return () => ctx.revert();
-    }, []);
-
-    return (
-        <section ref={heroRef} className="relative h-[100dvh] w-full flex items-end pb-24 px-8 md:px-16 overflow-hidden">
-            {/* Background */}
-            <div className="absolute inset-0 z-0">
-                <img
-                    src="https://images.unsplash.com/photo-1600607688066-890987f18a86?auto=format&fit=crop&q=80"
-                    alt="Dark architectural marble"
-                    className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-primary/20"></div>
-            </div>
-
-            <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-start gap-2 md:gap-4">
-                <div className="overflow-hidden">
-                    <h1 className="hero-elem font-heading font-bold text-5xl md:text-7xl lg:text-8xl text-background tracking-tighter leading-none">
-                        Engineering is the
-                    </h1>
-                </div>
-                <div className="overflow-hidden">
-                    <span className="hero-elem font-drama italic text-accent text-7xl md:text-9xl lg:text-[11rem] leading-none pr-4">
-                        Craft.
-                    </span>
-                </div>
-                <div className="overflow-hidden mt-6">
-                    <p className="hero-elem font-heading text-lg md:text-xl text-background/80 max-w-2xl font-light">
-                        Software Engineer IV at Databricks. Previously AWS DynamoDB.
-                    </p>
-                </div>
-            </div>
-        </section>
-    );
-}
-
-// --- EXPERIENCE ---
+// Data Constants
 const expData = [
-    { company: "Databricks", role: "Software Engineer IV", dates: "2025–Present", desc: "Building scalable backend systems and processing large-scale data." },
-    { company: "AWS DynamoDB", role: "Software Engineer II", dates: "2021–2025", desc: "Designed and implemented replication and leader election protocols for a multi-year migration replacing Paxos. Scaled rollout to 80+ million partitions worldwide across multi-petabyte tables." },
-    { company: "Amazon Alexa", role: "SDE Intern -> SDE I", dates: "2020–2022", desc: "Owned service for test data intake and visualization built with Spring Boot. Owned data lake service parsing and fetching data using Lambda, Glue, Batch, and S3." },
-    { company: "MathWorks", role: "EDG Intern, Software Engineering", dates: "Summer 2019", desc: "Developed a new scalable, cost-efficient USB over network framework for hardware testing, dramatically reducing time to write tests." },
-    { company: "InServe", role: "Lead Full-Stack SWE Intern", dates: "Summer 2018", desc: "Led full-stack engineering efforts for core application systems." },
-    { company: "Cornell Reesink Lab", role: "Research Assistant", dates: "2019–2020", desc: "Worked on a study using computer vision and machine learning (CT scans) to detect parameters indicating bone fracture in horses." },
-    { company: "Stony Brook Lab", role: "Research Assistant", dates: "2016–2017", desc: "Designed a computational model supporting a new theory for fear regulation in the brain." },
+    {
+        company: "Databricks",
+        role: "Software Engineer IV",
+        team: "Data Ingestion · Bellevue, WA",
+        dates: "Sep 2025 – Present",
+        desc: "Building scalable backend systems and data processing pipelines for large-scale ingestion.",
+        tags: ["Distributed Systems", "Data Engineering", "Scala", "Cloud"]
+    },
+    {
+        company: "Amazon Web Services",
+        role: "Software Development Engineer II",
+        team: "DynamoDB Core Replication · Seattle, WA",
+        dates: "Apr 2023 – Sep 2025",
+        desc: "Technical lead for multi-year replication protocol migration from multi-Paxos. Scaled rollout to 80M+ partitions across multi-petabyte tables. Operations lead for sustainable ticket load and root cause triage.",
+        tags: ["Distributed Systems", "Java", "Paxos", "Consensus Protocols", "Operations"]
+    },
+    {
+        company: "Amazon Web Services",
+        role: "Software Development Engineer I",
+        team: "DynamoDB Log Service · Seattle, WA",
+        dates: "Jan 2022 – Apr 2023",
+        desc: "Led development of validation and rollout mechanisms for large-scale table migrations. Drove high operational bar to reduce churn.",
+        tags: ["Java", "AWS", "Distributed Systems"]
+    },
+    {
+        company: "Amazon",
+        role: "Software Development Engineer I",
+        team: "Alexa Infrastructure · Bellevue, WA",
+        dates: "Jul 2021 – Jan 2022",
+        desc: "Owned test data intake and visualization service (Spring Boot) and data lake service for multi-source parsing (Lambda, Glue, Batch, S3).",
+        tags: ["Spring Boot", "AWS Lambda", "S3", "Java"]
+    },
+    {
+        company: "Amazon",
+        role: "SDE Intern",
+        team: "Amazon Alexa · Bellevue, WA",
+        dates: "Jun 2020 – Aug 2020",
+        desc: "Built sorting, filtering, and aggregation features on internal dev platform. Reduced service latency to 25% of original via secondary service optimization. 20+ code reviews.",
+        tags: ["Java", "JavaScript", "React", "REST APIs"]
+    },
+    {
+        company: "MathWorks",
+        role: "EDG Intern — Software Engineering & QE",
+        team: "Natick, MA",
+        dates: "May 2019 – Aug 2019",
+        desc: "Developed a new USB-over-network framework for hardware testing, reducing test authoring from days to hours. Caught 30+ bugs before a kit release.",
+        tags: ["Python", "OOP", "Hardware Testing", "QE"]
+    },
+    {
+        company: "Cornell University",
+        role: "Teaching Assistant — ECE5725",
+        team: "Embedded Operating Systems · Ithaca, NY",
+        dates: "Aug 2020 – May 2021",
+        desc: "Supported lab sections on embedded Linux (Raspberry Pi 4): GPIO, interrupt handlers, RTOS, concurrency, and filesystem operations.",
+        tags: ["Embedded Linux", "Raspberry Pi", "C", "RTOS"]
+    },
 ];
 
-function Experience() {
-    const sectionRef = useRef(null);
-
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from('.exp-card', {
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: 'top 70%',
-                },
-                y: 50,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.15,
-                ease: 'power2.out'
-            });
-        }, sectionRef);
-        return () => ctx.revert();
-    }, []);
-
-    return (
-        <section id="experience" ref={sectionRef} className="py-32 px-8 md:px-16 bg-primary text-background">
-            <div className="max-w-4xl mx-auto">
-                <h2 className="font-heading font-semibold text-3xl md:text-5xl mb-16 tracking-tight">Professional Timeline</h2>
-
-                <div className="relative border-l border-accent/20 pl-8 ml-4 space-y-16">
-                    {expData.map((exp, i) => (
-                        <div key={i} className="exp-card relative group">
-                            {/* Timeline dot */}
-                            <div className="absolute -left-[37px] top-1.5 w-3 h-3 rounded-full bg-accent/50 group-hover:bg-accent transition-colors duration-300 ring-4 ring-primary"></div>
-
-                            <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-2">
-                                <h3 className="font-heading font-bold text-2xl text-background">{exp.company}</h3>
-                                <span className="font-data text-accent/80 text-sm mt-1 md:mt-0">{exp.dates}</span>
-                            </div>
-                            <h4 className="font-heading text-lg text-background/60 mb-4">{exp.role}</h4>
-                            <p className="font-heading text-background/80 leading-relaxed font-light">{exp.desc}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-}
-
-// --- PROJECTS ---
 const projData = [
-    { title: "Snake Game", subtitle: "Embedded Systems, C/C++", desc: "Recreated the classic snake game controlled with an accelerometer using a K64F ARM microcontroller and 64x64 LED matrix." },
-    { title: "Cornell FSAE LV Fusebox", subtitle: "PCB Design, EE", desc: "Designed low-voltage fusebox architecture and custom PCB for the Cornell Formula SAE electric racing vehicle." },
-    { title: "Cornell FSAE ECU", subtitle: "Electronics Control Unit", desc: "Co-developed the central MCU handling telemetry, safety loops, and motor controller CAN communications." },
-    { title: "Neural Network RC Car", subtitle: "Python, OpenCV, Raspberry Pi", desc: "End-to-end autonomous driving model using PyBrain and OpenCV, deployed on an embedded Raspberry Pi architecture." },
-    { title: "Juul.io", subtitle: "BigRed\\Hacks 2019 Winner", desc: "IoT/Arduino based hardware hack winning the best hardware implementation award." },
+    {
+        title: "Snake Game on ARM Microprocessor",
+        tags: ["K64F ARM", "C/C++", "Assembly", "Embedded"],
+        desc: "Recreated Snake from scratch on a K64F ARM microcontroller with a 64×64 LED matrix, tick-based game loop via hardware interrupts, and accelerometer tilt controls.",
+        link: null,
+        image: "/images/snake.png"
+    },
+    {
+        title: "Cornell FSAE — LV Fusebox & ECU",
+        tags: ["Altium", "PCB Design", "CAN Bus", "EE"],
+        desc: "Designed the low-voltage fusebox PCB for Cornell's Formula SAE electric racing vehicle. Co-developed the ECU handling telemetry, safety loops, and motor controller CAN comms.",
+        link: "https://cornellfsae.com/",
+        image: "/images/fsaecar.png"
+    },
+    {
+        title: "Neural Network RC Car",
+        tags: ["Python", "OpenCV", "PyBrain", "Raspberry Pi"],
+        desc: "End-to-end autonomous driving model using a neural network and OpenCV for lane detection, deployed on an embedded Raspberry Pi controlling a physical RC car.",
+        link: null,
+        image: "/images/nnrccar.jpg"
+    },
+    {
+        title: "Juul.io — BigRed\\Hacks 2019",
+        tags: ["Arduino", "IoT", "Best Hardware Award"],
+        desc: "Best Hardware Implementation winner at BigRed\\Hacks 2019. An IoT Arduino-based hardware hack designed and judged in under 24 hours.",
+        link: null,
+        image: "/images/juulio.jpg"
+    },
 ];
 
-function Projects() {
-    const sectionRef = useRef(null);
-
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from('.proj-card', {
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: 'top 70%',
-                },
-                y: 40,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.1,
-                ease: 'power2.out'
-            });
-        }, sectionRef);
-        return () => ctx.revert();
-    }, []);
-
-    return (
-        <section id="projects" ref={sectionRef} className="py-32 px-8 md:px-16 bg-background text-text-dark">
-            <div className="max-w-6xl mx-auto">
-                <h2 className="font-heading font-semibold text-3xl md:text-5xl mb-16 tracking-tight text-primary">Technical Projects</h2>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {projData.map((proj, i) => (
-                        <div key={i} className="proj-card group p-8 rounded-[2rem] bg-white border border-text-dark/5 hover:border-accent/40 shadow-sm hover:shadow-xl transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:-translate-y-2 relative overflow-hidden">
-                            <div className="absolute top-0 left-0 w-full h-1 bg-accent scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500"></div>
-                            <h3 className="font-heading font-bold text-xl mb-2 group-hover:text-accent transition-colors">{proj.title}</h3>
-                            <div className="font-data text-xs text-text-dark/50 mb-4">{proj.subtitle}</div>
-                            <p className="font-heading text-sm text-text-dark/80 leading-relaxed font-light">{proj.desc}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-}
-
-// --- PUBLICATIONS ---
 const pubData = [
-    { title: "A radiomics platform to differentiate parameters of bone fracture in horses", venue: "Equine Veterinary Journal", year: "2020" },
-    { title: "From Anxious to Reckless: A computational model of fear regulation in the brain", venue: "Frontiers in Systems Neuroscience", year: "2017" },
+    {
+        title: "A radiomics platform for computing imaging features from µCT images of Thoroughbred racehorse proximal sesamoid bones: Benchmark performance and evaluation",
+        venue: "Equine Veterinary Journal (BEVA)",
+        year: "Jul 2020",
+        url: "https://beva.onlinelibrary.wiley.com/doi/abs/10.1111/evj.13321",
+        lab: "Reesink Laboratory, Cornell College of Veterinary Medicine"
+    },
+    {
+        title: "From Anxious to Reckless: A Control Systems Approach Unifies Prefrontal-Limbic Regulation Across the Spectrum of Threat Detection",
+        venue: "Frontiers in Systems Neuroscience",
+        year: "Apr 2017",
+        url: "https://www.frontiersin.org/articles/10.3389/fnsys.2017.00018/full",
+        lab: "Lab of Computational Neurodiagnostics, Stony Brook University"
+    },
 ];
-
-function Publications() {
-    const sectionRef = useRef(null);
-
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from('.pub-card', {
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: 'top 80%',
-                },
-                x: -40,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.15,
-                ease: 'power2.out'
-            });
-        }, sectionRef);
-        return () => ctx.revert();
-    }, []);
-
-    return (
-        <section id="publications" ref={sectionRef} className="py-32 px-8 md:px-16 bg-primary text-background">
-            <div className="max-w-4xl mx-auto">
-                <h2 className="font-heading font-semibold text-3xl md:text-5xl mb-16 tracking-tight">Publications</h2>
-
-                <div className="space-y-6">
-                    {pubData.map((pub, i) => (
-                        <a key={i} href="#" className="pub-card group block p-8 rounded-[2rem] bg-white/5 hover:bg-white/10 border border-white/5 hover:border-accent/30 transition-all duration-300">
-                            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                                <div className="max-w-2xl">
-                                    <h3 className="font-heading font-medium text-lg text-background/90 group-hover:text-accent transition-colors leading-snug">{pub.title}</h3>
-                                    <div className="font-data text-sm mt-3 text-background/50 flex gap-3 items-center">
-                                        <span>{pub.venue}</span>
-                                        <span className="w-1 h-1 rounded-full bg-accent"></span>
-                                        <span>{pub.year}</span>
-                                    </div>
-                                </div>
-                                <div className="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-accent group-hover:text-primary transition-all group-hover:border-accent shrink-0">
-                                    <ExternalLink size={16} />
-                                </div>
-                            </div>
-                        </a>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-}
-
-// --- ABOUT / PHILOSOPHY ---
-function About() {
-    const sectionRef = useRef(null);
-
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from('.phi-text', {
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: 'top 60%',
-                },
-                y: 30,
-                opacity: 0,
-                duration: 1,
-                stagger: 0.2,
-                ease: 'power3.out'
-            });
-        }, sectionRef);
-        return () => ctx.revert();
-    }, []);
-
-    return (
-        <section id="about" ref={sectionRef} className="relative py-40 px-8 md:px-16 bg-[#0a0a0e] text-background overflow-hidden">
-            <div className="absolute inset-0 z-0 opacity-20">
-                <img src="https://images.unsplash.com/photo-1618221118493-9cfa1a1c00da?auto=format&fit=crop&q=80" alt="Texture" className="w-full h-full object-cover" />
-            </div>
-
-            <div className="relative z-10 max-w-5xl mx-auto flex flex-col md:flex-row gap-16 md:gap-8 items-start justify-between">
-
-                <div className="flex-1 space-y-12">
-                    <div>
-                        <p className="phi-text font-heading text-xl text-background/60 mb-2">Most engineers focus on:</p>
-                        <p className="phi-text font-heading text-3xl font-medium tracking-tight">Writing code to close tickets.</p>
-                    </div>
-                    <div>
-                        <p className="phi-text font-heading text-xl text-background/60 mb-2">I focus on:</p>
-                        <p className="phi-text font-drama italic text-5xl md:text-6xl text-accent leading-tight">
-                            Building systems that <br />scale seamlessly.
-                        </p>
-                    </div>
-                </div>
-
-                <div className="flex-1 md:max-w-sm space-y-10">
-                    <div className="phi-text">
-                        <h4 className="font-data text-accent text-sm mb-4 uppercase tracking-widest border-b border-accent/20 pb-2">Education</h4>
-                        <div className="space-y-4">
-                            <div>
-                                <p className="font-heading font-medium text-lg">Cornell University</p>
-                                <p className="font-heading text-sm text-background/60 mt-1">M.Eng. Computer Science — 3.8 GPA</p>
-                                <p className="font-heading text-sm text-background/60">B.S. Electrical & Computer Engineering</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="phi-text">
-                        <h4 className="font-data text-accent text-sm mb-4 uppercase tracking-widest border-b border-accent/20 pb-2">Technical Core</h4>
-                        <p className="font-heading text-sm text-background/80 leading-relaxed font-light">
-                            Java, Python, C/C++, TypeScript, React, Distributed Systems, Cloud Computing, Embedded Architectures.
-                        </p>
-                    </div>
-
-                    <div className="phi-text">
-                        <h4 className="font-data text-accent text-sm mb-4 uppercase tracking-widest border-b border-accent/20 pb-2">Personal</h4>
-                        <div className="flex gap-4 font-heading text-sm text-background/60">
-                            <span className="px-3 py-1 rounded-full bg-white/5">Working Out</span>
-                            <span className="px-3 py-1 rounded-full bg-white/5">Dancing</span>
-                            <span className="px-3 py-1 rounded-full bg-white/5">Gaming</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-    );
-}
-
-// --- FOOTER ---
-function Footer() {
-    return (
-        <footer className="bg-primary text-background rounded-t-[4rem] px-8 md:px-16 py-16 mt-[-4rem] relative z-20 border-t border-white/5 shadow-[0_-20px_40px_rgba(0,0,0,0.5)]">
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-                <div className="flex flex-col items-center md:items-start tracking-tight">
-                    <span className="font-heading font-bold text-2xl">Jonathan Gao</span>
-                    <span className="font-data text-sm text-background/40 mt-1">Software Engineer</span>
-                </div>
-
-                <div className="flex gap-6">
-                    <a href="https://linkedin.com/in/jonathan-gao" target="_blank" rel="noreferrer" className="w-12 h-12 flex items-center justify-center rounded-full bg-white/5 hover:bg-accent hover:text-primary transition-all duration-300">
-                        <Linkedin size={20} />
-                    </a>
-                    <a href="https://github.com/nahtonaj" target="_blank" rel="noreferrer" className="w-12 h-12 flex items-center justify-center rounded-full bg-white/5 hover:bg-accent hover:text-primary transition-all duration-300">
-                        <Github size={20} />
-                    </a>
-                    <a href="mailto:jg992@cornell.edu" className="w-12 h-12 flex items-center justify-center rounded-full bg-white/5 hover:bg-accent hover:text-primary transition-all duration-300">
-                        <Mail size={20} />
-                    </a>
-                </div>
-
-                <div className="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm">
-                    <div className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                    </div>
-                    <span className="font-data text-xs text-background/70 uppercase">System Operational</span>
-                </div>
-            </div>
-        </footer>
-    );
-}
 
 export default function App() {
+    const [darkMode, setDarkMode] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const mainRef = useRef(null);
+
+    useEffect(() => {
+        // Initial theme check
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            setDarkMode(true);
+            document.documentElement.classList.add('dark');
+        } else {
+            setDarkMode(false);
+            document.documentElement.classList.remove('dark');
+        }
+    }, []);
+
+    const toggleDarkMode = () => {
+        if (darkMode) {
+            document.documentElement.classList.remove('dark');
+            localStorage.theme = 'light';
+            setDarkMode(false);
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.theme = 'dark';
+            setDarkMode(true);
+        }
+    };
+
+    useEffect(() => {
+        // Setup scroll reveal animations
+        const ctx = gsap.context(() => {
+            const sections = gsap.utils.toArray('section.animate-section');
+            sections.forEach((sec) => {
+                const elements = sec.querySelectorAll('.gsap-reveal');
+                if (elements.length > 0) {
+                    gsap.from(elements, {
+                        scrollTrigger: {
+                            trigger: sec,
+                            start: 'top 85%',
+                        },
+                        y: 12,
+                        opacity: 0,
+                        duration: 0.5,
+                        stagger: 0.08,
+                        ease: 'power2.out',
+                    });
+                }
+            });
+        }, mainRef);
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <div className="min-h-screen bg-background text-text-dark font-heading w-full selection:bg-accent/30 selection:text-accent">
-            <Navbar />
-            <Hero />
-            <Experience />
-            <Projects />
-            <Publications />
-            <About />
-            <Footer />
+        <div ref={mainRef} className="font-sans text-primary w-full overflow-hidden relative">
+            {/* FLUID BACKGROUND */}
+            <div className="fixed inset-0 z-[-1] overflow-hidden bg-background pointer-events-none">
+                <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-accent/10 blur-[100px] mix-blend-multiply dark:mix-blend-screen animate-blob"></div>
+                <div className="absolute top-[20%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-accent/10 blur-[100px] mix-blend-multiply dark:mix-blend-screen animate-blob animation-delay-2000"></div>
+                <div className="absolute bottom-[-20%] left-[20%] w-[60vw] h-[60vw] rounded-full bg-accent/5 blur-[120px] mix-blend-multiply dark:mix-blend-screen animate-blob animation-delay-4000"></div>
+            </div>
+
+            {/* A. NAVBAR */}
+            <nav className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-sm border-b border-border transition-colors duration-150">
+                <div className="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+                    <div className="font-semibold text-sm">Jonathan Gao</div>
+
+                    <div className="hidden md:flex items-center space-x-6">
+                        <a href="#experience" className="text-sm text-muted hover:text-primary transition-opacity duration-150">Experience</a>
+                        <a href="#projects" className="text-sm text-muted hover:text-primary transition-opacity duration-150">Projects</a>
+                        <a href="#publications" className="text-sm text-muted hover:text-primary transition-opacity duration-150">Publications</a>
+                        <a href="#about" className="text-sm text-muted hover:text-primary transition-opacity duration-150">About</a>
+                    </div>
+
+                    <div className="flex items-center space-x-4">
+                        <button onClick={toggleDarkMode} className="text-muted hover:text-primary transition-opacity duration-150" aria-label="Toggle Dark Mode">
+                            {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+                        </button>
+                        <a href="mailto:jg992@cornell.edu" className="hidden md:flex border border-border rounded-lg px-4 py-1.5 text-sm hover:bg-surface transition-colors duration-150">
+                            Get in Touch
+                        </a>
+                        <button className="md:hidden text-muted" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+                            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                        </button>
+                    </div>
+                </div>
+
+                {/* Mobile Navbar Dropdown */}
+                {mobileMenuOpen && (
+                    <div className="md:hidden border-t border-border bg-background px-6 py-4 flex flex-col space-y-4 shadow-lg">
+                        <a href="#experience" onClick={() => setMobileMenuOpen(false)} className="text-sm text-muted hover:text-primary transition-opacity duration-150">Experience</a>
+                        <a href="#projects" onClick={() => setMobileMenuOpen(false)} className="text-sm text-muted hover:text-primary transition-opacity duration-150">Projects</a>
+                        <a href="#publications" onClick={() => setMobileMenuOpen(false)} className="text-sm text-muted hover:text-primary transition-opacity duration-150">Publications</a>
+                        <a href="#about" onClick={() => setMobileMenuOpen(false)} className="text-sm text-muted hover:text-primary transition-opacity duration-150">About</a>
+                        <a href="mailto:jg992@cornell.edu" onClick={() => setMobileMenuOpen(false)} className="text-sm text-primary font-medium">Get in Touch</a>
+                    </div>
+                )}
+            </nav>
+
+            <main className="max-w-4xl mx-auto px-6">
+
+                {/* B. HERO */}
+                <section className="animate-section min-h-screen flex flex-col justify-center pt-16">
+                    <div className="max-w-2xl">
+                        <h1 className="gsap-reveal text-5xl md:text-7xl font-bold tracking-tight">Jonathan Gao</h1>
+                        <h2 className="gsap-reveal text-xl text-muted font-normal mt-2">Software Engineer</h2>
+                        <p className="gsap-reveal text-base text-muted mt-4 max-w-xl leading-relaxed">
+                            Currently building data infrastructure at Databricks. Previously led the DynamoDB replication protocol migration at AWS — 80M+ partitions, multi-petabyte scale.
+                        </p>
+                        <div className="gsap-reveal mt-8 flex items-center gap-3">
+                            <a href="#experience" className="bg-primary text-background rounded-lg px-5 py-2.5 text-sm font-medium hover:opacity-90 transition-opacity duration-150">
+                                View My Work
+                            </a>
+                            <a href="https://github.com/nahtonaj" target="_blank" rel="noopener noreferrer" className="p-2.5 text-muted hover:text-primary transition-colors duration-150 rounded-lg hover:bg-surface">
+                                <Github size={20} />
+                            </a>
+                            <a href="https://linkedin.com/in/jonathan-gao" target="_blank" rel="noopener noreferrer" className="p-2.5 text-muted hover:text-primary transition-colors duration-150 rounded-lg hover:bg-surface">
+                                <Linkedin size={20} />
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                {/* C. EXPERIENCE */}
+                <section id="experience" className="animate-section py-24">
+                    <p className="gsap-reveal text-[11px] tracking-widest uppercase font-semibold text-muted mb-3">Experience</p>
+                    <h2 className="gsap-reveal text-3xl md:text-5xl font-bold mb-12">Where I've Worked</h2>
+
+                    <div className="flex flex-col space-y-2">
+                        {expData.map((exp, i) => (
+                            <div key={i} className="gsap-reveal group hover:bg-surface rounded-xl p-4 -mx-4 transition-colors duration-150">
+                                <div className="flex flex-col md:flex-row justify-between items-baseline mb-1">
+                                    <div>
+                                        <span className="font-semibold text-base">{exp.company}</span>
+                                        <span className="text-muted mx-2">·</span>
+                                        <span className="text-base">{exp.role}</span>
+                                    </div>
+                                    <span className="text-sm text-muted mt-1 md:mt-0 whitespace-nowrap">{exp.dates}</span>
+                                </div>
+                                <div className="text-sm text-muted mb-3">{exp.team}</div>
+                                <div className="text-sm text-muted leading-relaxed">{exp.desc}</div>
+                                <div className="mt-4 flex flex-wrap gap-2">
+                                    {exp.tags.map((tag, j) => (
+                                        <span key={j} className="font-mono text-[11px] bg-background border border-border rounded-md px-2 py-0.5 text-muted">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* D. PROJECTS */}
+                <section id="projects" className="animate-section py-24">
+                    <p className="gsap-reveal text-[11px] tracking-widest uppercase font-semibold text-muted mb-3">Projects</p>
+                    <h2 className="gsap-reveal text-3xl md:text-5xl font-bold mb-12">Things I've Built</h2>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {projData.map((proj, i) => {
+                            const CardWrapper = proj.link ? 'a' : 'div';
+                            const wrapperProps = proj.link ? { href: proj.link, target: "_blank", rel: "noopener noreferrer" } : {};
+
+                            return (
+                                <CardWrapper
+                                    key={i}
+                                    {...wrapperProps}
+                                    className={`gsap-reveal rounded-xl border border-border bg-surface flex flex-col h-full overflow-hidden hover:border-accent/40 transition-colors duration-150 group ${!proj.link ? "cursor-default" : ""}`}
+                                >
+                                    {proj.image && (
+                                        <div className="w-full h-48 sm:h-56 border-b border-border overflow-hidden bg-background shrink-0">
+                                            <img src={proj.image} alt={proj.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" />
+                                        </div>
+                                    )}
+                                    <div className="p-6 flex flex-col flex-grow">
+                                        <div className="flex items-start justify-between mb-2">
+                                            <h3 className="font-semibold text-base">{proj.title}</h3>
+                                            {proj.link && <ExternalLink size={14} className="text-muted ml-2 mt-1 shrink-0" />}
+                                        </div>
+                                        <p className="text-sm text-muted flex-grow leading-relaxed">{proj.desc}</p>
+                                        <div className="mt-6 flex flex-wrap gap-2">
+                                            {proj.tags.map((tag, j) => (
+                                                <span key={j} className="font-mono text-[11px] bg-background text-muted border border-border rounded-md px-2 py-0.5">
+                                                    {tag}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </CardWrapper>
+                            );
+                        })}
+                    </div>
+                </section>
+
+                {/* E. PUBLICATIONS */}
+                <section id="publications" className="animate-section py-24">
+                    <p className="gsap-reveal text-[11px] tracking-widest uppercase font-semibold text-muted mb-3">Publications</p>
+                    <h2 className="gsap-reveal text-3xl md:text-5xl font-bold mb-12">Research</h2>
+
+                    <div className="flex flex-col">
+                        {pubData.map((pub, i) => (
+                            <div key={i} className="gsap-reveal border-b border-border py-6 last:border-0 last:pb-0 first:pt-0">
+                                <a href={pub.url} target="_blank" rel="noopener noreferrer" className="font-medium text-base hover:text-accent transition-colors duration-150 inline-block">
+                                    {pub.title}
+                                </a>
+                                <div className="text-sm text-muted mt-2">
+                                    {pub.venue}, {pub.year}
+                                </div>
+                                <div className="text-xs text-muted mt-1 flex items-center justify-between">
+                                    <span>{pub.lab}</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* F. ABOUT */}
+                <section id="about" className="animate-section py-24">
+                    <p className="gsap-reveal text-[11px] tracking-widest uppercase font-semibold text-muted mb-3">About</p>
+                    <h2 className="gsap-reveal text-3xl md:text-5xl font-bold mb-12">About</h2>
+
+                    <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
+                        <div className="col-span-1 md:col-span-3 space-y-5 text-base text-primary leading-relaxed">
+                            <p className="gsap-reveal">
+                                I've known I wanted to become a programmer since I was 9.
+                            </p>
+                            <p className="gsap-reveal">
+                                Starting with a little netbook for Christmas, I've been fascinated with learning how computers work. Picking up a book of C# for dummies, I began teaching myself the basics. I started with fixing basic tech issues like WiFi, printers, Windows issues, and even managed to get macOSX onto my Acer notebook. In high school, I taught myself Java and Python through books and online courses.
+                            </p>
+                            <p className="gsap-reveal">
+                                Since getting into Cornell, I knew I wanted to broaden my technical skills. Deciding on ECE over CS, I was able to delve into the entire tech stack. I learned how to design circuits and my own PCBs, how microprocessors work and how a computer works from the ground up, how to design robust and good software with best practices, and the foundations of cloud and distributed computing. Throughout my education, I was adamant in learning everything from pure electrical engineering to full stack software engineering. With internships and experience everywhere in between, I am passionate about learning more.
+                            </p>
+                        </div>
+
+                        <div className="col-span-1 md:col-span-2 space-y-6">
+                            <div className="gsap-reveal flex flex-col">
+                                <span className="text-muted text-xs uppercase tracking-wide font-semibold mb-1">Currently</span>
+                                <span className="text-sm">Software Engineer IV, Databricks</span>
+                            </div>
+                            <div className="gsap-reveal flex flex-col">
+                                <span className="text-muted text-xs uppercase tracking-wide font-semibold mb-1">Based in</span>
+                                <span className="text-sm">Seattle, WA</span>
+                            </div>
+                            <div className="gsap-reveal flex flex-col">
+                                <span className="text-muted text-xs uppercase tracking-wide font-semibold mb-1">Education</span>
+                                <span className="text-sm">Cornell — M.Eng. CS + B.S. ECE</span>
+                            </div>
+                            <div className="gsap-reveal flex flex-col">
+                                <span className="text-muted text-xs uppercase tracking-wide font-semibold mb-1">GPA</span>
+                                <span className="text-sm">3.8 / 4.3</span>
+                            </div>
+                            <div className="gsap-reveal flex flex-col">
+                                <span className="text-muted text-xs uppercase tracking-wide font-semibold mb-1">Honors</span>
+                                <span className="text-sm">National Merit Finalist · Bloomberg Puzzle Race 1st (Cornell)</span>
+                            </div>
+                            <div className="gsap-reveal flex flex-col">
+                                <span className="text-muted text-xs uppercase tracking-wide font-semibold mb-1">Outside work</span>
+                                <span className="text-sm leading-relaxed">Bouldering · Snowboarding · Sim Racing · Custom Keyboards · Gym</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+
+            {/* G. FOOTER */}
+            <footer className="border-t border-border mt-12 py-10 transition-colors duration-150">
+                <div className="max-w-4xl mx-auto px-6 flex flex-col-reverse md:flex-row items-center justify-between gap-6">
+                    <div className="text-sm text-muted">
+                        2026 Jonathan Gao
+                    </div>
+                    <div className="flex items-center gap-6">
+                        <a href="https://github.com/nahtonaj" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-primary transition-colors duration-150" aria-label="GitHub">
+                            <Github size={20} />
+                        </a>
+                        <a href="https://linkedin.com/in/jonathan-gao" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-primary transition-colors duration-150" aria-label="LinkedIn">
+                            <Linkedin size={20} />
+                        </a>
+                        <a href="mailto:jg992@cornell.edu" className="text-muted hover:text-primary transition-colors duration-150" aria-label="Email">
+                            <Mail size={20} />
+                        </a>
+                    </div>
+                </div>
+            </footer>
         </div>
     );
 }

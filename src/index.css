@@ -3,42 +3,63 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --color-background: #FFFFFF;
+    --color-surface: #F5F5F5;
+    --color-border: #E5E5E5;
+    --color-primary: #0A0A0A;
+    --color-muted: #737373;
+    --color-accent: #0070F3;
+    --color-accent-hover: #0051CC;
+  }
+
+  .dark {
+    --color-background: #0A0A0A;
+    --color-surface: #111111;
+    --color-border: #222222;
+    --color-primary: #FAFAFA;
+    --color-muted: #737373;
+    --color-accent: #0070F3;
+    --color-accent-hover: #338EF7;
+  }
+
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
-    position: relative;
-    background-color: theme('colors.background');
-    color: theme('colors.text-dark');
-    overflow-x: hidden;
-  }
-
-  /* Global SVG noise overlay for visual texture */
-  body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.05;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: theme('fontFamily.heading');
-    letter-spacing: -0.02em;
+    @apply bg-background text-primary antialiased transition-colors duration-150;
   }
 }
 
 @layer utilities {
-  .font-drama {
-    font-family: theme('fontFamily.drama');
+  .animate-blob {
+    animation: blob 15s infinite alternate ease-in-out;
   }
-  .font-data {
-    font-family: theme('fontFamily.data');
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
   }
 }
