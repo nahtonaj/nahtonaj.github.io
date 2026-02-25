@@ -46,6 +46,11 @@
   .animate-marquee {
     animation: marquee 25s linear infinite;
   }
+
+  .animate-grid-flow {
+    animation: grid-flow 4s linear infinite;
+    will-change: background-position;
+  }
 }
 
 @keyframes marquee {
@@ -55,5 +60,15 @@
 
   100% {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes grid-flow {
+  0% {
+    background-position: 0px 0px;
+  }
+
+  100% {
+    background-position: 32px 32px;
   }
 }

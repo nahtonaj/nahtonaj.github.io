@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Github, Linkedin, ExternalLink, Moon, Sun, Menu, X, Mail, Mountain, Snowflake, Gamepad2, Keyboard, Dumbbell, Code, Terminal, Cpu, CircuitBoard, Cat, Dog, Car } from 'lucide-react';
+import { Github, Linkedin, Instagram, ExternalLink, Moon, Sun, Menu, X, Mail, Mountain, Snowflake, Gamepad2, Keyboard, Dumbbell, Code, Terminal, Cpu, CircuitBoard, Cat, Dog, Car } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -67,28 +67,57 @@ const expData = [
 
 const projData = [
     {
+        title: "NormalNvim",
+        tags: ["Neovim", "Lua", "LSP", "DevEx"],
+        desc: "A high-performance, lua-based Neovim distribution. Optimized for developer experience with custom LSP configurations, tree-sitter integration, and a curated plugin ecosystem.",
+        link: "https://github.com/nahtonaj/NormalNvim"
+    },
+    {
+        title: "Ergonomic Keyboard Portfolio",
+        tags: ["ZMK", "Embedded", "Hardware", "Ergo"],
+        desc: "Custom ZMK/QMK firmware and hardware configurations for a variety of ergonomic split keyboards, including Lily58, Sofle, Charybdis, and Dactyl Manuform.",
+        links: [
+            { label: "Lily58", url: "https://github.com/nahtonaj/zmk-config" },
+            { label: "Sofle", url: "https://github.com/nahtonaj/sofle-choc" },
+            { label: "Charybdis", url: "https://github.com/nahtonaj/zmk-charybdis" },
+            { label: "Dactyl", url: "https://github.com/nahtonaj/zmk-config-dactyl_manuform" },
+        ]
+    },
+    {
+        title: "Dotfiles",
+        tags: ["Unix", "Dotfiles", "Zsh", "DevEx"],
+        desc: "A comprehensive collection of Unix configuration files. Features a highly customized Zsh environment, terminal multiplexing, and automated symlink management for a consistent development bridge.",
+        link: "https://github.com/nahtonaj/dotfiles"
+    },
+    {
         title: "Snake Game on ARM Microprocessor",
         tags: ["K64F ARM", "C/C++", "Assembly", "Embedded"],
         desc: "Recreated Snake from scratch on a K64F ARM microcontroller with a 64×64 LED matrix, tick-based game loop via hardware interrupts, and accelerometer tilt controls.",
-        link: null,
+        link: "https://github.com/nahtonaj/ECE3140_SNAKE"
     },
     {
         title: "Cornell FSAE — LV Fusebox & ECU",
         tags: ["Altium", "PCB Design", "CAN Bus", "EE"],
         desc: "Designed the low-voltage fusebox PCB for Cornell's Formula SAE electric racing vehicle. Co-developed the ECU handling telemetry, safety loops, and motor controller CAN comms.",
-        link: "https://cornellracing.org/",
+        link: "https://cornellracing.com/"
     },
     {
-        title: "Neural Network RC Car",
-        tags: ["Python", "OpenCV", "PyBrain", "Raspberry Pi"],
-        desc: "End-to-end autonomous driving model using a neural network and OpenCV for lane detection, deployed on an embedded Raspberry Pi controlling a physical RC car.",
-        link: null,
+        title: "USB MIDI Controller",
+        tags: ["C++", "Arduino", "MIDI", "Hardware"],
+        desc: "Design and implementation of a custom MIDI controller. Features multi-input tactile buttons and rotary encoders for real-time DAW control and Parametric performance.",
+        link: "https://github.com/nahtonaj/MIDIcontroller"
+    },
+    {
+        title: "Neural Network Autonomous Vehicles",
+        tags: ["Python", "OpenCV", "PyBrain", "Robotics"],
+        desc: "End-to-end autonomous driving and flight models. Built an RC car for lane detection and a neural network-based autonomous drone platform for computer vision research.",
+        link: "https://github.com/nahtonaj/neuralnetworkdrone"
     },
     {
         title: "Juul.io — BigRed\\Hacks 2019",
         tags: ["Arduino", "IoT", "Best Hardware Award"],
         desc: "Best Hardware Implementation winner at BigRed\\Hacks 2019. An IoT Arduino-based hardware hack designed and judged in under 24 hours.",
-        link: null,
+        link: null
     },
 ];
 
@@ -143,19 +172,61 @@ export default function App() {
         }
     };
 
-    // Mouse glow effect on tiled background
+    // Mouse & Persistent glow effect for hero and tiled background
     useEffect(() => {
-        const handleMouseMove = (e) => {
+        const updateMasks = (e) => {
             const grid = document.querySelector('.parallax-tile-grid');
-            if (!grid) return;
-            const rect = grid.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            grid.style.maskImage = `radial-gradient(500px circle at ${x}px ${y}px, rgba(0,0,0,1) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.04) 100%)`;
-            grid.style.webkitMaskImage = `radial-gradient(500px circle at ${x}px ${y}px, rgba(0,0,0,1) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.04) 100%)`;
+            const heroGrid = document.querySelector('.hero-dot-grid');
+            const heroContent = document.querySelector('.hero-content-inner');
+
+            if (grid && e) {
+                const rect = grid.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const mask = `radial-gradient(500px circle at ${x}px ${y}px, rgba(0,0,0,1) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.04) 100%)`;
+                grid.style.maskImage = mask;
+                grid.style.webkitMaskImage = mask;
+            }
+
+            if (heroGrid) {
+                const rect = heroGrid.getBoundingClientRect();
+
+                // Mouse position
+                let mouseGlow = '';
+                if (e) {
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    mouseGlow = `, radial-gradient(400px circle at ${x}px ${y}px, rgba(0,0,0,1) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 100%)`;
+                }
+
+                // Persistent content glow (calculated based on the inner text container)
+                let contentGlow = '';
+                if (heroContent) {
+                    const contentRect = heroContent.getBoundingClientRect();
+                    const x = (contentRect.left + contentRect.width / 2) - rect.left;
+                    const y = (contentRect.top + contentRect.height / 2) - rect.top;
+                    contentGlow = `radial-gradient(800px circle at ${x}px ${y}px, rgba(0,0,0,1) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0) 100%)`;
+                }
+
+                const fullMask = `${contentGlow}${mouseGlow}`;
+                heroGrid.style.maskImage = fullMask;
+                heroGrid.style.webkitMaskImage = fullMask;
+            }
         };
+
+        const handleMouseMove = (e) => updateMasks(e);
+        const handleResize = () => updateMasks();
+
         window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
+        window.addEventListener('resize', handleResize);
+
+        // Initial call to set persistent glows
+        updateMasks();
+
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('resize', handleResize);
+        };
     }, []);
 
     useEffect(() => {
@@ -198,8 +269,6 @@ export default function App() {
     return (
         <div ref={mainRef} className="font-sans text-primary w-full bg-background min-h-screen relative">
 
-            {/* Tiled icon background is rendered inside <main> below the marquee */}
-
             {/* A. NAVBAR */}
             <nav className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-sm border-b-2 border-primary transition-colors duration-150">
                 <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -231,34 +300,39 @@ export default function App() {
                         <a href="#projects" onClick={() => setMobileMenuOpen(false)} className="font-mono text-sm font-bold uppercase hover:text-accent">Projects</a>
                         <a href="#publications" onClick={() => setMobileMenuOpen(false)} className="font-mono text-sm font-bold uppercase hover:text-accent">Publications</a>
                         <a href="#about" onClick={() => setMobileMenuOpen(false)} className="font-mono text-sm font-bold uppercase hover:text-accent">About</a>
-                        <a href="mailto:jg992@cornell.edu" onClick={() => setMobileMenuOpen(false)} className="font-mono text-sm font-bold uppercase text-accent-secondary">Get in Touch</a>
+                        <a href="mailto:jonathan-gao@hotmail.com" onClick={() => setMobileMenuOpen(false)} className="font-mono text-sm font-bold uppercase text-accent-secondary">Get in Touch</a>
                     </div>
                 )}
             </nav>
 
             {/* B. HERO */}
-            <section className="animate-section min-h-screen flex flex-col justify-center pt-24 pb-12 relative border-b-2 border-primary">
+            <section className="animate-section min-h-screen flex flex-col justify-center pt-24 pb-12 relative overflow-hidden">
                 {/* Decorative Grid Background */}
-                <div className="absolute inset-0 z-0 pointer-events-none opacity-20 dark:opacity-10" style={{ backgroundImage: 'radial-gradient(var(--color-primary) 2px, transparent 2px)', backgroundSize: '32px 32px' }}></div>
+                <div className="hero-dot-grid absolute inset-0 z-0 pointer-events-none opacity-20 dark:opacity-10 animate-grid-flow" style={{ backgroundImage: 'radial-gradient(var(--color-primary) 2px, transparent 2px)', backgroundSize: '32px 32px', backgroundRepeat: 'repeat' }}></div>
 
                 <div className="max-w-5xl mx-auto px-6 relative z-10 w-full">
-                    <h1 className="gsap-reveal font-display text-7xl md:text-[9rem] leading-[0.85] uppercase tracking-tighter text-primary break-words">Jonathan <br /><span className="text-accent underline decoration-8 underline-offset-8">Gao</span></h1>
-                    <h2 className="gsap-reveal text-3xl md:text-5xl font-bold mt-8 tracking-tight uppercase flex flex-wrap gap-x-3 items-baseline">
-                        <span className="font-display">SOFTWARE</span> <span className="font-serif italic font-light text-accent-secondary normal-case">Engineer</span>
-                    </h2>
-                    <p className="gsap-reveal text-base md:text-lg text-primary mt-6 max-w-xl leading-relaxed border-l-4 border-accent pl-4 font-medium bg-background/80 p-2">
-                        Currently building data infrastructure at Databricks. Previously led the DynamoDB replication protocol migration at AWS — 80M+ partitions, multi-petabyte scale.
-                    </p>
-                    <div className="gsap-reveal mt-10 flex items-center gap-4">
-                        <a href="#experience" className="bg-primary text-background shadow-brutal border-2 border-primary px-6 py-3 text-sm font-display uppercase tracking-widest hover:bg-accent hover:text-primary hover:shadow-brutal-hover transition-all duration-150 flex items-center gap-2">
-                            <span className="w-2 h-2 bg-accent-secondary rounded-full animate-pulse"></span> View My Work
-                        </a>
-                        <a href="https://github.com/nahtonaj" target="_blank" rel="noopener noreferrer" className="p-3 text-primary bg-surface border-2 border-primary shadow-brutal hover:bg-accent hover:shadow-brutal-hover transition-all duration-150">
-                            <Github size={20} strokeWidth={2.5} />
-                        </a>
-                        <a href="https://linkedin.com/in/jonathan-gao" target="_blank" rel="noopener noreferrer" className="p-3 text-primary bg-surface border-2 border-primary shadow-brutal hover:bg-accent hover:shadow-brutal-hover transition-all duration-150">
-                            <Linkedin size={20} strokeWidth={2.5} />
-                        </a>
+                    <div className="hero-content-inner w-max max-w-full">
+                        <h1 className="gsap-reveal hero-name font-display text-7xl md:text-[9rem] leading-[0.85] uppercase tracking-tighter text-primary break-words">Jonathan <br /><span className="text-accent underline decoration-8 underline-offset-8">Gao</span></h1>
+                        <h2 className="gsap-reveal text-3xl md:text-5xl font-bold mt-8 tracking-tight uppercase flex flex-wrap gap-x-3 items-baseline">
+                            <span className="font-display">SOFTWARE</span> <span className="font-serif italic font-light text-accent-secondary normal-case">Engineer</span>
+                        </h2>
+                        <p className="gsap-reveal text-base md:text-lg text-primary mt-6 max-w-xl leading-relaxed border-l-4 border-accent pl-4 font-medium bg-background/80 p-2">
+                            Currently building data infrastructure at Databricks. Previously led the DynamoDB replication protocol migration at AWS — 80M+ partitions, multi-petabyte scale.
+                        </p>
+                        <div className="gsap-reveal hero-actions mt-10 flex items-center gap-4">
+                            <a href="#experience" className="bg-primary text-background shadow-brutal border-2 border-primary px-6 py-3 text-sm font-display uppercase tracking-widest hover:bg-accent hover:text-primary hover:shadow-brutal-hover transition-all duration-150 flex items-center gap-2">
+                                <span className="w-2 h-2 bg-accent-secondary rounded-full animate-pulse"></span> View My Work
+                            </a>
+                            <a href="https://github.com/nahtonaj" target="_blank" rel="noopener noreferrer" className="p-3 text-primary bg-surface border-2 border-primary shadow-brutal hover:bg-accent hover:shadow-brutal-hover transition-all duration-150">
+                                <Github size={20} strokeWidth={2.5} />
+                            </a>
+                            <a href="https://linkedin.com/in/jonathan-gao" target="_blank" rel="noopener noreferrer" className="p-3 text-primary bg-surface border-2 border-primary shadow-brutal hover:bg-accent hover:shadow-brutal-hover transition-all duration-150">
+                                <Linkedin size={20} strokeWidth={2.5} />
+                            </a>
+                            <a href="https://www.instagram.com/jongao_/" target="_blank" rel="noopener noreferrer" className="p-3 text-primary bg-surface border-2 border-primary shadow-brutal hover:bg-accent hover:shadow-brutal-hover transition-all duration-150">
+                                <Instagram size={20} strokeWidth={2.5} />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -362,21 +436,40 @@ export default function App() {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             {projData.map((proj, i) => {
-                                const CardWrapper = proj.link ? 'a' : 'div';
-                                const wrapperProps = proj.link ? { href: proj.link, target: "_blank", rel: "noopener noreferrer" } : {};
+                                const hasMultipleLinks = proj.links && proj.links.length > 0;
+                                const CardWrapper = (proj.link && !hasMultipleLinks) ? 'a' : 'div';
+                                const wrapperProps = (proj.link && !hasMultipleLinks) ? { href: proj.link, target: "_blank", rel: "noopener noreferrer" } : {};
 
                                 return (
                                     <CardWrapper
                                         key={i}
                                         {...wrapperProps}
-                                        className={`gsap-reveal border-2 border-primary bg-surface flex flex-col h-full shadow-brutal hover:shadow-brutal-hover hover:-translate-y-1 transition-all duration-150 group ${!proj.link ? "cursor-default" : ""}`}
+                                        className={`gsap-reveal border-2 border-primary bg-surface flex flex-col h-full shadow-brutal hover:shadow-brutal-hover hover:-translate-y-1 transition-all duration-150 group ${(!proj.link || hasMultipleLinks) ? "cursor-default" : ""}`}
                                     >
                                         <div className="p-6 md:p-8 flex flex-col flex-grow relative bg-background group-hover:bg-primary transition-colors duration-150">
                                             <div className="flex items-start justify-between mb-4">
                                                 <h3 className="font-display text-3xl uppercase tracking-wide group-hover:text-background">{proj.title}</h3>
-                                                {proj.link && <ExternalLink size={24} strokeWidth={3} className="text-primary ml-2 shrink-0 group-hover:text-background" />}
+                                                {proj.link && !hasMultipleLinks && <ExternalLink size={24} strokeWidth={3} className="text-primary ml-2 shrink-0 group-hover:text-background" />}
                                             </div>
                                             <p className="text-base font-medium text-primary flex-grow leading-relaxed group-hover:text-background">{proj.desc}</p>
+
+                                            {hasMultipleLinks && (
+                                                <div className="mt-8 grid grid-cols-2 gap-3 relative z-20">
+                                                    {proj.links.map((link, k) => (
+                                                        <a
+                                                            key={k}
+                                                            href={link.url}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="flex items-center justify-between border-2 border-primary bg-background px-4 py-2 font-mono text-[10px] font-bold uppercase transition-all duration-150 hover:bg-accent hover:shadow-brutal group-hover:border-background group-hover:shadow-[4px_4px_0px_var(--color-background)]"
+                                                        >
+                                                            {link.label}
+                                                            <ExternalLink size={12} strokeWidth={3} className="ml-1" />
+                                                        </a>
+                                                    ))}
+                                                </div>
+                                            )}
+
                                             <div className="mt-8 flex flex-wrap gap-2">
                                                 {proj.tags.map((tag, j) => (
                                                     <span key={j} className="font-mono text-[11px] font-bold uppercase bg-surface text-primary border-2 border-primary px-2 py-1 shadow-[2px_2px_0px_var(--color-primary)] group-hover:bg-primary group-hover:text-background group-hover:border-background group-hover:shadow-[2px_2px_0px_var(--color-accent-secondary)]">
@@ -474,6 +567,9 @@ export default function App() {
                             </a>
                             <a href="https://linkedin.com/in/jonathan-gao" target="_blank" rel="noopener noreferrer" className="p-3 bg-background text-primary border-2 border-transparent hover:bg-accent-secondary hover:border-primary hover:shadow-brutal hover:-translate-y-1 transition-all duration-150" aria-label="LinkedIn">
                                 <Linkedin size={24} strokeWidth={2.5} />
+                            </a>
+                            <a href="https://www.instagram.com/jongao_/" target="_blank" rel="noopener noreferrer" className="p-3 bg-background text-primary border-2 border-transparent hover:bg-accent hover:border-primary hover:shadow-brutal hover:-translate-y-1 transition-all duration-150" aria-label="Instagram">
+                                <Instagram size={24} strokeWidth={2.5} />
                             </a>
                             <a href="mailto:jg992@cornell.edu" className="p-3 bg-background text-primary border-2 border-transparent hover:bg-accent hover:border-primary hover:shadow-brutal hover:-translate-y-1 transition-all duration-150" aria-label="Email">
                                 <Mail size={24} strokeWidth={2.5} />
