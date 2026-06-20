@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { InstagramEmbed, LinkedInEmbed } from 'react-social-media-embed';
-import { Github, Linkedin, Instagram, ExternalLink, Moon, Sun, Menu, X, Mail, Mountain, Snowflake, Gamepad2, Keyboard, Dumbbell, Code, Terminal, Cpu, CircuitBoard, Cat, Dog, Car } from 'lucide-react';
+import { Github, Linkedin, ExternalLink, Moon, Sun, Menu, X, Mail, Mountain, Snowflake, Gamepad2, Keyboard, Dumbbell, Code, Terminal, Cpu, CircuitBoard, Cat, Dog, Car } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -280,7 +279,6 @@ export default function App() {
                         <a href="#projects" className="font-mono text-xs font-bold uppercase hover:text-accent transition-colors duration-150">Projects</a>
                         <a href="#publications" className="font-mono text-xs font-bold uppercase hover:text-accent transition-colors duration-150">Publications</a>
                         <a href="#about" className="font-mono text-xs font-bold uppercase hover:text-accent transition-colors duration-150">About</a>
-                        <a href="#socials" className="font-mono text-xs font-bold uppercase hover:text-accent transition-colors duration-150">Socials</a>
                     </div>
 
                     <div className="flex items-center space-x-4">
@@ -302,7 +300,6 @@ export default function App() {
                         <a href="#projects" onClick={() => setMobileMenuOpen(false)} className="font-mono text-sm font-bold uppercase hover:text-accent">Projects</a>
                         <a href="#publications" onClick={() => setMobileMenuOpen(false)} className="font-mono text-sm font-bold uppercase hover:text-accent">Publications</a>
                         <a href="#about" onClick={() => setMobileMenuOpen(false)} className="font-mono text-sm font-bold uppercase hover:text-accent">About</a>
-                        <a href="#socials" onClick={() => setMobileMenuOpen(false)} className="font-mono text-sm font-bold uppercase hover:text-accent">Socials</a>
                         <a href="mailto:jonathan-gao@hotmail.com" onClick={() => setMobileMenuOpen(false)} className="font-mono text-sm font-bold uppercase text-accent-secondary">Get in Touch</a>
                     </div>
                 )}
@@ -331,9 +328,6 @@ export default function App() {
                             </a>
                             <a href="https://linkedin.com/in/jonathan-gao" target="_blank" rel="noopener noreferrer" className="p-3 text-primary bg-surface border-2 border-primary shadow-brutal hover:bg-accent hover:shadow-brutal-hover transition-all duration-150">
                                 <Linkedin size={20} strokeWidth={2.5} />
-                            </a>
-                            <a href="https://www.instagram.com/jongao_/" target="_blank" rel="noopener noreferrer" className="p-3 text-primary bg-surface border-2 border-primary shadow-brutal hover:bg-accent hover:shadow-brutal-hover transition-all duration-150">
-                                <Instagram size={20} strokeWidth={2.5} />
                             </a>
                         </div>
                     </div>
@@ -555,60 +549,6 @@ export default function App() {
                         </div>
                     </section>
 
-                    {/* G. SOCIALS */}
-                    <section id="socials" className="animate-section py-24 relative">
-                        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 border-b-4 border-primary pb-4 gap-4 relative z-10">
-                            <h2 className="gsap-reveal font-display text-5xl md:text-7xl uppercase tracking-tighter leading-none">Socials</h2>
-                            <span className="gsap-reveal font-mono text-sm font-bold bg-accent text-primary px-2 py-1 border-2 border-primary">// LATEST UPDATES</span>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
-                            {/* Instagram Card */}
-                            <div className="gsap-reveal flex flex-col border-2 border-primary bg-surface shadow-brutal overflow-hidden group">
-                                <div className="p-4 border-b-2 border-primary flex items-center justify-between bg-background group-hover:bg-primary transition-colors">
-                                    <div className="flex items-center gap-2">
-                                        <Instagram size={18} strokeWidth={2.5} className="group-hover:text-accent" />
-                                        <span className="font-display text-lg uppercase group-hover:text-background">Instagram</span>
-                                    </div>
-                                    <a href="https://www.instagram.com/jongao_/" target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] font-bold uppercase bg-accent text-primary px-2 py-1 border-2 border-primary group-hover:bg-accent-secondary group-hover:shadow-brutal transition-all">Follow</a>
-                                </div>
-                                <div className="p-1 bg-background flex justify-center">
-                                    <div className="w-full">
-                                        {/* Replace URL with a specific public Instagram post URL for live preview */}
-                                        <InstagramEmbed url="https://www.instagram.com/p/DT1eJqYDjA7/" width="100%" height={500} />
-                                    </div>
-                                </div>
-                                <div className="p-4 bg-surface text-xs font-mono text-muted uppercase tracking-wider group-hover:text-primary transition-colors">
-                                    @jongao_ · Visual Log
-                                </div>
-                            </div>
-
-                            {/* LinkedIn Card */}
-                            <div className="gsap-reveal flex flex-col border-2 border-primary bg-surface shadow-brutal overflow-hidden group">
-                                <div className="p-4 border-b-2 border-primary flex items-center justify-between bg-background group-hover:bg-primary transition-colors">
-                                    <div className="flex items-center gap-2">
-                                        <Linkedin size={18} strokeWidth={2.5} className="group-hover:text-accent" />
-                                        <span className="font-display text-lg uppercase group-hover:text-background">LinkedIn</span>
-                                    </div>
-                                    <a href="https://linkedin.com/in/jonathan-gao" target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] font-bold uppercase bg-accent-secondary text-primary px-2 py-1 border-2 border-primary group-hover:bg-accent group-hover:shadow-brutal transition-all">Connect</a>
-                                </div>
-                                <div className="p-1 bg-background flex justify-center">
-                                    <div className="w-full">
-                                        {/* Replace URL with a specific public LinkedIn post URL for live preview */}
-                                        <LinkedInEmbed
-                                            url="https://www.linkedin.com/embed/feed/update/urn:li:share:7378636239597527040"
-                                            width="100%"
-                                            height={500}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="p-4 bg-surface text-xs font-mono text-muted uppercase tracking-wider group-hover:text-primary transition-colors">
-                                    Jonathan Gao · Professional Network
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
                 </main>
 
                 {/* G. FOOTER */}
@@ -624,9 +564,6 @@ export default function App() {
                             </a>
                             <a href="https://linkedin.com/in/jonathan-gao" target="_blank" rel="noopener noreferrer" className="p-3 bg-background text-primary border-2 border-transparent hover:bg-accent-secondary hover:border-primary hover:shadow-brutal hover:-translate-y-1 transition-all duration-150" aria-label="LinkedIn">
                                 <Linkedin size={24} strokeWidth={2.5} />
-                            </a>
-                            <a href="https://www.instagram.com/jongao_/" target="_blank" rel="noopener noreferrer" className="p-3 bg-background text-primary border-2 border-transparent hover:bg-accent hover:border-primary hover:shadow-brutal hover:-translate-y-1 transition-all duration-150" aria-label="Instagram">
-                                <Instagram size={24} strokeWidth={2.5} />
                             </a>
                             <a href="mailto:jg992@cornell.edu" className="p-3 bg-background text-primary border-2 border-transparent hover:bg-accent hover:border-primary hover:shadow-brutal hover:-translate-y-1 transition-all duration-150" aria-label="Email">
                                 <Mail size={24} strokeWidth={2.5} />

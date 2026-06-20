@@ -4,9 +4,12 @@
   "description": "Cinematic Personal Portfolio",
   "private": true,
   "type": "module",
+  "workspaces": [
+    "projects/bill-splitter"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && npm run build --workspace=bill-splitter",
     "preview": "vite preview"
   },
   "dependencies": {
