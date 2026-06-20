@@ -179,6 +179,7 @@ export default function App() {
   
   // Clipboard copied confirmation tooltip
   const [copied, setCopied] = useState(false)
+  const [showReceiptPreviewModal, setShowReceiptPreviewModal] = useState(false)
 
   // Handle Theme
   useEffect(() => {
@@ -281,7 +282,7 @@ export default function App() {
     }
   }
 
-  // Regex receipt parser
+  // Regex receipt parser with logical grouping and price filtering heuristics
   const parseReceiptText = (text) => {
     const lines = text.split('\n')
     const parsedItems = []
@@ -289,56 +290,106 @@ export default function App() {
     let detectedTax = null
     let detectedTip = null
 
-    // Match numbers at the end of lines representing prices
-    // Matches: 31.1, 31.99, 10.5, 3, etc. with optional dollar signs or spaces
-    const priceRegex = /(?:\$|usd)?\s*(\d+(?:[.,]\d{1,2})?)\s*$/i
+    // Clean up empty lines
+    const cleanedLines = lines
+      .map(line => line.trim())
+      .filter(line => line.length > 0)
 
-    lines.forEach((line) => {
-      let cleanedLine = line.trim()
-      
-      // Clean up common OCR artifacts at the end of lines (bars, spaces, dots)
-      cleanedLine = cleanedLine.replace(/[^a-zA-Z0-9.\s]$/, '').trim()
+    // Locate the logical boundaries of the "items area"
+    // The items area starts after table headers and ends before totals/subtotals
+    let endOfItemsIndex = cleanedLines.length
+    for (let i = 0; i < cleanedLines.length; i++) {
+      const lowerLine = cleanedLines[i].toLowerCase()
+      if (
+        lowerLine.includes('subtotal') || 
+        lowerLine.includes('sub total') || 
+        lowerLine.includes('sub-total') ||
+        lowerLine.includes('total') || 
+        lowerLine.includes('amount due') ||
+        lowerLine.includes('tax') ||
+        lowerLine.includes('tip') ||
+        lowerLine.includes('gratuity')
+      ) {
+        endOfItemsIndex = i
+        break
+      }
+    }
 
-      const match = cleanedLine.match(priceRegex)
+    let startOfItemsIndex = 0
+    for (let i = 0; i < endOfItemsIndex; i++) {
+      const lowerLine = cleanedLines[i].toLowerCase()
+      if (
+        lowerLine.includes('qty') || 
+        lowerLine.includes('item') || 
+        lowerLine.includes('price') || 
+        lowerLine.includes('desc')
+      ) {
+        startOfItemsIndex = i + 1
+        break
+      }
+    }
+
+    // Fallback if index boundaries are invalid
+    if (startOfItemsIndex >= endOfItemsIndex) {
+      startOfItemsIndex = 0
+    }
+
+    // Extract item lines
+    const itemLines = cleanedLines.slice(startOfItemsIndex, endOfItemsIndex)
+
+    // Refined regex to capture prices.
+    // Matches numbers with 1 or 2 decimals or whole numbers >= 1 at the end of the line,
+    // ignoring common trailing noise such as "T", "*", tax codes, or spaces.
+    const priceRegex = /(?:\$|usd)?\s*(\d+(?:[.,]\d{1,2})?)\s*(?:[a-z*#]{1,2})?\s*$/i
+
+    itemLines.forEach((line) => {
+      // Clean common trailing vertical lines and noise
+      let cleaned = line.replace(/\|$/, '').trim()
+
+      const match = cleaned.match(priceRegex)
       if (match) {
         const priceStr = match[1].replace(',', '.')
         const price = parseFloat(priceStr)
         
         // Extract the name part before the matched price
-        let namePart = cleanedLine.substring(0, cleanedLine.lastIndexOf(match[0])).trim()
+        const matchIndex = cleaned.lastIndexOf(match[0])
+        let name = cleaned.substring(0, matchIndex).trim()
         
-        // Clean descriptive text from common noise
-        let name = namePart
-          .replace(/^\d+\s+/, '') // remove leading quantity numbers (e.g., '2 ', '1 ')
-          .replace(/^[a-z]\d{2}\b\.?\s*/i, '') // remove code format prefixes (e.g., 'c01.', 'a04 ', 'b00.')
-          .replace(/[.*:;|=_-]/g, '') // remove noise punctuation characters
+        // Clean quantity prefix, codes, and punctuation noise
+        name = name
+          .replace(/^\d+\s+/, '') // leading quantity
+          .replace(/^[a-z]\d{2}\b\.?\s*/i, '') // code prefix
+          .replace(/[.*:;|=_-]/g, '') // punctuation noise
           .trim()
 
-        if (!name && price > 0) {
-          name = `Item $${price.toFixed(2)}`
-        }
-
-        if (name) {
-          const lowerName = name.toLowerCase()
-
-          // Map categories accurately
-          if (lowerName.includes('subtotal') || lowerName.includes('sub-total') || lowerName.includes('sub total') || lowerName.includes('net amount')) {
-            detectedSubtotal = price
-          } else if (lowerName.includes('tax') || lowerName.includes('sales tax') || lowerName.includes('fees') || lowerName.includes('vat')) {
-            detectedTax = price
-          } else if (lowerName.includes('tip') || lowerName.includes('tips') || lowerName.includes('gratuity') || lowerName.includes('service charge')) {
-            detectedTip = price
-          } else if (lowerName.includes('total') || lowerName.includes('amount due') || lowerName.includes('payment')) {
-            // ignore total to prevent double-counting
-          } else if (price > 0) {
-            parsedItems.push({
-              id: Math.random().toString(36).substring(2, 9),
-              name: name.charAt(0).toUpperCase() + name.slice(1),
-              price: price,
-              splitMode: 'equal',
-              splits: {}
-            })
+        if (price > 0) {
+          if (!name) {
+            name = `Item $${price.toFixed(2)}`
           }
+          parsedItems.push({
+            id: Math.random().toString(36).substring(2, 9),
+            name: name.charAt(0).toUpperCase() + name.slice(1),
+            price: price,
+            splitMode: 'equal',
+            splits: {}
+          })
+        }
+      }
+    })
+
+    // Parse totals, tax, and tip from the footer section lines
+    const footerLines = cleanedLines.slice(endOfItemsIndex)
+    footerLines.forEach((line) => {
+      const lowerLine = line.toLowerCase()
+      const match = line.match(priceRegex)
+      if (match) {
+        const priceStr = match[1].replace(',', '.')
+        const price = parseFloat(priceStr)
+
+        if (lowerLine.includes('tax') || lowerLine.includes('sales tax') || lowerLine.includes('vat')) {
+          if (detectedTax === null) detectedTax = price
+        } else if (lowerLine.includes('tip') || lowerLine.includes('tips') || lowerLine.includes('gratuity')) {
+          if (detectedTip === null) detectedTip = price
         }
       }
     })
@@ -964,6 +1015,27 @@ export default function App() {
             {/* Column 2: Bill Summary, Taxes, Preview & Finalize (Col span 2) */}
             <div className="md:col-span-2 space-y-6">
               
+              {/* Receipt Preview Card */}
+              {croppedImage && (
+                <div className="rounded-xl border border-border bg-surface p-5 space-y-3">
+                  <h3 className="text-xs font-semibold tracking-widest uppercase text-muted flex items-center justify-between">
+                    <span>Receipt Image</span>
+                    <span className="text-[10px] text-accent font-mono font-bold uppercase">Stored locally</span>
+                  </h3>
+                  
+                  <div className="relative group overflow-hidden rounded-lg border border-border bg-black max-h-48 flex items-center justify-center cursor-pointer" onClick={() => setShowReceiptPreviewModal(true)}>
+                    <img 
+                      src={croppedImage} 
+                      alt="Scanned Receipt" 
+                      className="max-h-48 object-contain transition-transform group-hover:scale-105 duration-200"
+                    />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white text-xs font-semibold transition-opacity duration-150">
+                      Click to expand
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* Financial Constants Panel */}
               <div className="rounded-xl border border-border bg-surface p-5 space-y-4">
                 <h3 className="text-xs font-semibold tracking-widest uppercase text-muted flex items-center gap-1.5">
@@ -1472,6 +1544,30 @@ export default function App() {
           </div>
         </div>
       </div>
+
+      {/* RECEIPT PREVIEW MODAL */}
+      {showReceiptPreviewModal && croppedImage && (
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="relative max-w-3xl w-full bg-white dark:bg-black border border-border rounded-2xl overflow-hidden shadow-2xl animate-in fade-in zoom-in-95 duration-150 flex flex-col">
+            <div className="border-b border-border p-4 flex items-center justify-between bg-surface">
+              <h4 className="font-bold text-base">Receipt Reference</h4>
+              <button 
+                onClick={() => setShowReceiptPreviewModal(false)}
+                className="text-muted hover:text-primary hover:bg-background rounded-lg p-1.5 transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="p-4 flex items-center justify-center overflow-auto max-h-[80vh] bg-black">
+              <img 
+                src={croppedImage} 
+                alt="Receipt Reference" 
+                className="max-h-[70vh] object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   )
