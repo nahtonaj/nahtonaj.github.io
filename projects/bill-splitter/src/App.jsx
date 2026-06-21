@@ -284,115 +284,7 @@ export default function App() {
 
   // Regex receipt parser with logical grouping and price filtering heuristics
   const parseReceiptText = (text) => {
-    const lines = text.split('\n')
-    const parsedItems = []
-    let detectedSubtotal = null
-    let detectedTax = null
-    let detectedTip = null
-
-    // Clean up empty lines
-    const cleanedLines = lines
-      .map(line => line.trim())
-      .filter(line => line.length > 0)
-
-    // Locate the logical boundaries of the "items area"
-    // The items area starts after table headers and ends before totals/subtotals
-    let endOfItemsIndex = cleanedLines.length
-    for (let i = 0; i < cleanedLines.length; i++) {
-      const lowerLine = cleanedLines[i].toLowerCase()
-      if (
-        lowerLine.includes('subtotal') || 
-        lowerLine.includes('sub total') || 
-        lowerLine.includes('sub-total') ||
-        lowerLine.includes('total') || 
-        lowerLine.includes('amount due') ||
-        lowerLine.includes('tax') ||
-        lowerLine.includes('tip') ||
-        lowerLine.includes('gratuity')
-      ) {
-        endOfItemsIndex = i
-        break
-      }
-    }
-
-    let startOfItemsIndex = 0
-    for (let i = 0; i < endOfItemsIndex; i++) {
-      const lowerLine = cleanedLines[i].toLowerCase()
-      if (
-        lowerLine.includes('qty') || 
-        lowerLine.includes('item') || 
-        lowerLine.includes('price') || 
-        lowerLine.includes('desc')
-      ) {
-        startOfItemsIndex = i + 1
-        break
-      }
-    }
-
-    // Fallback if index boundaries are invalid
-    if (startOfItemsIndex >= endOfItemsIndex) {
-      startOfItemsIndex = 0
-    }
-
-    // Extract item lines
-    const itemLines = cleanedLines.slice(startOfItemsIndex, endOfItemsIndex)
-
-    // Refined regex to capture prices.
-    // Matches numbers with 1 or 2 decimals or whole numbers >= 1 at the end of the line,
-    // ignoring common trailing noise such as "T", "*", tax codes, or spaces.
-    const priceRegex = /(?:\$|usd)?\s*(\d+(?:[.,]\d{1,2})?)\s*(?:[a-z*#]{1,2})?\s*$/i
-
-    itemLines.forEach((line) => {
-      // Clean common trailing vertical lines and noise
-      let cleaned = line.replace(/\|$/, '').trim()
-
-      const match = cleaned.match(priceRegex)
-      if (match) {
-        const priceStr = match[1].replace(',', '.')
-        const price = parseFloat(priceStr)
-        
-        // Extract the name part before the matched price
-        const matchIndex = cleaned.lastIndexOf(match[0])
-        let name = cleaned.substring(0, matchIndex).trim()
-        
-        // Clean quantity prefix, codes, and punctuation noise
-        name = name
-          .replace(/^\d+\s+/, '') // leading quantity
-          .replace(/^[a-z]\d{2}\b\.?\s*/i, '') // code prefix
-          .replace(/[.*:;|=_-]/g, '') // punctuation noise
-          .trim()
-
-        if (price > 0) {
-          if (!name) {
-            name = `Item $${price.toFixed(2)}`
-          }
-          parsedItems.push({
-            id: Math.random().toString(36).substring(2, 9),
-            name: name.charAt(0).toUpperCase() + name.slice(1),
-            price: price,
-            splitMode: 'equal',
-            splits: {}
-          })
-        }
-      }
-    })
-
-    // Parse totals, tax, and tip from the footer section lines
-    const footerLines = cleanedLines.slice(endOfItemsIndex)
-    footerLines.forEach((line) => {
-      const lowerLine = line.toLowerCase()
-      const match = line.match(priceRegex)
-      if (match) {
-        const priceStr = match[1].replace(',', '.')
-        const price = parseFloat(priceStr)
-
-        if (lowerLine.includes('tax') || lowerLine.includes('sales tax') || lowerLine.includes('vat')) {
-          if (detectedTax === null) detectedTax = price
-        } else if (lowerLine.includes('tip') || lowerLine.includes('tips') || lowerLine.includes('gratuity')) {
-          if (detectedTip === null) detectedTip = price
-        }
-      }
-    })
+    const { items: parsedItems, tax, tip } = parseReceiptTextPure(text)
 
     if (parsedItems.length > 0) {
       // Default to split equally among everyone
@@ -401,16 +293,22 @@ export default function App() {
         people.forEach(p => {
           defaultSplits[p] = true
         })
-        return { ...item, splits: defaultSplits }
+        return {
+          id: Math.random().toString(36).substring(2, 9),
+          name: item.name,
+          price: item.price,
+          splitMode: 'equal',
+          splits: defaultSplits
+        }
       })
       setItems(initialized)
     } else {
       setItems([])
     }
 
-    if (detectedTax !== null) setTaxInput(detectedTax.toFixed(2))
-    if (detectedTip !== null) {
-      setTipInput(detectedTip.toFixed(2))
+    if (tax !== null) setTaxInput(tax.toFixed(2))
+    if (tip !== null) {
+      setTipInput(tip.toFixed(2))
       setTipIsPercentage(false)
     }
   }
@@ -641,23 +539,6 @@ export default function App() {
     setTimeout(() => setCopied(false), 2000)
   }
 
-  // Pre-load demo image / skip OCR
-  const loadDemoData = () => {
-    setPeople(['Alice', 'Bob', 'Charlie'])
-    setItems([
-      { id: '1', name: 'Signature Hainan Chicken Over Rice', price: 31.10, splitMode: 'equal', splits: { 'Alice': true, 'Bob': true, 'Charlie': true } },
-      { id: '2', name: 'Signature Hainan Chicken (whole)', price: 31.99, splitMode: 'equal', splits: { 'Alice': true, 'Charlie': true } },
-      { id: '3', name: 'Spicy Pork Ear', price: 10.50, splitMode: 'equal', splits: { 'Bob': true } },
-      { id: '4', name: 'Salt & Pepper Chicken Cartilage', price: 10.50, splitMode: 'equal', splits: { 'Alice': true, 'Bob': true, 'Charlie': true } },
-      { id: '5', name: 'Special Hainan Chicken Noodle Soup', price: 13.95, splitMode: 'shares', splits: { 'Alice': 2, 'Bob': 1, 'Charlie': 1 } },
-      { id: '6', name: 'Iceberg Lettuce with House Sauce', price: 10.50, splitMode: 'equal', splits: { 'Alice': true, 'Bob': true } },
-      { id: '7', name: 'Oil Rice', price: 3.00, splitMode: 'percentage', splits: { 'Alice': 30, 'Bob': 70, 'Charlie': 0 } },
-    ])
-    setTaxInput('10.46')
-    setTipInput('21.96')
-    setTipIsPercentage(false)
-    setStep('items')
-  }
 
   return (
     <div className="min-h-screen bg-background text-primary font-sans antialiased flex flex-col transition-colors duration-200">
@@ -693,6 +574,19 @@ export default function App() {
             <span className="font-semibold text-sm truncate max-w-[120px] xs:max-w-[180px] sm:max-w-[280px]" title={activeSplit.name}>
               {activeSplit.name}
             </span>
+            <button
+              onClick={() => {
+                const newName = prompt('Rename this split:', activeSplit.name)
+                if (newName === null) return
+                const trimmed = newName.trim()
+                if (!trimmed) return
+                setSplits(prev => prev.map(s => s.id === activeSplit.id ? { ...s, name: trimmed } : s))
+              }}
+              className="p-1 rounded-lg text-muted hover:text-primary hover:bg-surface transition-colors shrink-0"
+              title="Rename active split"
+            >
+              <Edit2 className="w-3.5 h-3.5" />
+            </button>
           </div>
 
           <div className="flex items-center gap-2 animate-in fade-in">
@@ -703,12 +597,6 @@ export default function App() {
             >
               {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
-            <a 
-              href="/"
-              className="border border-border rounded-lg px-3 py-1.5 text-xs font-medium hover:bg-surface transition-colors"
-            >
-              Back to Portfolio
-            </a>
           </div>
         </div>
       </header>
@@ -766,12 +654,6 @@ export default function App() {
                 Skip scanning & enter items manually
               </button>
 
-              <button
-                onClick={loadDemoData}
-                className="text-xs text-accent hover:text-accent/80 transition-colors text-center font-medium"
-              >
-                Or load pre-configured demo receipt
-              </button>
             </div>
 
             {/* Offline processing notice */}
@@ -1478,7 +1360,7 @@ export default function App() {
                           {s.name}
                         </button>
                         
-                        <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity">
+                        <div className="flex items-center gap-1 opacity-60 md:opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity">
                           <button
                             onClick={() => handleRenameSplit(s.id, s.name)}
                             className="p-1 text-muted hover:text-primary hover:bg-background rounded-md transition-colors"
@@ -1655,4 +1537,261 @@ export function calculateResults({ people, items, taxInput, tipInput, tipIsPerce
     grandTotal,
     breakdown
   }
+}
+
+// Robust price parsing function
+export function parsePrice(line) {
+  // Try to find decimal matches first (e.g. 12.00, 40.0)
+  // Match digits followed by period/comma and 1-2 digits, or space separated cents preceded by dollar sign
+  const decimalRegex = /(?:\$|usd)?\b(\d+)[.,](\d{1,2})\b|(?:\$|usd)\s*(\d+)\s+(\d{2})\b/ig;
+  const decimalMatches = [...line.matchAll(decimalRegex)];
+  if (decimalMatches.length > 0) {
+    const lastMatch = decimalMatches[decimalMatches.length - 1];
+    const dollars = lastMatch[1] || lastMatch[3];
+    const cents = lastMatch[2] || lastMatch[4];
+    return {
+      price: parseFloat(`${dollars}.${cents}`),
+      matchStr: lastMatch[0],
+      index: line.lastIndexOf(lastMatch[0])
+    };
+  }
+
+  // If no decimals, try integer prices (e.g. 19, 6) near the end
+  const intRegex = /(?:\$|usd)?\b(\d+)\b(?:\s*[^0-9\s]{1,4})?\s*$/i;
+  const intMatch = line.match(intRegex);
+  if (intMatch) {
+    return {
+      price: parseFloat(intMatch[1]),
+      matchStr: intMatch[0],
+      index: line.lastIndexOf(intMatch[0])
+    };
+  }
+
+  return null;
+}
+
+// Pure parsing logic that takes text and extracts items, tax, and tip
+export function parseReceiptTextPure(text) {
+  const lines = text.split('\n')
+  const parsedItems = []
+  let detectedSubtotal = null
+  let detectedTax = null
+  let detectedTip = null
+  let detectedGrandTotal = null
+
+  // Clean up empty lines
+  const cleanedLines = lines
+    .map(line => line.trim())
+    .filter(line => line.length > 0)
+
+  // Regexes for common metadata formats to ignore
+  const dateRegex = /\b\d{1,4}[-/]\d{1,4}[-/]\d{2,4}\b/;
+  const phoneRegex = /\(?\b\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}\b/;
+  const timeRegex = /\b\d{1,2}:\d{2}(?::\d{2})?\s*(?:am|pm)?\b/i;
+  const monthRegex = /\b(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|january|february|march|april|june|july|august|september|october|november|december)\b/i;
+  const zipRegex = /\b\d{5}(?:-\d{4})?\b/;
+
+  const footerKeywords = [
+    'subtotal', 'sub total', 'sub-total', 'complete subtotal', 'sbtotal', 'sbtl',
+    'total', 'amount due', 'balance due', 'total due', 'grand total',
+    'tax', 'sales tax', 'vat', 'gst', 'pst', 'tox',
+    'tip', 'gratuity', 'service charge',
+    'due', 'es :'
+  ];
+
+  const metadataKeywords = [
+    'date', 'time', 'server', 'cashier', 'table', 'guest', 'guests', 'check', 'order #', 'order:', 'reprint',
+    'tel', 'phone', 'address', 'avenue', 'street', 'road', 'suite', 'www.', 'http', 'station:', 'dine in',
+    'ticket #', 'ticket:', 'togo', 't0g0', 'to-go',
+    'visa', 'chase', 'mastercard', 'amex', 'card', 'auth', 'authorization', 'aid', 'cafe', 'café', 'cpa', 'v4',
+    'markdown', 'harkdoun', 'plu#', 'plu '
+  ];
+
+  // Locate the logical boundaries of the "items area"
+  let endOfItemsIndex = cleanedLines.length
+  for (let i = 0; i < cleanedLines.length; i++) {
+    const lowerLine = cleanedLines[i].toLowerCase()
+    if (footerKeywords.some(keyword => lowerLine.includes(keyword))) {
+      endOfItemsIndex = i
+      break
+    }
+  }
+
+  let startOfItemsIndex = 0
+  for (let i = 0; i < endOfItemsIndex; i++) {
+    const lowerLine = cleanedLines[i].toLowerCase()
+    if (
+      lowerLine.includes('qty') || 
+      lowerLine.includes('item') || 
+      lowerLine.includes('price') || 
+      lowerLine.includes('desc')
+    ) {
+      startOfItemsIndex = i + 1
+      break
+    }
+  }
+
+  // Fallback if index boundaries are invalid
+  if (startOfItemsIndex >= endOfItemsIndex) {
+    startOfItemsIndex = 0
+  }
+
+  // Extract item lines
+  const itemLines = cleanedLines.slice(startOfItemsIndex, endOfItemsIndex)
+
+  itemLines.forEach((line) => {
+    const lower = line.toLowerCase();
+    
+    // Skip receipt metadata lines and non-item noise
+    if (
+      line.match(dateRegex) ||
+      line.match(phoneRegex) ||
+      line.match(timeRegex) ||
+      line.match(monthRegex) ||
+      line.match(zipRegex) ||
+      lower.includes('00 00 00') ||
+      metadataKeywords.some(keyword => lower.includes(keyword))
+    ) {
+      return;
+    }
+
+    // Skip unit price sub-lines, descriptions, or options in brackets/parentheses
+    if (
+      lower.includes('each') || 
+      lower.includes('per') || 
+      lower.match(/\d\]\s*$/) || // ends in digit + ] (like Tofu $3.00])
+      lower.endsWith(')') ||
+      (lower.startsWith('(') && lower.endsWith(')')) ||
+      (lower.startsWith('[') && lower.endsWith(']'))
+    ) {
+      return;
+    }
+
+    // Skip weight sub-lines common on grocery receipts (e.g., "1.72 lb @ $3.49/lb")
+    if (lower.match(/\d+\.?\d*\s*(lb|1b)\s*@/) || lower.match(/^\s*(lb|1b)\s*@/)) {
+      return;
+    }
+
+    const priceInfo = parsePrice(line);
+    if (priceInfo) {
+      const price = priceInfo.price;
+      
+      // Extract the name part before the matched price
+      let name = line.substring(0, priceInfo.index).trim();
+      
+      // Clean leading quantity, code prefixes, and trailing/leading punctuation
+      const prefixesToClean = /^(?:ddl|n\/a|ll|l|burg|bbs|scr|din\s+bf|din|hb|sd|sb\s+ca|sb|sub)\b\s*/i;
+      
+      name = name
+        .replace(/[§\u00A7*:;|=_]/g, '') // clean structural/noise symbols globally
+        .replace(/^[.-]+/, '') // clean leading periods/hyphens
+        .replace(/[.-]+$/, '') // clean trailing periods/hyphens
+        .trim()
+        .replace(/^\d+\s+/, '') // leading quantity digits like "1 "
+        .replace(/^x\d+\s+/i, '') // leading quantity with x like "x1 " or "x2 "
+        .replace(prefixesToClean, '') // dynamic prefix tags
+        .replace(/^[a-z]\d{1,3}\b\.?\s*/i, '') // code prefix like "S1.", "T3.", "C12."
+        .replace(/^\d+(\.\d+)*\.?\s*/, '') // leading index numbers like "30." or "1.109."
+        .replace(/\(\s*\(?\$?\s*\d+(?:[.,\s]\d{1,2})?\s*(?:each|per)?\s*\)?/ig, '') // parenthesized unit price info (closing paren optional)
+        .trim();
+
+      if (price > 0 && price < 1000) { // filter out Zip Code false positives or weird noise prices > $1000
+        if (!name) {
+          name = `Item $${price.toFixed(2)}`;
+        }
+        parsedItems.push({
+          name: name.charAt(0).toUpperCase() + name.slice(1),
+          price: price
+        });
+      }
+    }
+  });
+
+  // Mathematical fallback: if we find an item whose price is equal to the sum of all items before it,
+  // it is actually a Subtotal line that got treated as an item. Truncate items at that index.
+  let runningSum = 0;
+  for (let i = 0; i < parsedItems.length; i++) {
+    const price = parsedItems[i].price;
+    // Allow small decimal tolerance
+    if (i > 0 && Math.abs(runningSum - price) < 0.05) {
+      // Truncate!
+      parsedItems.splice(i);
+      break;
+    }
+    runningSum += price;
+  }
+
+  // Parse totals, tax, and tip from the footer section lines
+  const footerLines = cleanedLines.slice(endOfItemsIndex)
+  footerLines.forEach((line) => {
+    // Skip suggested tip calculations that contain '=' or '%' (to avoid double tip summing)
+    if (line.includes('=')) {
+      return;
+    }
+
+    const lowerLine = line.toLowerCase()
+    const priceInfo = parsePrice(line)
+    if (priceInfo) {
+      const price = priceInfo.price
+
+      if (
+        lowerLine.includes('subtotal') || 
+        lowerLine.includes('sub total') || 
+        lowerLine.includes('complete subtotal') || 
+        lowerLine.includes('es :') ||
+        (lowerLine.includes('total') && lowerLine.includes('item'))
+      ) {
+        if (detectedSubtotal === null) detectedSubtotal = price
+      } else if (
+        lowerLine.includes('tax') || 
+        lowerLine.includes('sales tax') || 
+        lowerLine.includes('vat') ||
+        lowerLine.includes('gst') ||
+        lowerLine.includes('pst') ||
+        lowerLine.includes('tox')
+      ) {
+        if (detectedTax === null) detectedTax = price
+      } else if (
+        lowerLine.includes('tip') || 
+        lowerLine.includes('tips') || 
+        lowerLine.includes('gratuity') ||
+        lowerLine.includes('service charge') ||
+        lowerLine.includes('charge')
+      ) {
+        // If we have service charge and tip, we can sum them up!
+        if (detectedTip === null) {
+          detectedTip = price
+        } else {
+          detectedTip += price
+        }
+      } else if (
+        lowerLine.includes('total') || 
+        lowerLine.includes('tota') || 
+        lowerLine.includes('totl') || 
+        lowerLine.includes('amount due') || 
+        lowerLine.includes('balance due') ||
+        lowerLine.includes('due')
+      ) {
+        if (detectedGrandTotal === null || price > detectedGrandTotal) {
+          detectedGrandTotal = price
+        }
+      }
+    }
+  })
+
+  // Mathematical fallback for missing or unparsed tip (e.g. Blue Moose Cafe where tip line is garbled)
+  if (detectedTip === null && detectedGrandTotal !== null && detectedSubtotal !== null) {
+    const diff = detectedGrandTotal - detectedSubtotal - (detectedTax || 0);
+    if (diff > 0.05) {
+      detectedTip = diff;
+    }
+  }
+
+  return {
+    items: parsedItems,
+    tax: detectedTax,
+    tip: detectedTip,
+    subtotal: detectedSubtotal,
+    grandTotal: detectedGrandTotal
+  };
 }

@@ -67,6 +67,12 @@ const expData = [
 
 const projData = [
     {
+        title: "Bill Splitter",
+        tags: ["React", "Tailwind CSS", "Tesseract.js", "OCR"],
+        desc: "A mobile-friendly receipt scanner and bill splitter app. Uses client-side Tesseract.js OCR to automatically parse items, tax, and tips from uploaded photos and divides costs proportionally among assignees.",
+        link: "/bill-splitter/"
+    },
+    {
         title: "NormalNvim",
         tags: ["Neovim", "Lua", "LSP", "DevEx"],
         desc: "A high-performance, lua-based Neovim distribution. Optimized for developer experience with custom LSP configurations, tree-sitter integration, and a curated plugin ecosystem.",
@@ -435,7 +441,14 @@ export default function App() {
                             {projData.map((proj, i) => {
                                 const hasMultipleLinks = proj.links && proj.links.length > 0;
                                 const CardWrapper = (proj.link && !hasMultipleLinks) ? 'a' : 'div';
-                                const wrapperProps = (proj.link && !hasMultipleLinks) ? { href: proj.link, target: "_blank", rel: "noopener noreferrer" } : {};
+                                const isExternal = proj.link && proj.link.startsWith('http');
+                                const wrapperProps = (proj.link && !hasMultipleLinks)
+                                    ? {
+                                        href: proj.link,
+                                        target: isExternal ? "_blank" : undefined,
+                                        rel: isExternal ? "noopener noreferrer" : undefined
+                                      }
+                                    : {};
 
                                 return (
                                     <CardWrapper
