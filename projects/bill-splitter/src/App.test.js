@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { calculateResults, parseReceiptTextPure } from './App'
+import { calculateResults, parseReceiptTextPure, isItemUnassignedPure } from './App'
 import fs from 'fs'
 import path from 'path'
 import Tesseract from 'tesseract.js'
@@ -206,6 +206,43 @@ describe('calculateResults split and math logic', () => {
     expect(results.totalSubtotal).toBe(0)
     expect(results.grandTotal).toBe(0)
     expect(results.breakdown.length).toBe(0)
+  })
+
+  it('should identify unassigned items correctly using isItemUnassignedPure', () => {
+    const people = ['Alice', 'Bob']
+    const item1 = { splitMode: 'equal', splits: {} }
+    const item2 = { splitMode: 'equal', splits: { Alice: false, Bob: false } }
+    const item3 = { splitMode: 'equal', splits: { Alice: true } }
+    
+    expect(isItemUnassignedPure(item1, people)).toBe(true)
+    expect(isItemUnassignedPure(item2, people)).toBe(true)
+    expect(isItemUnassignedPure(item3, people)).toBe(false)
+  })
+
+  it('should handle unassigned items in calculateResults safely by calculating zero subtotal', () => {
+    const people = ['Alice', 'Bob']
+    const items = [
+      {
+        id: '1',
+        name: 'Item A',
+        price: 20,
+        splitMode: 'equal',
+        splits: {}
+      }
+    ]
+    const results = calculateResults({
+      people,
+      items,
+      taxInput: '2.00',
+      tipInput: '10',
+      tipIsPercentage: true
+    })
+
+    expect(results.totalSubtotal).toBe(0)
+    expect(results.grandTotal).toBe(2) // tax is 2, tip is 0 since subtotal is 0
+    const aliceBreakdown = results.breakdown.find(p => p.name === 'Alice')
+    expect(aliceBreakdown.subtotal).toBe(0)
+    expect(aliceBreakdown.total).toBe(0)
   })
 })
 

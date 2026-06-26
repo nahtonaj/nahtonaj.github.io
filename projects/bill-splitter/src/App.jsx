@@ -26,6 +26,70 @@ import Tesseract from 'tesseract.js'
 import Cropper from 'cropperjs'
 import 'cropperjs/dist/cropper.css'
 
+// IndexedDB Helper to persist raw and cropped image binaries/base64 without exceeding localStorage quotas
+const dbName = "BillSplitterDB";
+const storeName = "images";
+
+function initDB() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(dbName, 1);
+    request.onerror = () => reject(request.error);
+    request.onsuccess = () => resolve(request.result);
+    request.onupgradeneeded = (e) => {
+      const db = e.target.result;
+      if (!db.objectStoreNames.contains(storeName)) {
+        db.createObjectStore(storeName);
+      }
+    };
+  });
+}
+
+async function saveImageToDB(id, dataUrl) {
+  try {
+    const db = await initDB();
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(storeName, "readwrite");
+      const store = tx.objectStore(storeName);
+      const request = store.put(dataUrl, id);
+      request.onsuccess = () => resolve();
+      request.onerror = () => reject(request.error);
+    });
+  } catch (e) {
+    console.error("Failed to save image to IndexedDB", e);
+  }
+}
+
+async function getImageFromDB(id) {
+  try {
+    const db = await initDB();
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(storeName, "readonly");
+      const store = tx.objectStore(storeName);
+      const request = store.get(id);
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+  } catch (e) {
+    console.error("Failed to get image from IndexedDB", e);
+    return null;
+  }
+}
+
+async function deleteImageFromDB(id) {
+  try {
+    const db = await initDB();
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(storeName, "readwrite");
+      const store = tx.objectStore(storeName);
+      const request = store.delete(id);
+      request.onsuccess = () => resolve();
+      request.onerror = () => reject(request.error);
+    });
+  } catch (e) {
+    console.error("Failed to delete image from IndexedDB", e);
+  }
+}
+
 export default function App() {
   const [darkMode, setDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -79,13 +143,42 @@ export default function App() {
     return splits[0].id
   })
 
-  // Persist splits list and active split ID
+  // Persist splits list (excluding large image base64 data to avoid localStorage quota limits) and active split ID
   useEffect(() => {
-    localStorage.setItem('bill_splits', JSON.stringify(splits))
+    const cleanedSplits = splits.map(s => {
+      const { imageSrc, croppedImage, ...rest } = s
+      return rest
+    })
+    localStorage.setItem('bill_splits', JSON.stringify(cleanedSplits))
   }, [splits])
 
   useEffect(() => {
     localStorage.setItem('current_split_id', currentSplitId)
+  }, [currentSplitId])
+
+  // Load images from IndexedDB when switching splits or reloading
+  useEffect(() => {
+    let active = true
+    const loadImages = async () => {
+      const srcImg = await getImageFromDB(`${currentSplitId}_src`)
+      const cropImg = await getImageFromDB(`${currentSplitId}_cropped`)
+      if (active) {
+        const updates = {}
+        if (srcImg && srcImg !== activeSplit.imageSrc) {
+          updates.imageSrc = srcImg
+        }
+        if (cropImg && cropImg !== activeSplit.croppedImage) {
+          updates.croppedImage = cropImg
+        }
+        if (Object.keys(updates).length > 0) {
+          updateActiveSplit(updates)
+        }
+      }
+    }
+    loadImages()
+    return () => {
+      active = false
+    }
   }, [currentSplitId])
 
   // Get active split data
@@ -119,10 +212,20 @@ export default function App() {
   const setImageSrc = (val) => {
     const next = typeof val === 'function' ? val(activeSplit.imageSrc) : val
     updateActiveSplit({ imageSrc: next })
+    if (next) {
+      saveImageToDB(`${activeSplit.id}_src`, next)
+    } else {
+      deleteImageFromDB(`${activeSplit.id}_src`)
+    }
   }
   const setCroppedImage = (val) => {
     const next = typeof val === 'function' ? val(activeSplit.croppedImage) : val
     updateActiveSplit({ croppedImage: next })
+    if (next) {
+      saveImageToDB(`${activeSplit.id}_cropped`, next)
+    } else {
+      deleteImageFromDB(`${activeSplit.id}_cropped`)
+    }
   }
   const setPeople = (val) => {
     const next = typeof val === 'function' ? val(activeSplit.people) : val
@@ -287,18 +390,13 @@ export default function App() {
     const { items: parsedItems, tax, tip } = parseReceiptTextPure(text)
 
     if (parsedItems.length > 0) {
-      // Default to split equally among everyone
       const initialized = parsedItems.map(item => {
-        const defaultSplits = {}
-        people.forEach(p => {
-          defaultSplits[p] = true
-        })
         return {
           id: Math.random().toString(36).substring(2, 9),
           name: item.name,
           price: item.price,
           splitMode: 'equal',
-          splits: defaultSplits
+          splits: {}
         }
       })
       setItems(initialized)
@@ -324,26 +422,9 @@ export default function App() {
     const updatedPeople = [...people, trimmed]
     setPeople(updatedPeople)
     setNewPersonName('')
-
-    // Update equal splits to include the new person
-    setItems(prevItems => 
-      prevItems.map(item => {
-        if (item.splitMode === 'equal') {
-          return {
-            ...item,
-            splits: { ...item.splits, [trimmed]: true }
-          }
-        }
-        return item
-      })
-    )
   }
 
   const handleRemovePerson = (name) => {
-    if (people.length <= 1) {
-      alert('Need at least one person!')
-      return
-    }
     setPeople(prev => prev.filter(p => p !== name))
 
     // Remove person from all item splits
@@ -365,10 +446,6 @@ export default function App() {
       splitMode: 'equal',
       splits: {}
     }
-    // Default split equally
-    people.forEach(p => {
-      newItem.splits[p] = true
-    })
     setItems([...items, newItem])
   }
 
@@ -407,11 +484,6 @@ export default function App() {
             })
           } else {
             nextSplits[personName] = !nextSplits[personName]
-          }
-
-          const hasSelected = Object.values(nextSplits).some(v => v === true)
-          if (!hasSelected) {
-            nextSplits[personName] = true
           }
 
           return { ...item, splitMode: nextMode, splits: nextSplits }
@@ -482,18 +554,7 @@ export default function App() {
     setEditingItem(null)
   }
 
-  const isItemUnassigned = (item) => {
-    if (item.splitMode === 'equal') {
-      return !people.some(p => item.splits[p] === true)
-    } else if (item.splitMode === 'shares') {
-      return !people.some(p => (item.splits[p] || 0) > 0)
-    } else if (item.splitMode === 'percentage') {
-      return !people.some(p => (item.splits[p] || 0) > 0)
-    } else if (item.splitMode === 'exact') {
-      return !people.some(p => (item.splits[p] || 0) > 0)
-    }
-    return true
-  }
+  const isItemUnassigned = (item) => isItemUnassignedPure(item, people)
 
   const handleFinalize = () => {
     if (items.length === 0) {
@@ -818,14 +879,14 @@ export default function App() {
                             type="text"
                             value={item.name}
                             onChange={(e) => handleUpdateItem(item.id, 'name', e.target.value)}
-                            className="flex-1 bg-background border border-transparent hover:border-border focus:border-accent rounded-lg px-2 py-1 text-sm font-semibold outline-none transition-colors"
+                            className="flex-1 bg-background border border-transparent hover:border-border focus:border-accent rounded-lg px-2 py-1 text-sm font-semibold outline-none transition-colors min-w-0"
                           />
                           {isItemUnassigned(item) && (
                             <span className="text-[10px] text-red-500 font-mono font-bold bg-red-500/10 border border-red-500/20 px-2 py-1 rounded-md shrink-0 self-center">
                               Unassigned
                             </span>
                           )}
-                          <div className="flex items-center bg-background border border-border rounded-lg px-2 py-1 w-24">
+                          <div className="flex items-center bg-background border border-border rounded-lg px-2 py-1 w-24 shrink-0">
                             <span className="text-xs text-muted mr-0.5 font-mono">$</span>
                             <input
                               type="number"
@@ -837,7 +898,7 @@ export default function App() {
                           </div>
                           <button
                             onClick={() => handleRemoveItem(item.id)}
-                            className="text-muted hover:text-red-500 rounded-lg p-1.5 hover:bg-background transition-colors"
+                            className="text-muted hover:text-red-500 rounded-lg p-1.5 hover:bg-background transition-colors shrink-0"
                             title="Delete Item"
                           >
                             <Trash2 className="w-4 h-4" />
@@ -1136,8 +1197,8 @@ export default function App() {
                         const initialSplits = {}
                         people.forEach(p => {
                           if (mode === 'shares') initialSplits[p] = 1
-                          else if (mode === 'percentage') initialSplits[p] = (100 / people.length).toFixed(1)
-                          else if (mode === 'exact') initialSplits[p] = (editingItem.price / people.length).toFixed(2)
+                          else if (mode === 'percentage') initialSplits[p] = people.length > 0 ? (100 / people.length).toFixed(1) : 0
+                          else if (mode === 'exact') initialSplits[p] = people.length > 0 ? (editingItem.price / people.length).toFixed(2) : 0
                           else initialSplits[p] = true
                         })
                         setEditSplits(initialSplits)
@@ -1537,6 +1598,20 @@ export function calculateResults({ people, items, taxInput, tipInput, tipIsPerce
     grandTotal,
     breakdown
   }
+}
+
+// Pure helper to check if an item has no assignees
+export function isItemUnassignedPure(item, people) {
+  if (item.splitMode === 'equal') {
+    return !people.some(p => item.splits[p] === true)
+  } else if (item.splitMode === 'shares') {
+    return !people.some(p => (item.splits[p] || 0) > 0)
+  } else if (item.splitMode === 'percentage') {
+    return !people.some(p => (item.splits[p] || 0) > 0)
+  } else if (item.splitMode === 'exact') {
+    return !people.some(p => (item.splits[p] || 0) > 0)
+  }
+  return true
 }
 
 // Robust price parsing function
