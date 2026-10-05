@@ -5,11 +5,12 @@
   "private": true,
   "type": "module",
   "workspaces": [
-    "projects/bill-splitter"
+    "projects/bill-splitter",
+    "projects/gymspot"
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build && npm run build --workspace=bill-splitter",
+    "build": "vite build && npm run build --workspace=bill-splitter && npm run build --workspace=gymspot",
     "preview": "vite preview"
   },
   "dependencies": {

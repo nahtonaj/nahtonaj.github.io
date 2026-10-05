@@ -67,6 +67,12 @@ const expData = [
 
 const projData = [
     {
+        title: "GymSpot",
+        tags: ["React", "Material Design 3", "Vite", "Discovery"],
+        desc: "A specialized gym discovery and review platform. Filter training facilities by equipment specs (calibrated plates, deadlift platforms), lifting culture, contrast recovery amenities, and exclusive member day passes.",
+        link: "/gymspot/"
+    },
+    {
         title: "Bill Splitter",
         tags: ["React", "Tailwind CSS", "Tesseract.js", "OCR"],
         desc: "A mobile-friendly receipt scanner and bill splitter app. Uses client-side Tesseract.js OCR to automatically parse items, tax, and tips from uploaded photos and divides costs proportionally among assignees.",
