@@ -1,0 +1,174 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GymSpotGymDatabase",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "region": { "type": "string" },
+        "generatedAt": { "type": "string" },
+        "totalGyms": { "type": "integer" },
+        "tagTaxonomy": { "type": "object" }
+      },
+      "required": ["region", "generatedAt", "totalGyms"]
+    },
+    "gyms": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Gym"
+      }
+    }
+  },
+  "required": ["metadata", "gyms"],
+  "definitions": {
+    "Gym": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "tagline": { "type": "string" },
+        "city": { "type": "string" },
+        "neighborhood": { "type": "string" },
+        "address": { "type": "string" },
+        "distanceMiles": { "type": "number" },
+        "priceLevel": { "type": "string", "enum": ["$", "$$", "$$$", "$$$$"] },
+        "rating": { "type": "number", "minimum": 1.0, "maximum": 5.0 },
+        "reviewCount": { "type": "integer", "minimum": 0 },
+        "matchPercentage": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "images": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "badges": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["verified-operator", "chalk-friendly", "gear-certified"]
+          }
+        },
+        "vibes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "hardcore-powerlifting",
+              "bodybuilding",
+              "boutique-wellness",
+              "crossfit-functional",
+              "commercial-fitness"
+            ]
+          }
+        },
+        "equipment": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "deadlift-platforms",
+              "calibrated-plates",
+              "chalk-allowed",
+              "dumbbells-over-120",
+              "specialty-bars",
+              "hammer-strength",
+              "turf-sled-strip",
+              "eleiko-rogue"
+            ]
+          }
+        },
+        "equipmentHighlights": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "amenities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "sauna",
+              "cold-plunge",
+              "showers",
+              "24-7-access",
+              "smoothie-bar"
+            ]
+          }
+        },
+        "training": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "personal-training",
+              "group-classes",
+              "open-gym",
+              "powerlifting-coaching"
+            ]
+          }
+        },
+        "dayPassAvailable": { "type": "boolean" },
+        "dayPassPrice": { "type": "number" },
+        "activeDeal": {
+          "type": ["object", "null"],
+          "properties": {
+            "id": { "type": "string" },
+            "title": { "type": "string" },
+            "description": { "type": "string" },
+            "code": { "type": "string" },
+            "discountType": { "type": "string", "enum": ["percentage", "free-pass"] },
+            "expiresAt": { "type": "string" },
+            "bonusPoints": { "type": "integer" }
+          },
+          "required": ["id", "title", "description", "code", "discountType", "expiresAt", "bonusPoints"]
+        },
+        "vibeMetrics": {
+          "type": "object",
+          "properties": {
+            "cleanliness": { "type": "number" },
+            "equipmentQuality": { "type": "number" },
+            "crowdLevel": { "type": "number" }
+          },
+          "required": ["cleanliness", "equipmentQuality", "crowdLevel"]
+        },
+        "openHours": { "type": "string" },
+        "reviews": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "authorName": { "type": "string" },
+              "authorDiscipline": { "type": "string" },
+              "authorBadges": { "type": "array", "items": { "type": "string" } },
+              "overallRating": { "type": "number" },
+              "subRatings": { "type": "object" },
+              "comment": { "type": "string" },
+              "date": { "type": "string" },
+              "helpfulCount": { "type": "integer" }
+            },
+            "required": ["id", "authorName", "authorDiscipline", "overallRating", "comment"]
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "tagline",
+        "city",
+        "neighborhood",
+        "address",
+        "priceLevel",
+        "rating",
+        "reviewCount",
+        "badges",
+        "vibes",
+        "equipment",
+        "equipmentHighlights",
+        "amenities",
+        "training",
+        "dayPassAvailable",
+        "vibeMetrics",
+        "openHours"
+      ]
+    }
+  }
+}

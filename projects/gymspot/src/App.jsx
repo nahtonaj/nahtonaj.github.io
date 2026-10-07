@@ -1,14 +1,13 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { GYM_DATA as data } from './data.js';
 
-
 export default function App() {
   
   // App Navigation State: 'explore' | 'deals' | 'buddies' | 'passport'
   const [activeTab, setActiveTab] = useState('explore');
 
   // Filter & Search State
-  const [selectedLocation, setSelectedLocation] = useState('All Locations');
+  const [selectedLocation, setSelectedLocation] = useState('All Greater Seattle');
   const [searchQuery, setSearchQuery] = useState('');
   const [activeQuickChip, setActiveQuickChip] = useState('all');
   const [selectedVibes, setSelectedVibes] = useState([]);
@@ -19,7 +18,7 @@ export default function App() {
   const [sortBy, setSortBy] = useState('rating'); // 'rating' | 'distance' | 'reviews'
 
   // User Interactive State
-  const [favorites, setFavorites] = useState(['apex-strength-denver']);
+  const [favorites, setFavorites] = useState(['klickway-athletics-slu', 'rain-city-fit-capitol-hill']);
   const [claimedDeals, setClaimedDeals] = useState({});
   const [ironPoints, setIronPoints] = useState(150);
   const [connectedBuddies, setConnectedBuddies] = useState({});
@@ -71,9 +70,15 @@ export default function App() {
   // Filtered Gyms Logic
   const filteredGyms = useMemo(() => {
     return gymsList.filter(gym => {
-      // Location
-      if (selectedLocation !== 'All Locations' && gym.city !== selectedLocation) {
-        return false;
+      // Location / Neighborhood Filter
+      if (selectedLocation !== 'All Greater Seattle' && selectedLocation !== 'All Locations') {
+        const matchesNeighborhood = gym.neighborhood.toLowerCase() === selectedLocation.toLowerCase() ||
+                                   gym.neighborhood.toLowerCase().includes(selectedLocation.toLowerCase()) ||
+                                   selectedLocation.toLowerCase().includes(gym.neighborhood.toLowerCase());
+        const matchesCity = gym.city.toLowerCase() === selectedLocation.toLowerCase();
+        if (!matchesNeighborhood && !matchesCity) {
+          return false;
+        }
       }
       
       // Keyword search (name, tagline, neighborhood, equipment highlights)
@@ -168,15 +173,30 @@ export default function App() {
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             {/* Location Selector */}
-            <div className="location-badge" onClick={() => {
-              const currIdx = data.locations.indexOf(selectedLocation);
-              const nextLoc = data.locations[(currIdx + 1) % data.locations.length];
-              setSelectedLocation(nextLoc);
-              showToast(`Switched location to: ${nextLoc}`);
-            }}>
+            <div className="location-badge" style={{ position: 'relative' }}>
               <span className="material-symbols-outlined" style={{ fontSize: '18px', color: '#ff5722' }}>location_on</span>
               <span>{selectedLocation}</span>
               <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>arrow_drop_down</span>
+              <select 
+                value={selectedLocation}
+                onChange={(e) => {
+                  setSelectedLocation(e.target.value);
+                  showToast(`Switched location to: ${e.target.value}`);
+                }}
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  opacity: 0,
+                  cursor: 'pointer'
+                }}
+              >
+                {data.locations.map(loc => (
+                  <option key={loc} value={loc}>{loc}</option>
+                ))}
+              </select>
             </div>
 
             {/* Iron Passport Points badge */}
@@ -296,7 +316,7 @@ export default function App() {
             <div className="results-meta">
               <span className="results-count">
                 Showing <strong>{filteredGyms.length}</strong> fitness facilities
-                {selectedLocation !== 'All Locations' && ` in ${selectedLocation}`}
+                {selectedLocation !== 'All Greater Seattle' && selectedLocation !== 'All Locations' && ` in ${selectedLocation}`}
               </span>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -1244,4 +1264,3 @@ function ReviewModal({ gym, onClose, onSubmit }) {
     </div>
   );
 }
-

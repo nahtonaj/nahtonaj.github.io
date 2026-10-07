@@ -1,145 +1,63 @@
-/**
- * GymSpot - Greater Seattle Gym Database
- * Pure verified data: SLU, Capitol Hill, Ballard, Bellevue, etc.
- */
-
-export const GYM_DATA = {
-  "locations": [
-    "All Greater Seattle",
-    "South Lake Union (SLU)",
-    "Capitol Hill",
-    "Ballard",
-    "Fremont",
-    "Belltown",
-    "Downtown",
-    "Central District",
-    "Bellevue",
-    "Redmond",
-    "White Center",
-    "Magnolia",
-    "Mountlake Terrace",
-    "Auburn",
-    "Tacoma"
-  ],
-  "filterOptions": {
-    "vibes": [
-      {
-        "id": "hardcore-powerlifting",
-        "label": "Hardcore & Powerlifting",
-        "icon": "fitness_center"
-      },
-      {
-        "id": "bodybuilding",
-        "label": "Bodybuilding Mecca",
-        "icon": "sports_gymnastics"
-      },
-      {
-        "id": "boutique-wellness",
-        "label": "Boutique & Recovery",
-        "icon": "spa"
-      },
-      {
-        "id": "crossfit-functional",
-        "label": "CrossFit & Hyrox",
-        "icon": "sprint"
-      },
-      {
-        "id": "commercial-fitness",
-        "label": "Commercial & Casual",
-        "icon": "groups"
-      }
+{
+  "metadata": {
+    "region": "Greater Seattle Area, WA",
+    "metro": "Seattle, WA",
+    "generatedAt": "2026-10-06T16:49:11.069159",
+    "totalGyms": 22,
+    "locations": [
+      "All Greater Seattle",
+      "South Lake Union (SLU)",
+      "Capitol Hill",
+      "Ballard",
+      "Fremont",
+      "Belltown",
+      "Downtown",
+      "Central District",
+      "Bellevue",
+      "Redmond",
+      "White Center",
+      "Magnolia",
+      "Mountlake Terrace",
+      "Auburn",
+      "Tacoma"
     ],
-    "equipment": [
-      {
-        "id": "deadlift-platforms",
-        "label": "Deadlift Platforms",
-        "icon": "inventory_2"
-      },
-      {
-        "id": "calibrated-plates",
-        "label": "Calibrated Kilo Plates",
-        "icon": "album"
-      },
-      {
-        "id": "chalk-allowed",
-        "label": "Chalk Allowed & Provided",
-        "icon": "blur_on"
-      },
-      {
-        "id": "dumbbells-over-120",
-        "label": "Dumbbells > 120 lbs",
-        "icon": "weight"
-      },
-      {
-        "id": "specialty-bars",
-        "label": "Specialty Bars (SSB/Trap)",
-        "icon": "horizontal_rule"
-      },
-      {
-        "id": "hammer-strength",
-        "label": "Hammer Strength & Plate-Loaded",
-        "icon": "precision_manufacturing"
-      },
-      {
-        "id": "turf-sled-strip",
-        "label": "Turf Sprint & Sled Lane",
-        "icon": "straighten"
-      },
-      {
-        "id": "eleiko-rogue",
-        "label": "Eleiko & Rogue Official Gear",
-        "icon": "verified"
-      }
-    ],
-    "amenities": [
-      {
-        "id": "sauna",
-        "label": "Traditional/Infrared Sauna",
-        "icon": "hot_tub"
-      },
-      {
-        "id": "cold-plunge",
-        "label": "Ice Bath & Cold Plunge",
-        "icon": "ac_unit"
-      },
-      {
-        "id": "showers",
-        "label": "Private Showers & Towels",
-        "icon": "shower"
-      },
-      {
-        "id": "24-7-access",
-        "label": "24/7 Keycard Access",
-        "icon": "lock_open"
-      },
-      {
-        "id": "smoothie-bar",
-        "label": "Smoothie & Shake Bar",
-        "icon": "local_cafe"
-      }
-    ],
-    "training": [
-      {
-        "id": "personal-training",
-        "label": "1-on-1 Coaching",
-        "icon": "person"
-      },
-      {
-        "id": "group-classes",
-        "label": "Group HIIT & Bootcamp",
-        "icon": "diversity_3"
-      },
-      {
-        "id": "open-gym",
-        "label": "Full Open Gym Access",
-        "icon": "door_front"
-      },
-      {
-        "id": "powerlifting-coaching",
-        "label": "Powerlifting Prep",
-        "icon": "sports_score"
-      }
-    ]
+    "tagTaxonomy": {
+      "vibes": [
+        "hardcore-powerlifting",
+        "bodybuilding",
+        "boutique-wellness",
+        "crossfit-functional",
+        "commercial-fitness"
+      ],
+      "equipment": [
+        "deadlift-platforms",
+        "calibrated-plates",
+        "chalk-allowed",
+        "dumbbells-over-120",
+        "specialty-bars",
+        "hammer-strength",
+        "turf-sled-strip",
+        "eleiko-rogue"
+      ],
+      "amenities": [
+        "sauna",
+        "cold-plunge",
+        "showers",
+        "24-7-access",
+        "smoothie-bar"
+      ],
+      "training": [
+        "personal-training",
+        "group-classes",
+        "open-gym",
+        "powerlifting-coaching"
+      ],
+      "badges": [
+        "verified-operator",
+        "chalk-friendly",
+        "gear-certified"
+      ]
+    }
   },
   "gyms": [
     {
@@ -1960,125 +1878,5 @@ export const GYM_DATA = {
         }
       ]
     }
-  ],
-  "gymBuddies": [
-    {
-      "id": "buddy-seattle-1",
-      "name": "Kai Lindstrom",
-      "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
-      "discipline": "Powerlifting / Heavy Bench",
-      "homeGymId": "rain-city-fit-capitol-hill",
-      "homeGymName": "Rain City Fit",
-      "neighborhood": "Capitol Hill",
-      "city": "Seattle, WA",
-      "preferredTimes": "Tue / Thu / Sat at 7:00 AM",
-      "goals": "Training for USAPL Washington State Championship. Need a consistent spotter on heavy bench & squat days.",
-      "lookingFor": "Dedicated Powerlifter & Spotter",
-      "experience": "4 years competitive powerlifting"
-    },
-    {
-      "id": "buddy-seattle-2",
-      "name": "Ethan Vance",
-      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
-      "discipline": "Bodybuilding / Heavy Hypertrophy",
-      "homeGymId": "klickway-athletics-slu",
-      "homeGymName": "KlickWay Athletics",
-      "neighborhood": "South Lake Union (SLU)",
-      "city": "Seattle, WA",
-      "preferredTimes": "Weekdays 6:00 PM (SLU)",
-      "goals": "Push-Pull-Legs progressive overload. Love MaxPump machines and intense drop sets.",
-      "lookingFor": "Serious Hypertrophy Partner",
-      "experience": "5 years bodybuilding"
-    },
-    {
-      "id": "buddy-seattle-3",
-      "name": "Maya Thomsen",
-      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
-      "discipline": "Olympic Lifting & Lap Swimming",
-      "homeGymId": "olympic-athletic-club-ballard",
-      "homeGymName": "Olympic Athletic Club",
-      "neighborhood": "Ballard",
-      "city": "Seattle, WA",
-      "preferredTimes": "Mon / Wed / Fri at 6:30 AM",
-      "goals": "Heavy back squats followed by lap recovery in the saline pool. Need an early morning accountability buddy.",
-      "lookingFor": "Early Morning Lifter & Swimmer",
-      "experience": "3 years strength & swimming"
-    },
-    {
-      "id": "buddy-seattle-4",
-      "name": "Sarah Kowalski",
-      "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80",
-      "discipline": "Olympic Weightlifting (USAW)",
-      "homeGymId": "aspire-athletics-fremont",
-      "homeGymName": "Aspire Athletics",
-      "neighborhood": "Fremont",
-      "city": "Seattle, WA",
-      "preferredTimes": "Tue / Thu at 5:30 PM + Sat morning",
-      "goals": "Technique drills for snatch and clean & jerk on wood platforms with Eleiko bars.",
-      "lookingFor": "Weightlifting Platform Partner",
-      "experience": "3 years Olympic weightlifting"
-    },
-    {
-      "id": "buddy-seattle-5",
-      "name": "Avery Chen",
-      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80",
-      "discipline": "Bouldering & Contrast Recovery",
-      "homeGymId": "seattle-bouldering-project-poplar",
-      "homeGymName": "Seattle Bouldering Project (Poplar)",
-      "neighborhood": "Central District",
-      "city": "Seattle, WA",
-      "preferredTimes": "Mon / Thu at 6:00 PM + Sat mornings",
-      "goals": "V6 bouldering problems on Kilter/Tension boards followed by cold plunge recovery.",
-      "lookingFor": "Climbing & Fitness Partner",
-      "experience": "4 years climbing & functional fitness"
-    },
-    {
-      "id": "buddy-seattle-6",
-      "name": "Devin Morales",
-      "avatar": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80",
-      "discipline": "Heavy Bodybuilding / Calibrated Iron",
-      "homeGymId": "tiger-gate-gym-bellevue",
-      "homeGymName": "Tiger Gate Gym",
-      "neighborhood": "Bellevue",
-      "city": "Seattle, WA",
-      "preferredTimes": "Weekdays 6:30 PM (Eastside)",
-      "goals": "High volume hypertrophy with calibrated steel plates and Hammer Strength machines.",
-      "lookingFor": "Intense Training Partner",
-      "experience": "6 years bodybuilding"
-    }
-  ],
-  "passportAchievements": [
-    {
-      "id": "emerald-nomad",
-      "title": "Emerald City Nomad",
-      "description": "Train at 5 different independent gyms across Greater Seattle.",
-      "icon": "flight_takeoff",
-      "unlocked": true,
-      "progress": "3 / 5 Gyms Visited"
-    },
-    {
-      "id": "chalk",
-      "title": "Chalk & Chains",
-      "description": "Review 3 verified powerlifting facilities with calibrated steel plates.",
-      "icon": "blur_on",
-      "unlocked": true,
-      "progress": "Unlocked (Gold Badge)"
-    },
-    {
-      "id": "dawn",
-      "title": "Dawn Patrol",
-      "description": "Check in for a workout before 6:30 AM.",
-      "icon": "wb_sunny",
-      "unlocked": true,
-      "progress": "Unlocked"
-    },
-    {
-      "id": "recovery",
-      "title": "Contrast Therapy Purist",
-      "description": "Log recovery sessions at 5 gyms featuring saunas and cold plunges.",
-      "icon": "ac_unit",
-      "unlocked": false,
-      "progress": "2 / 5 Gyms"
-    }
   ]
-};
+}
