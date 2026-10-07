@@ -120,8 +120,12 @@
           },
           "required": ["id", "title", "description", "code", "discountType", "expiresAt", "bonusPoints"]
         },
+        "phone": { "type": "string" },
+        "website": { "type": "string" },
+        "facilitySize": { "type": "string" },
+        "pricingNotes": { "type": "string" },
         "vibeMetrics": {
-          "type": "object",
+          "type": ["object", "null"],
           "properties": {
             "cleanliness": { "type": "number" },
             "equipmentQuality": { "type": "number" },
@@ -166,7 +170,6 @@
         "amenities",
         "training",
         "dayPassAvailable",
-        "vibeMetrics",
         "openHours"
       ]
     }

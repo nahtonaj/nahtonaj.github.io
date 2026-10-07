@@ -2,7 +2,7 @@
   "metadata": {
     "region": "Greater Seattle Area, WA",
     "metro": "Seattle, WA",
-    "generatedAt": "2026-10-06T16:49:11.069159",
+    "generatedAt": "2026-10-06T17:14:22.204508",
     "totalGyms": 22,
     "locations": [
       "All Greater Seattle",
@@ -63,18 +63,24 @@
     {
       "id": "klickway-athletics-slu",
       "name": "KlickWay Athletics",
-      "tagline": "24/7 high-energy iron house in SLU with competition squat racks, deadlift platforms, and exclusive MaxPump machinery.",
+      "tagline": "24/7 high-energy strength and bodybuilding gym in SLU with competition racks, deadlift platforms, and MaxPump machinery.",
       "city": "Seattle, WA",
       "neighborhood": "South Lake Union (SLU)",
       "address": "1317 Republican St, Seattle, WA 98109",
+      "phone": "(888) 400-1442",
+      "website": "https://klickwayathletics.com",
       "distanceMiles": 0.9,
       "priceLevel": "$$",
       "rating": 4.8,
       "reviewCount": 168,
-      "matchPercentage": 96,
+      "openHours": "24/7/365 Member Access | Staffed: Mon-Fri 9am-8pm, Sat-Sun 10am-5pm",
+      "facilitySize": "Dedicated 24/7 multi-room training floor with sprint turf",
+      "pricingNotes": "$20 Day Pass | 24/7 Monthly Memberships Available",
+      "dayPassAvailable": true,
+      "dayPassPrice": 20.0,
       "images": [
-        "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80"
+        "https://img.youtube.com/vi/UKzHqyno0H4/maxresdefault.jpg",
+        "https://img.youtube.com/vi/VJH-3KWujGQ/maxresdefault.jpg"
       ],
       "badges": [
         "verified-operator",
@@ -83,15 +89,15 @@
       ],
       "vibes": [
         "hardcore-powerlifting",
-        "bodybuilding",
-        "crossfit-functional"
+        "bodybuilding"
       ],
       "equipment": [
         "deadlift-platforms",
         "chalk-allowed",
-        "dumbbells-over-120",
         "hammer-strength",
-        "turf-sled-strip"
+        "dumbbells-over-120",
+        "turf-sled-strip",
+        "specialty-bars"
       ],
       "equipmentHighlights": [
         "Dedicated Deadlift Platforms & Chalk Stations",
@@ -107,75 +113,44 @@
         "personal-training",
         "open-gym"
       ],
-      "dayPassAvailable": true,
-      "dayPassPrice": 20.0,
-      "activeDeal": {
-        "id": "deal-klickway-1",
-        "title": "$15 24/7 Drop-In Day Pass",
-        "description": "Full day access to SLU's premier heavy lifting and bodybuilding floor.",
-        "code": "KLICKWAY247",
-        "discountType": "percentage",
-        "expiresAt": "2026-12-31",
-        "bonusPoints": 50
-      },
-      "vibeMetrics": {
-        "cleanliness": 4.7,
-        "equipmentQuality": 4.9,
-        "crowdLevel": 3.4
-      },
-      "openHours": "24/7/365 Keyless Access | Staffed: Mon-Fri 9am-8pm, Sat-Sun 10am-5pm",
-      "reviews": [
-        {
-          "id": "kw-r1",
-          "authorName": "Derrick Palmer",
-          "authorDiscipline": "Bodybuilder & Powerlifter",
-          "authorBadges": [
-            "verified-regular",
-            "powerlifter"
-          ],
-          "overallRating": 5.0,
-          "subRatings": {
-            "cleanliness": 4.7,
-            "equipmentQuality": 5.0,
-            "cultureVibe": 5.0,
-            "crowdLevel": 3.3
-          },
-          "comment": "Best heavy lifting gym in South Lake Union. Deadlift platforms, heavy dumbbells, and nobody complains about chalk or loud music. 24/7 access is a huge plus.",
-          "date": "5 days ago",
-          "helpfulCount": 32
-        }
-      ]
+      "activeDeal": null,
+      "reviews": []
     },
     {
       "id": "flow-fitness-slu",
       "name": "Flow Fitness (South Lake Union)",
-      "tagline": "Spacious SLU multi-disciplinary training club featuring heavy power racks, Olympic lifting platforms, turf, and cedar dry sauna.",
+      "tagline": "Spacious SLU strength and functional training club with commercial power racks, turf sprint track, and cedar dry sauna.",
       "city": "Seattle, WA",
       "neighborhood": "South Lake Union (SLU)",
       "address": "311 Terry Ave N, Seattle, WA 98109",
+      "phone": "(206) 621-7246",
+      "website": "https://flowfitnessseattle.com",
       "distanceMiles": 0.7,
       "priceLevel": "$$$",
       "rating": 4.8,
       "reviewCount": 224,
-      "matchPercentage": 94,
+      "openHours": "Mon-Fri: 5:30 AM – 10:00 PM | Sat: 8:00 AM – 7:00 PM | Sun: 8:00 AM – 5:00 PM",
+      "facilitySize": "Multi-studio functional club with open gym and recovery zones",
+      "pricingNotes": "$25 Day Pass | $105-$135/mo All-Access Membership",
+      "dayPassAvailable": true,
+      "dayPassPrice": 25.0,
       "images": [
-        "https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1200&q=80"
+        "https://cdn.prod.website-files.com/6930e7af2434eafce1fe5f2b/69363e5d06b128b743283e44_body-hz_0018_FlowFitness_001.webp",
+        "https://cdn.prod.website-files.com/6930e7af2434eafce1fe5f2b/69363e5d7aaa35d972cda263_body-sq-FlowModels51.webp"
       ],
       "badges": [
         "verified-operator",
         "gear-certified"
       ],
       "vibes": [
-        "bodybuilding",
-        "boutique-wellness",
-        "crossfit-functional",
-        "commercial-fitness"
+        "commercial-fitness",
+        "boutique-wellness"
       ],
       "equipment": [
         "deadlift-platforms",
         "hammer-strength",
-        "turf-sled-strip"
+        "turf-sled-strip",
+        "eleiko-rogue"
       ],
       "equipmentHighlights": [
         "Commercial Power Racks with Solid Wood Platforms",
@@ -192,59 +167,30 @@
         "group-classes",
         "open-gym"
       ],
-      "dayPassAvailable": true,
-      "dayPassPrice": 25.0,
-      "activeDeal": {
-        "id": "deal-flow-1",
-        "title": "Free 1-Day Guest Pass + Sauna Session",
-        "description": "Experience South Lake Union's premier functional fitness club and recovery sauna.",
-        "code": "FLOWSLU",
-        "discountType": "free-pass",
-        "expiresAt": "2026-11-30",
-        "bonusPoints": 60
-      },
-      "vibeMetrics": {
-        "cleanliness": 4.9,
-        "equipmentQuality": 4.8,
-        "crowdLevel": 3.7
-      },
-      "openHours": "Mon-Fri: 5:30 AM – 10:00 PM | Sat: 8:00 AM – 7:00 PM | Sun: 8:00 AM – 5:00 PM",
-      "reviews": [
-        {
-          "id": "flow-r1",
-          "authorName": "Jessica Miller",
-          "authorDiscipline": "Strength & Yoga",
-          "authorBadges": [
-            "verified-regular"
-          ],
-          "overallRating": 4.9,
-          "subRatings": {
-            "cleanliness": 5.0,
-            "equipmentQuality": 4.8,
-            "cultureVibe": 4.8,
-            "crowdLevel": 3.8
-          },
-          "comment": "Clean, spacious, and well equipped. Real power racks and platforms for heavy lifting, plus the dry sauna and towel service make getting ready for work so easy.",
-          "date": "1 week ago",
-          "helpfulCount": 25
-        }
-      ]
+      "activeDeal": null,
+      "reviews": []
     },
     {
       "id": "rain-city-fit-capitol-hill",
       "name": "Rain City Fit",
-      "tagline": "Vibrant Capitol Hill training facility with 19 Rogue squat racks, Cybex selectorized lines, and inclusive lifting culture.",
+      "tagline": "18,000 sq ft multi-level Capitol Hill gym with 19 Rogue squat racks, Cybex selectorized lines, and inclusive lifting culture.",
       "city": "Seattle, WA",
       "neighborhood": "Capitol Hill",
       "address": "1516 11th Ave, Seattle, WA 98122",
+      "phone": "(206) 557-4712",
+      "website": "https://raincityfit.com",
       "distanceMiles": 1.1,
       "priceLevel": "$$",
       "rating": 4.9,
       "reviewCount": 312,
-      "matchPercentage": 98,
+      "openHours": "4:00 AM – 12:00 AM Daily (365 Days / Year)",
+      "facilitySize": "18,000 sq ft across multiple floors",
+      "pricingNotes": "$14 (+ tax) Day Pass via GymMaster App | $75-$95/mo Membership",
+      "dayPassAvailable": true,
+      "dayPassPrice": 14.0,
       "images": [
-        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1200&q=80"
+        "https://images.squarespace-cdn.com/content/v1/697a87a07c03202f9bbe7c56/1769637801460-HWJW0PTXIRQHDEPA99R6/DSCF6221.JPG",
+        "https://images.squarespace-cdn.com/content/v1/697a87a07c03202f9bbe7c56/15ce370a-af9e-47ae-a4eb-171ee933c5d1/large+logo.png"
       ],
       "badges": [
         "verified-operator",
@@ -254,7 +200,7 @@
       "vibes": [
         "hardcore-powerlifting",
         "bodybuilding",
-        "crossfit-functional"
+        "commercial-fitness"
       ],
       "equipment": [
         "deadlift-platforms",
@@ -273,62 +219,32 @@
         "showers"
       ],
       "training": [
+        "personal-training",
         "open-gym"
       ],
-      "dayPassAvailable": true,
-      "dayPassPrice": 14.0,
-      "activeDeal": {
-        "id": "deal-rcf-1",
-        "title": "$10 Drop-In Day Pass (Save 30%)",
-        "description": "Full day access to Capitol Hill's premier strength floor via GymMaster digital entry.",
-        "code": "RAINCITY10",
-        "discountType": "percentage",
-        "expiresAt": "2026-12-31",
-        "bonusPoints": 50
-      },
-      "vibeMetrics": {
-        "cleanliness": 4.8,
-        "equipmentQuality": 4.9,
-        "crowdLevel": 3.6
-      },
-      "openHours": "4:00 AM – 12:00 AM Daily (365 Days / Year)",
-      "reviews": [
-        {
-          "id": "rcf-r1",
-          "authorName": "Samira Chen",
-          "authorDiscipline": "Powerlifter & Strength Coach",
-          "authorBadges": [
-            "verified-regular",
-            "powerlifter"
-          ],
-          "overallRating": 5.0,
-          "subRatings": {
-            "cleanliness": 4.9,
-            "equipmentQuality": 5.0,
-            "cultureVibe": 5.0,
-            "crowdLevel": 3.5
-          },
-          "comment": "19 Rogue racks means I never have to alter my squat routine during peak hours. Super welcoming, inclusive crowd, and heavy chalk is completely fine.",
-          "date": "1 week ago",
-          "helpfulCount": 38
-        }
-      ]
+      "activeDeal": null,
+      "reviews": []
     },
     {
       "id": "rcf-barbell-club-capitol-hill",
       "name": "RCF Barbell Club & Powerbottom",
-      "tagline": "Dedicated heavy barbell sanctum. IPF combo racks, calibrated steel, strongman yokes, and zero commercial distractions.",
+      "tagline": "Dedicated heavy barbell and power athletics den. Competition combo racks, calibrated iron, strongman yokes, and zero fluff.",
       "city": "Seattle, WA",
       "neighborhood": "Capitol Hill",
       "address": "1318 E Pine St, Seattle, WA 98122",
+      "phone": "(206) 557-4712",
+      "website": "https://rcfbarbellclub.com",
       "distanceMiles": 1.3,
       "priceLevel": "$$",
       "rating": 5.0,
       "reviewCount": 165,
-      "matchPercentage": 99,
+      "openHours": "24/7 Keycard Member Access",
+      "facilitySize": "Dedicated barbell & strongman facility",
+      "pricingNotes": "$15 Drop-In Pass | Add-on to Rain City Fit membership",
+      "dayPassAvailable": true,
+      "dayPassPrice": 15.0,
       "images": [
-        "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=1200&q=80"
+        "https://images.squarespace-cdn.com/content/v1/697a87a07c03202f9bbe7c56/1769637801460-HWJW0PTXIRQHDEPA99R6/DSCF6221.JPG"
       ],
       "badges": [
         "verified-operator",
@@ -336,15 +252,14 @@
         "gear-certified"
       ],
       "vibes": [
-        "hardcore-powerlifting",
-        "crossfit-functional",
-        "commercial-fitness"
+        "hardcore-powerlifting"
       ],
       "equipment": [
+        "deadlift-platforms",
         "calibrated-plates",
         "chalk-allowed",
         "specialty-bars",
-        "turf-sled-strip"
+        "dumbbells-over-120"
       ],
       "equipmentHighlights": [
         "Competition Squat & Bench Combo Racks",
@@ -353,65 +268,37 @@
         "Strongman Yokes, Farmers Walk Handles & Atlas Sleds"
       ],
       "amenities": [
+        "showers",
         "24-7-access"
       ],
       "training": [
+        "powerlifting-coaching",
         "open-gym"
       ],
-      "dayPassAvailable": true,
-      "dayPassPrice": 15.0,
-      "activeDeal": {
-        "id": "deal-rcf-bb-1",
-        "title": "Free Chalk & Day Pass for Traveling Lifters",
-        "description": "Drop in for a heavy competition training session with calibrated steel plates.",
-        "code": "RCFBARBELL",
-        "discountType": "free-pass",
-        "expiresAt": "2026-11-30",
-        "bonusPoints": 75
-      },
-      "vibeMetrics": {
-        "cleanliness": 4.7,
-        "equipmentQuality": 5.0,
-        "crowdLevel": 3.2
-      },
-      "openHours": "24/7 Keyless Access for Barbell Members",
-      "reviews": [
-        {
-          "id": "rcf-bb-r1",
-          "authorName": "Marcus Vance",
-          "authorDiscipline": "USAPL Competitor",
-          "authorBadges": [
-            "verified-regular",
-            "powerlifter"
-          ],
-          "overallRating": 5.0,
-          "subRatings": {
-            "cleanliness": 4.8,
-            "equipmentQuality": 5.0,
-            "cultureVibe": 5.0,
-            "crowdLevel": 3.0
-          },
-          "comment": "Pure unadulterated powerlifting. Competition bars are razor sharp, plates are calibrated, and nobody complains about dropped deadlifts.",
-          "date": "4 days ago",
-          "helpfulCount": 45
-        }
-      ]
+      "activeDeal": null,
+      "reviews": []
     },
     {
       "id": "henrys-gymnasium-capitol-hill",
       "name": "Henry's Gymnasium",
-      "tagline": "Aesthetic bodybuilding and recovery temple featuring German-engineered Gym80 machinery, posing room, and Finnish sauna.",
+      "tagline": "Aesthetic bodybuilding and recovery temple featuring German Gym80 machinery, posing room, and Finnish sauna.",
       "city": "Seattle, WA",
       "neighborhood": "Capitol Hill",
       "address": "1617 Boylston St, Seattle, WA 98122",
+      "phone": "(206) 644-7797",
+      "website": "https://henrysgymnasium.com",
       "distanceMiles": 0.9,
       "priceLevel": "$$$",
       "rating": 4.9,
       "reviewCount": 245,
-      "matchPercentage": 96,
+      "openHours": "Mon-Fri: 6:00 AM – 10:00 PM | Sat-Sun: 8:00 AM – 6:00 PM",
+      "facilitySize": "Curated athletic sanctuary with recovery suite",
+      "pricingNotes": "$25 Day Pass | $130-$175/mo Full Membership",
+      "dayPassAvailable": true,
+      "dayPassPrice": 25.0,
       "images": [
-        "https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1200&q=80"
+        "https://henrysgymnasium.com/wp-content/uploads/2025/12/best-gym-in-seattle-henrys-gymnasium.gif",
+        "https://henrysgymnasium.com/wp-content/uploads/2026/05/Sanctuary_Identity_Sanctuary_.png"
       ],
       "badges": [
         "verified-operator",
@@ -422,87 +309,62 @@
         "boutique-wellness"
       ],
       "equipment": [
+        "hammer-strength",
         "dumbbells-over-120",
-        "hammer-strength"
+        "specialty-bars"
       ],
       "equipmentHighlights": [
         "Imported German Gym80 Plate-Loaded Equipment",
         "Dedicated Posing Room with Contest Accent Lighting",
-        "Dumbbells Extended to 150 lbs",
+        "Heavy Dumbbells Extended to 150 lbs",
         "Communal Finnish Sauna & Red Light Recovery Suite"
       ],
       "amenities": [
         "sauna",
-        "cold-plunge"
+        "showers",
+        "smoothie-bar"
       ],
       "training": [
+        "personal-training",
         "open-gym"
       ],
-      "dayPassAvailable": true,
-      "dayPassPrice": 25.0,
-      "activeDeal": {
-        "id": "deal-henrys-1",
-        "title": "$20 Day Pass + Red Light Recovery Session",
-        "description": "Full access to Gym80 machines and recovery suite on Capitol Hill.",
-        "code": "HENRYSGLOW",
-        "discountType": "percentage",
-        "expiresAt": "2026-11-30",
-        "bonusPoints": 60
-      },
-      "vibeMetrics": {
-        "cleanliness": 4.9,
-        "equipmentQuality": 5.0,
-        "crowdLevel": 3.7
-      },
-      "openHours": "Mon-Fri: 6:00 AM – 10:00 PM | Sat-Sun: 8:00 AM – 6:00 PM",
-      "reviews": [
-        {
-          "id": "henrys-r1",
-          "authorName": "Lucas Silva",
-          "authorDiscipline": "Classic Physique Competitor",
-          "authorBadges": [
-            "verified-regular"
-          ],
-          "overallRating": 5.0,
-          "subRatings": {
-            "cleanliness": 5.0,
-            "equipmentQuality": 5.0,
-            "cultureVibe": 4.9,
-            "crowdLevel": 3.8
-          },
-          "comment": "The Gym80 machines provide unmatched biomechanics and strength curves. The posing room lighting makes physique prep easy, and the sauna is top notch.",
-          "date": "1 week ago",
-          "helpfulCount": 33
-        }
-      ]
+      "activeDeal": null,
+      "reviews": []
     },
     {
       "id": "olympic-athletic-club-ballard",
       "name": "Olympic Athletic Club",
-      "tagline": "Ballard’s historic multi-level athletic club boasting twin swimming pools, multi-floor strength rooms, and luxury spa saunas.",
+      "tagline": "Ballard landmark athletic club with twin heated swimming pools, multi-floor strength suites, and private spa saunas.",
       "city": "Seattle, WA",
       "neighborhood": "Ballard",
       "address": "5301 Leary Ave NW, Seattle, WA 98107",
+      "phone": "(206) 789-5010",
+      "website": "https://olympicathleticclub.com",
       "distanceMiles": 4.8,
       "priceLevel": "$$$",
       "rating": 4.7,
       "reviewCount": 420,
-      "matchPercentage": 93,
+      "openHours": "Mon-Fri: 5:00 AM – 11:00 PM | Sat-Sun: 6:00 AM – 9:00 PM",
+      "facilitySize": "Historic multi-level athletic club with pools & courts",
+      "pricingNotes": "$30 Day Pass (3 hours free member parking) | Full Memberships",
+      "dayPassAvailable": true,
+      "dayPassPrice": 30.0,
       "images": [
-        "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80"
+        "https://www.olympicathleticclub.com/wp-content/uploads/2023/08/4-Eva-Main-Floor-Weights-2014-1-scaled-e1692966829329.webp",
+        "https://www.olympicathleticclub.com/wp-content/uploads/2023/09/Pol.png"
       ],
       "badges": [
         "verified-operator",
         "gear-certified"
       ],
       "vibes": [
-        "bodybuilding",
-        "boutique-wellness",
-        "commercial-fitness"
+        "commercial-fitness",
+        "boutique-wellness"
       ],
       "equipment": [
-        "hammer-strength"
+        "hammer-strength",
+        "deadlift-platforms",
+        "turf-sled-strip"
       ],
       "equipmentHighlights": [
         "Multi-Level Free Weight & Power Rack Floors",
@@ -512,78 +374,52 @@
       ],
       "amenities": [
         "sauna",
-        "showers"
+        "showers",
+        "smoothie-bar"
       ],
       "training": [
         "personal-training",
+        "group-classes",
         "open-gym"
       ],
-      "dayPassAvailable": true,
-      "dayPassPrice": 30.0,
-      "activeDeal": {
-        "id": "deal-oac-1",
-        "title": "Free 1-Day Pass with Pool & Sauna Access",
-        "description": "Experience Ballard's landmark wellness and strength club with complimentary parking.",
-        "code": "BALLARDVIBE",
-        "discountType": "free-pass",
-        "expiresAt": "2026-12-15",
-        "bonusPoints": 60
-      },
-      "vibeMetrics": {
-        "cleanliness": 4.8,
-        "equipmentQuality": 4.7,
-        "crowdLevel": 3.9
-      },
-      "openHours": "Mon-Fri: 5:00 AM – 11:00 PM | Sat-Sun: 6:00 AM – 9:00 PM",
-      "reviews": [
-        {
-          "id": "oac-r1",
-          "authorName": "Hannah Lindqvist",
-          "authorDiscipline": "Triathlete & Lifter",
-          "authorBadges": [
-            "verified-regular"
-          ],
-          "overallRating": 4.8,
-          "subRatings": {
-            "cleanliness": 4.8,
-            "equipmentQuality": 4.7,
-            "cultureVibe": 4.8,
-            "crowdLevel": 4.0
-          },
-          "comment": "Everything in one place: squat racks, dumbbell floor, two lap pools, and steam/sauna in the locker room. Unmatched community anchor in Ballard.",
-          "date": "2 weeks ago",
-          "helpfulCount": 27
-        }
-      ]
+      "activeDeal": null,
+      "reviews": []
     },
     {
       "id": "ballard-health-club-ballard",
       "name": "Ballard Health Club",
-      "tagline": "Locally-owned neighborhood health club with 24/7 PLUS access, cedar wood saunas, and extensive strength zones.",
+      "tagline": "Locally-owned independent gym on Market St with 24/7 PLUS access, cedar wood saunas, and extensive strength zones.",
       "city": "Seattle, WA",
       "neighborhood": "Ballard",
       "address": "2208 NW Market St, Seattle, WA 98107",
+      "phone": "(206) 706-4882",
+      "website": "https://ballardhealthclub.com",
       "distanceMiles": 4.9,
       "priceLevel": "$$",
       "rating": 4.7,
       "reviewCount": 289,
-      "matchPercentage": 92,
+      "openHours": "Front Desk: Mon-Fri 5:30am-10pm, Sat-Sun 7am-8pm | 24/7 PLUS Access",
+      "facilitySize": "Community health & strength facility",
+      "pricingNotes": "$15 Day Pass | $49-$69/mo Basic & 24/7 PLUS Plans",
+      "dayPassAvailable": true,
+      "dayPassPrice": 15.0,
       "images": [
-        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1200&q=80"
+        "https://images.squarespace-cdn.com/content/v1/599f1926f5e231b03da46178/1584728299576-NRTA8ZY7N891P2DAIC5U/IMG_7423.JPG",
+        "https://images.squarespace-cdn.com/content/v1/599f1926f5e231b03da46178/835b2e87-9004-4514-a573-135454fdd76f/BHC+Top+Banner+for+FALL+FORWARD+1700+x+400.png"
       ],
       "badges": [
         "verified-operator",
-        "gear-certified"
+        "chalk-friendly"
       ],
       "vibes": [
-        "bodybuilding",
-        "boutique-wellness",
-        "crossfit-functional"
+        "commercial-fitness",
+        "boutique-wellness"
       ],
       "equipment": [
+        "deadlift-platforms",
         "hammer-strength",
-        "turf-sled-strip"
+        "turf-sled-strip",
+        "chalk-allowed"
       ],
       "equipmentHighlights": [
         "Dedicated Free Weight Room & Power Racks",
@@ -597,74 +433,49 @@
         "24-7-access"
       ],
       "training": [
+        "personal-training",
+        "group-classes",
         "open-gym"
       ],
-      "dayPassAvailable": true,
-      "dayPassPrice": 15.0,
-      "activeDeal": {
-        "id": "deal-bhc-1",
-        "title": "$10 Community Day Pass (Save 33%)",
-        "description": "Experience Ballard's friendliest independent neighborhood gym and saunas.",
-        "code": "BHCBALLARD",
-        "discountType": "percentage",
-        "expiresAt": "2026-12-31",
-        "bonusPoints": 40
-      },
-      "vibeMetrics": {
-        "cleanliness": 4.7,
-        "equipmentQuality": 4.6,
-        "crowdLevel": 3.7
-      },
-      "openHours": "Front Desk: Mon-Fri 5:30am-10pm, Sat-Sun 7am-8pm | 24/7 PLUS Access",
-      "reviews": [
-        {
-          "id": "bhc-r1",
-          "authorName": "Ingrid Berg",
-          "authorDiscipline": "Functional Strength",
-          "authorBadges": [
-            "verified-regular"
-          ],
-          "overallRating": 4.8,
-          "subRatings": {
-            "cleanliness": 4.8,
-            "equipmentQuality": 4.6,
-            "cultureVibe": 4.9,
-            "crowdLevel": 3.6
-          },
-          "comment": "Genuine neighborhood vibe. Great squat racks, good dumbbell selection, and the cedar sauna after lifting is the cherry on top.",
-          "date": "3 weeks ago",
-          "helpfulCount": 18
-        }
-      ]
+      "activeDeal": null,
+      "reviews": []
     },
     {
       "id": "aspire-athletics-fremont",
       "name": "Aspire Athletics",
-      "tagline": "24/7 community strength, Olympic weightlifting, and powerlifting facility overlooking Lake Union in Fremont.",
+      "tagline": "24/7 community strength, Olympic weightlifting, and powerlifting facility on Aurora Ave overlooking Lake Union.",
       "city": "Seattle, WA",
       "neighborhood": "Fremont",
       "address": "4100 Aurora Ave N, Seattle, WA 98103",
+      "phone": "(206) 420-2825",
+      "website": "https://aspireathleticsseattle.com",
       "distanceMiles": 3.2,
       "priceLevel": "$$",
       "rating": 4.9,
       "reviewCount": 188,
-      "matchPercentage": 97,
+      "openHours": "24/7 Keycard Member Access | Staffed: Mon-Thu 5am-8pm, Fri 5am-7pm, Sat 6am-4pm",
+      "facilitySize": "Open 24/7 functional lifting facility",
+      "pricingNotes": "$15 Day Pass | $85-$110/mo 24/7 Memberships",
+      "dayPassAvailable": true,
+      "dayPassPrice": 15.0,
       "images": [
-        "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80"
+        "http://static1.squarespace.com/static/662a74df31317f2d8d430984/t/6a53f4bae5ed822c37e0bd00/1783887034436/IMG_0946.JPG"
       ],
       "badges": [
         "verified-operator",
+        "chalk-friendly",
         "gear-certified"
       ],
       "vibes": [
-        "hardcore-powerlifting"
+        "hardcore-powerlifting",
+        "bodybuilding"
       ],
       "equipment": [
         "deadlift-platforms",
-        "dumbbells-over-120",
-        "turf-sled-strip",
-        "eleiko-rogue"
+        "calibrated-plates",
+        "chalk-allowed",
+        "eleiko-rogue",
+        "specialty-bars"
       ],
       "equipmentHighlights": [
         "Olympic Weightlifting Wood Platforms & Eleiko Bars",
@@ -677,46 +488,12 @@
         "24-7-access"
       ],
       "training": [
+        "powerlifting-coaching",
         "personal-training",
         "open-gym"
       ],
-      "dayPassAvailable": true,
-      "dayPassPrice": 15.0,
-      "activeDeal": {
-        "id": "deal-aspire-1",
-        "title": "$12 24/7 Intro Day Pass",
-        "description": "Experience 24/7 keyless Olympic lifting and powerlifting in Fremont.",
-        "code": "ASPIRE247",
-        "discountType": "percentage",
-        "expiresAt": "2026-12-31",
-        "bonusPoints": 50
-      },
-      "vibeMetrics": {
-        "cleanliness": 4.8,
-        "equipmentQuality": 4.9,
-        "crowdLevel": 3.5
-      },
-      "openHours": "24/7 Keycard Member Access | Staffed: Mon-Thu 5am-8pm, Fri 5am-7pm, Sat 6am-4pm",
-      "reviews": [
-        {
-          "id": "aspire-r1",
-          "authorName": "Elena Rostova",
-          "authorDiscipline": "Olympic Weightlifter",
-          "authorBadges": [
-            "verified-regular"
-          ],
-          "overallRating": 5.0,
-          "subRatings": {
-            "cleanliness": 4.9,
-            "equipmentQuality": 5.0,
-            "cultureVibe": 4.9,
-            "crowdLevel": 3.4
-          },
-          "comment": "The best Olympic lifting environment in Fremont/Wallingford. Solid wood platforms, Eleiko barbells, and plenty of chalk.",
-          "date": "2 weeks ago",
-          "helpfulCount": 29
-        }
-      ]
+      "activeDeal": null,
+      "reviews": []
     },
     {
       "id": "transform-180-belltown",
@@ -725,30 +502,35 @@
       "city": "Seattle, WA",
       "neighborhood": "Belltown",
       "address": "140 4th Ave N, Ste 150, Seattle, WA 98109",
+      "phone": "(206) 535-8664",
+      "website": "https://transform180training.com",
       "distanceMiles": 0.8,
       "priceLevel": "$$$",
       "rating": 4.8,
       "reviewCount": 178,
-      "matchPercentage": 94,
+      "openHours": "24/7/365 Keyless Access via Kisi Mobile App",
+      "facilitySize": "Private boutique training studio with showers",
+      "pricingNotes": "$20 Day Pass | Multi-day passes & private coaching",
+      "dayPassAvailable": true,
+      "dayPassPrice": 20.0,
       "images": [
-        "https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80"
+        "https://transform180training.com/wp-content/uploads/2026/06/partner-training-echo-bike-cardio-gym.webp",
+        "https://transform180training.com/wp-content/uploads/2026/06/personal-trainer-trx-suspension-training-683x1024.webp"
       ],
       "badges": [
         "verified-operator",
         "gear-certified"
       ],
       "vibes": [
-        "hardcore-powerlifting",
-        "bodybuilding",
         "boutique-wellness",
-        "crossfit-functional"
+        "bodybuilding"
       ],
       "equipment": [
+        "deadlift-platforms",
         "calibrated-plates",
+        "eleiko-rogue",
         "hammer-strength",
-        "turf-sled-strip",
-        "eleiko-rogue"
+        "turf-sled-strip"
       ],
       "equipmentHighlights": [
         "Eleiko IPF Barbells & Calibrated Bumpers",
@@ -757,66 +539,37 @@
         "Private Shower Suites & Complimentary Towels"
       ],
       "amenities": [
-        "showers",
-        "24-7-access"
+        "24-7-access",
+        "showers"
       ],
       "training": [
         "personal-training",
         "open-gym"
       ],
-      "dayPassAvailable": true,
-      "dayPassPrice": 20.0,
-      "activeDeal": {
-        "id": "deal-t180-1",
-        "title": "20% Off 24/7 Visitor Multi-Day Pass",
-        "description": "Keyless Bluetooth entry via the Kisi app for round-the-clock training.",
-        "code": "T180SEATTLE",
-        "discountType": "percentage",
-        "expiresAt": "2026-12-31",
-        "bonusPoints": 50
-      },
-      "vibeMetrics": {
-        "cleanliness": 4.9,
-        "equipmentQuality": 4.9,
-        "crowdLevel": 3.4
-      },
-      "openHours": "24/7/365 Keyless Access via Kisi App",
-      "reviews": [
-        {
-          "id": "t180-r1",
-          "authorName": "Courtney Ross",
-          "authorDiscipline": "Strength & Conditioning",
-          "authorBadges": [
-            "verified-regular"
-          ],
-          "overallRating": 4.9,
-          "subRatings": {
-            "cleanliness": 5.0,
-            "equipmentQuality": 4.9,
-            "cultureVibe": 4.8,
-            "crowdLevel": 3.3
-          },
-          "comment": "Never crowded, exceptionally clean, and the Eleiko barbells spin like butter. Keyless Kisi entry works seamlessly at any hour.",
-          "date": "2 weeks ago",
-          "helpfulCount": 19
-        }
-      ]
+      "activeDeal": null,
+      "reviews": []
     },
     {
       "id": "persistence-athletics-belltown",
       "name": "Persistence Athletics",
-      "tagline": "Belltown’s premier 7,000 sq ft functional training box specializing in CrossFit, HYROX simulation, and barbell cycling.",
+      "tagline": "Belltown’s premier 7,000 sq ft functional box specializing in CrossFit, HYROX simulation, and barbell cycling.",
       "city": "Seattle, WA",
       "neighborhood": "Belltown",
       "address": "3025 1st Ave, Seattle, WA 98121",
+      "phone": "(206) 456-4220",
+      "website": "https://persistenceathletics.com",
       "distanceMiles": 1.0,
       "priceLevel": "$$",
       "rating": 4.9,
       "reviewCount": 154,
-      "matchPercentage": 96,
+      "openHours": "Mon-Fri: 6:30 AM – 8:00 PM | Sat: 8:00 AM – 11:00 AM | Sun: Closed",
+      "facilitySize": "7,000 sq ft open training floor",
+      "pricingNotes": "$25 Drop-In Class | Free First Trial Class Online",
+      "dayPassAvailable": true,
+      "dayPassPrice": 25.0,
       "images": [
-        "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1517963879433-6ad2b056d712?auto=format&fit=crop&w=1200&q=80"
+        "https://storage.googleapis.com/msgsndr/fIDuchVm4EZLmx1wMIYl/media/67e9ad1713c4b6471e154f64.png",
+        "https://storage.googleapis.com/msgsndr/fIDuchVm4EZLmx1wMIYl/media/67e9ad4dc5f22a778bb018f6.jpeg"
       ],
       "badges": [
         "verified-operator",
@@ -829,7 +582,6 @@
       "equipment": [
         "deadlift-platforms",
         "chalk-allowed",
-        "dumbbells-over-120",
         "turf-sled-strip",
         "eleiko-rogue"
       ],
@@ -843,75 +595,46 @@
         "showers"
       ],
       "training": [
-        "personal-training",
         "group-classes",
+        "personal-training",
         "open-gym"
       ],
-      "dayPassAvailable": true,
-      "dayPassPrice": 25.0,
-      "activeDeal": {
-        "id": "deal-persist-1",
-        "title": "Free First CrossFit / HYROX Coached Class",
-        "description": "Join any morning or evening coached group session in Belltown.",
-        "code": "PERSISTBELLTOWN",
-        "discountType": "free-pass",
-        "expiresAt": "2026-11-30",
-        "bonusPoints": 60
-      },
-      "vibeMetrics": {
-        "cleanliness": 4.8,
-        "equipmentQuality": 4.9,
-        "crowdLevel": 3.7
-      },
-      "openHours": "Mon-Fri: 6:30 AM – 8:00 PM | Sat: 8:00 AM – 11:00 AM | Sun: Closed",
-      "reviews": [
-        {
-          "id": "persist-r1",
-          "authorName": "Mateo Morales",
-          "authorDiscipline": "HYROX Athlete",
-          "authorBadges": [
-            "verified-regular"
-          ],
-          "overallRating": 5.0,
-          "subRatings": {
-            "cleanliness": 4.8,
-            "equipmentQuality": 5.0,
-            "cultureVibe": 5.0,
-            "crowdLevel": 3.6
-          },
-          "comment": "If you're training for Hyrox or functional strength, this is the spot in downtown Seattle. Tanks, sled tracks, SkiErgs, and stellar coaches.",
-          "date": "1 week ago",
-          "helpfulCount": 31
-        }
-      ]
+      "activeDeal": null,
+      "reviews": []
     },
     {
       "id": "seattle-athletic-club-downtown",
       "name": "Seattle Athletic Club Downtown",
-      "tagline": "62,000 sq ft landmark club near Pike Place with heated saline lap pool, 9 regulation squash courts, and expansive strength suites.",
+      "tagline": "62,000 sq ft landmark downtown club near Pike Place with heated saline lap pool, 9 regulation squash courts, and strength floor.",
       "city": "Seattle, WA",
       "neighborhood": "Downtown",
       "address": "2020 Western Ave, Seattle, WA 98121",
+      "phone": "(206) 443-1111",
+      "website": "https://sacdt.com",
       "distanceMiles": 0.5,
       "priceLevel": "$$$$",
       "rating": 4.8,
       "reviewCount": 365,
-      "matchPercentage": 91,
+      "openHours": "Mon-Fri: 5:00 AM – 10:00 PM | Sat-Sun: 7:00 AM – 8:00 PM",
+      "facilitySize": "62,000 sq ft multi-level complex",
+      "pricingNotes": "$35 Day Pass with Market Place Garage Validation",
+      "dayPassAvailable": true,
+      "dayPassPrice": 35.0,
       "images": [
-        "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1200&q=80"
+        "https://sacdt.com/wp-content/uploads/2025/04/WEB-September-18-2026-DT.webp",
+        "https://sacdt.com/wp-content/uploads/2025/04/DT-October.webp"
       ],
       "badges": [
         "verified-operator",
         "gear-certified"
       ],
       "vibes": [
-        "bodybuilding",
-        "boutique-wellness",
-        "commercial-fitness"
+        "commercial-fitness",
+        "boutique-wellness"
       ],
       "equipment": [
         "hammer-strength",
+        "deadlift-platforms",
         "eleiko-rogue"
       ],
       "equipmentHighlights": [
@@ -923,64 +646,38 @@
       "amenities": [
         "sauna",
         "cold-plunge",
-        "showers"
+        "showers",
+        "smoothie-bar"
       ],
       "training": [
+        "personal-training",
+        "group-classes",
         "open-gym"
       ],
-      "dayPassAvailable": true,
-      "dayPassPrice": 35.0,
-      "activeDeal": {
-        "id": "deal-sacdt-1",
-        "title": "Day Pass + Saline Pool & Spa Access for $25",
-        "description": "Full access to downtown Seattle's premier athletic complex with garage validation.",
-        "code": "SACDOWNTOWN",
-        "discountType": "percentage",
-        "expiresAt": "2026-12-15",
-        "bonusPoints": 60
-      },
-      "vibeMetrics": {
-        "cleanliness": 4.9,
-        "equipmentQuality": 4.8,
-        "crowdLevel": 3.8
-      },
-      "openHours": "Mon-Fri: 5:00 AM – 10:00 PM | Sat-Sun: 7:00 AM – 8:00 PM",
-      "reviews": [
-        {
-          "id": "sacdt-r1",
-          "authorName": "Alexander Wright",
-          "authorDiscipline": "Masters Swimmer & Strength",
-          "authorBadges": [
-            "verified-regular"
-          ],
-          "overallRating": 4.9,
-          "subRatings": {
-            "cleanliness": 5.0,
-            "equipmentQuality": 4.8,
-            "cultureVibe": 4.8,
-            "crowdLevel": 3.7
-          },
-          "comment": "The saline pool is crystal clear without chlorine odor. Huge strength floor with great racks and dumbbells, plus steam and sauna rooms.",
-          "date": "1 month ago",
-          "helpfulCount": 22
-        }
-      ]
+      "activeDeal": null,
+      "reviews": []
     },
     {
       "id": "seattle-bouldering-project-poplar",
       "name": "Seattle Bouldering Project (Poplar)",
-      "tagline": "Massive multi-level climbing complex featuring Kilter & Tension training boards, full Rogue fitness floor, saunas, and cold plunge.",
+      "tagline": "Expansive climbing complex featuring Kilter & Tension boards, dedicated Rogue fitness floor, yoga, saunas, and cold plunge.",
       "city": "Seattle, WA",
       "neighborhood": "Central District",
       "address": "900 Poplar Pl S, Seattle, WA 98144",
+      "phone": "(206) 299-2300",
+      "website": "https://boulderingproject.com/location/poplar/",
       "distanceMiles": 2.2,
       "priceLevel": "$$",
       "rating": 4.9,
       "reviewCount": 510,
-      "matchPercentage": 95,
+      "openHours": "Mon-Fri: 6:00 AM – 11:00 PM | Sat-Sun: 7:00 AM – 10:00 PM",
+      "facilitySize": "Multi-story climbing, fitness, and recovery campus",
+      "pricingNotes": "$26 Day Pass | Full Climbing, Weights, and Sauna Access",
+      "dayPassAvailable": true,
+      "dayPassPrice": 26.0,
       "images": [
-        "https://images.unsplash.com/photo-1517963879433-6ad2b056d712?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80"
+        "https://boulderingproject.com/wp-content/uploads/2023/03/Poplar_1920X700.png",
+        "https://boulderingproject.com/wp-content/uploads/2023/06/25-MASTER-Fall-Promo-Web-Card-395x460.jpg"
       ],
       "badges": [
         "verified-operator",
@@ -988,9 +685,8 @@
         "gear-certified"
       ],
       "vibes": [
-        "hardcore-powerlifting",
-        "boutique-wellness",
-        "crossfit-functional"
+        "crossfit-functional",
+        "boutique-wellness"
       ],
       "equipment": [
         "deadlift-platforms",
@@ -1002,7 +698,7 @@
         "Kilter Board, Tension Board 2 & Moon Board",
         "Full Rogue Rig Weightlifting Floor & Bumper Plates",
         "Concept2 Rowers, BikeErgs & Sled Sprint Lanes",
-        "Two Floors of World-Class Bouldering Terrain"
+        "Two Floors of Bouldering Walls + West Wall Cafe"
       ],
       "amenities": [
         "sauna",
@@ -1011,61 +707,34 @@
         "smoothie-bar"
       ],
       "training": [
+        "group-classes",
+        "personal-training",
         "open-gym"
       ],
-      "dayPassAvailable": true,
-      "dayPassPrice": 26.0,
-      "activeDeal": {
-        "id": "deal-sbp-1",
-        "title": "$20 First-Timer Day Pass with Free Shoe Rental",
-        "description": "Full access to climbing walls, weight room, yoga classes, and saunas.",
-        "code": "POPLARCLIMB",
-        "discountType": "percentage",
-        "expiresAt": "2026-12-31",
-        "bonusPoints": 50
-      },
-      "vibeMetrics": {
-        "cleanliness": 4.8,
-        "equipmentQuality": 4.9,
-        "crowdLevel": 3.8
-      },
-      "openHours": "Mon-Fri: 6:00 AM – 11:00 PM | Sat-Sun: 7:00 AM – 10:00 PM",
-      "reviews": [
-        {
-          "id": "sbp-r1",
-          "authorName": "Julian Reed",
-          "authorDiscipline": "Boulderer & Functional Athlete",
-          "authorBadges": [
-            "verified-regular"
-          ],
-          "overallRating": 5.0,
-          "subRatings": {
-            "cleanliness": 4.9,
-            "equipmentQuality": 5.0,
-            "cultureVibe": 5.0,
-            "crowdLevel": 3.9
-          },
-          "comment": "SBP Poplar is more than a climbing gym—the strength training floor with Rogue racks, ergs, saunas, and cold plunge rivals any standalone gym.",
-          "date": "5 days ago",
-          "helpfulCount": 40
-        }
-      ]
+      "activeDeal": null,
+      "reviews": []
     },
     {
       "id": "left-side-crossfit-central-district",
       "name": "Left Side CrossFit & Barbell Club",
-      "tagline": "Inclusive Central District functional gym with dedicated Barbell Club, Olympic lifting platforms, and air-conditioned bays.",
+      "tagline": "Inclusive Central District functional box with dedicated Barbell Club, Olympic lifting platforms, and air-conditioned bays.",
       "city": "Seattle, WA",
       "neighborhood": "Central District",
       "address": "438 23rd Ave S, Seattle, WA 98122",
+      "phone": "(774) 242-2779",
+      "website": "https://leftsidecrossfit.com",
       "distanceMiles": 1.8,
       "priceLevel": "$$",
       "rating": 4.9,
       "reviewCount": 138,
-      "matchPercentage": 95,
+      "openHours": "Mon-Fri: 6:00 AM – 8:00 PM | Sat: 8:00 AM – 1:00 PM | Sun: Open Gym",
+      "facilitySize": "Spacious air-conditioned facility with roll-up bay doors",
+      "pricingNotes": "$20 Drop-In | Free validated parking in Amazon Fresh garage",
+      "dayPassAvailable": true,
+      "dayPassPrice": 20.0,
       "images": [
-        "https://images.unsplash.com/photo-1517963879433-6ad2b056d712?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80"
+        "https://images.squarespace-cdn.com/content/v1/669945f81761d055c1bb48a1/2ed2117b-cc2f-4d4b-9326-ab6d3befb4a9/Website+Header+%282%29.png",
+        "https://images.squarespace-cdn.com/content/v1/669945f81761d055c1bb48a1/d78ab2c8-0e6a-46d1-9e45-db4cf1b7761e/Website+Header+%281%29.png"
       ],
       "badges": [
         "verified-operator",
@@ -1091,61 +760,32 @@
       ],
       "training": [
         "group-classes",
-        "open-gym"
+        "open-gym",
+        "personal-training"
       ],
-      "dayPassAvailable": true,
-      "dayPassPrice": 20.0,
-      "activeDeal": {
-        "id": "deal-leftside-1",
-        "title": "Free Community Saturday Drop-In Session",
-        "description": "Come lift with the Central District community. 90-min free validated garage parking.",
-        "code": "LEFTSIDECF",
-        "discountType": "free-pass",
-        "expiresAt": "2026-11-30",
-        "bonusPoints": 50
-      },
-      "vibeMetrics": {
-        "cleanliness": 4.9,
-        "equipmentQuality": 4.9,
-        "crowdLevel": 3.5
-      },
-      "openHours": "Mon-Fri: 6:00 AM – 8:00 PM | Sat: 8:00 AM – 1:00 PM | Sun: Open Gym",
-      "reviews": [
-        {
-          "id": "leftside-r1",
-          "authorName": "Tariq Washington",
-          "authorDiscipline": "CrossFit & Olympic Weightlifter",
-          "authorBadges": [
-            "verified-regular"
-          ],
-          "overallRating": 5.0,
-          "subRatings": {
-            "cleanliness": 5.0,
-            "equipmentQuality": 4.9,
-            "cultureVibe": 5.0,
-            "crowdLevel": 3.4
-          },
-          "comment": "Hands down the warmest, most supportive gym culture in Seattle. Excellent Olympic lifting coaching during Barbell Club hours.",
-          "date": "2 weeks ago",
-          "helpfulCount": 26
-        }
-      ]
+      "activeDeal": null,
+      "reviews": []
     },
     {
       "id": "strong-life-training-white-center",
       "name": "Strong Life Training",
-      "tagline": "8,600 sq ft heavy iron sanctuary in White Center featuring Arsenal Strength, Rogue racks, and covered outdoor lifting arena.",
+      "tagline": "8,600 sq ft heavy iron haven in White Center with Arsenal Strength, Rogue racks, and 800 sq ft covered outdoor lifting pavilion.",
       "city": "Seattle, WA",
       "neighborhood": "White Center",
       "address": "1407 SW 100th St, Seattle, WA 98146",
+      "phone": "(206) 420-2825",
+      "website": "https://joinstronglife.com",
       "distanceMiles": 7.5,
       "priceLevel": "$$",
       "rating": 4.9,
       "reviewCount": 142,
-      "matchPercentage": 97,
+      "openHours": "3:30 AM – 11:00 PM Daily (365 Days / Year)",
+      "facilitySize": "8,600 sq ft indoor + 800 sq ft covered outdoor pavilion",
+      "pricingNotes": "$15 Day Pass | Bluetooth App Keyless Entry",
+      "dayPassAvailable": true,
+      "dayPassPrice": 15.0,
       "images": [
-        "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80"
+        "https://images.squarespace-cdn.com/content/v1/5fce9cd6ed56ea5123bb132d/1612550238567-3JD402G56IB68MWAQI3T/IMG_3155-2.jpg"
       ],
       "badges": [
         "verified-operator",
@@ -1159,9 +799,9 @@
       "equipment": [
         "deadlift-platforms",
         "chalk-allowed",
-        "dumbbells-over-120",
         "hammer-strength",
-        "eleiko-rogue"
+        "eleiko-rogue",
+        "dumbbells-over-120"
       ],
       "equipmentHighlights": [
         "Arsenal Strength Plate-Loaded Muscle Builders",
@@ -1173,46 +813,12 @@
         "showers"
       ],
       "training": [
+        "powerlifting-coaching",
+        "personal-training",
         "open-gym"
       ],
-      "dayPassAvailable": true,
-      "dayPassPrice": 15.0,
-      "activeDeal": {
-        "id": "deal-slt-1",
-        "title": "$10 Intro Day Pass (Save 33%)",
-        "description": "Train heavy with Arsenal Strength and Rogue equipment without crowds.",
-        "code": "STRONGLIFE10",
-        "discountType": "percentage",
-        "expiresAt": "2026-11-30",
-        "bonusPoints": 50
-      },
-      "vibeMetrics": {
-        "cleanliness": 4.9,
-        "equipmentQuality": 5.0,
-        "crowdLevel": 3.3
-      },
-      "openHours": "3:30 AM – 11:00 PM Daily (365 Days / Year)",
-      "reviews": [
-        {
-          "id": "slt-r1",
-          "authorName": "Devon King",
-          "authorDiscipline": "Bodybuilder & Powerlifter",
-          "authorBadges": [
-            "verified-regular",
-            "powerlifter"
-          ],
-          "overallRating": 5.0,
-          "subRatings": {
-            "cleanliness": 4.9,
-            "equipmentQuality": 5.0,
-            "cultureVibe": 4.9,
-            "crowdLevel": 3.1
-          },
-          "comment": "Top tier Arsenal Strength machinery you won't find anywhere else in King County. Outdoor covered area is awesome in spring and summer.",
-          "date": "1 week ago",
-          "helpfulCount": 24
-        }
-      ]
+      "activeDeal": null,
+      "reviews": []
     },
     {
       "id": "vertical-world-seattle-magnolia",
@@ -1221,14 +827,19 @@
       "city": "Seattle, WA",
       "neighborhood": "Magnolia",
       "address": "2330 W Commodore Way, Seattle, WA 98199",
+      "phone": "(206) 283-4497",
+      "website": "https://verticalworld.com/seattle/",
       "distanceMiles": 4.5,
       "priceLevel": "$$",
       "rating": 4.8,
       "reviewCount": 380,
-      "matchPercentage": 93,
+      "openHours": "Mon-Fri: 6:00 AM – 10:00 PM | Sat-Sun: 8:00 AM – 8:00 PM",
+      "facilitySize": "Original climbing gym + 11,000 sq ft 4.5 Bouldering Annex",
+      "pricingNotes": "$24 Day Pass ($7 shoe rental) | Yoga classes included",
+      "dayPassAvailable": true,
+      "dayPassPrice": 24.0,
       "images": [
-        "https://images.unsplash.com/photo-1517963879433-6ad2b056d712?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80"
+        "https://seattle.verticalworld.com/wp-content/uploads/2022/07/Seattle.png"
       ],
       "badges": [
         "verified-operator",
@@ -1236,9 +847,8 @@
         "gear-certified"
       ],
       "vibes": [
-        "hardcore-powerlifting",
-        "boutique-wellness",
-        "crossfit-functional"
+        "crossfit-functional",
+        "boutique-wellness"
       ],
       "equipment": [
         "deadlift-platforms",
@@ -1258,73 +868,47 @@
         "group-classes",
         "open-gym"
       ],
-      "dayPassAvailable": true,
-      "dayPassPrice": 24.0,
-      "activeDeal": {
-        "id": "deal-vw-1",
-        "title": "$18 Bouldering & Fitness Day Pass",
-        "description": "Experience America's original climbing gym and functional training floor.",
-        "code": "VWSEATTLE",
-        "discountType": "percentage",
-        "expiresAt": "2026-11-30",
-        "bonusPoints": 40
-      },
-      "vibeMetrics": {
-        "cleanliness": 4.8,
-        "equipmentQuality": 4.8,
-        "crowdLevel": 3.7
-      },
-      "openHours": "Mon-Fri: 6:00 AM – 10:00 PM | Sat-Sun: 8:00 AM – 8:00 PM",
-      "reviews": [
-        {
-          "id": "vw-r1",
-          "authorName": "Claire Fontaine",
-          "authorDiscipline": "Climber & Calisthenics",
-          "authorBadges": [
-            "verified-regular"
-          ],
-          "overallRating": 4.8,
-          "subRatings": {
-            "cleanliness": 4.8,
-            "equipmentQuality": 4.8,
-            "cultureVibe": 4.9,
-            "crowdLevel": 3.7
-          },
-          "comment": "Historic gym with modern amenities. The 4.5 bouldering expansion is huge, and the fitness area with Rogue squat racks has everything you need.",
-          "date": "2 weeks ago",
-          "helpfulCount": 20
-        }
-      ]
+      "activeDeal": null,
+      "reviews": []
     },
     {
       "id": "tiger-gate-gym-bellevue",
       "name": "Tiger Gate Gym",
-      "tagline": "Bellevue’s 24/7 hardcore bodybuilding and powerlifting sanctuary with nearly 100 machines, calibrated steel plates, and sauna.",
+      "tagline": "Bellevue’s 24/7 hardcore bodybuilding and powerlifting facility with nearly 100 machines, calibrated steel plates, and sauna.",
       "city": "Seattle, WA",
       "neighborhood": "Bellevue",
       "address": "1427 130th Ave NE, Bellevue, WA 98005",
+      "phone": "(425) 243-9828",
+      "website": "https://tigergategym.com",
       "distanceMiles": 9.8,
       "priceLevel": "$$",
       "rating": 4.9,
       "reviewCount": 195,
-      "matchPercentage": 97,
+      "openHours": "24/7/365 Keyless Member Access | Staffed: Mon-Fri 11am-9pm, Sat-Sun 11am-6pm",
+      "facilitySize": "Multi-room heavy strength gym with athlete lounge",
+      "pricingNotes": "$18 Day Pass | $89-$109/mo 24/7 Access Plan",
+      "dayPassAvailable": true,
+      "dayPassPrice": 18.0,
       "images": [
-        "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1200&q=80"
+        "https://www.tigergategym.com/images/brand/og-default.jpg",
+        "https://www.tigergategym.com/images/home/strip-1.jpg"
       ],
       "badges": [
         "verified-operator",
+        "chalk-friendly",
         "gear-certified"
       ],
       "vibes": [
-        "hardcore-powerlifting",
         "bodybuilding",
-        "boutique-wellness"
+        "hardcore-powerlifting"
       ],
       "equipment": [
+        "hammer-strength",
+        "deadlift-platforms",
         "calibrated-plates",
+        "chalk-allowed",
         "dumbbells-over-120",
-        "hammer-strength"
+        "specialty-bars"
       ],
       "equipmentHighlights": [
         "Competition Powerlifting Racks & Calibrated Steel Discs",
@@ -1339,45 +923,12 @@
         "smoothie-bar"
       ],
       "training": [
-        "open-gym"
+        "personal-training",
+        "open-gym",
+        "powerlifting-coaching"
       ],
-      "dayPassAvailable": true,
-      "dayPassPrice": 18.0,
-      "activeDeal": {
-        "id": "deal-tiger-1",
-        "title": "$15 24/7 Day Pass (Save $3)",
-        "description": "Full 24/7 access to Eastside's heaviest bodybuilding and powerlifting floor.",
-        "code": "TIGERPASS",
-        "discountType": "percentage",
-        "expiresAt": "2026-12-31",
-        "bonusPoints": 50
-      },
-      "vibeMetrics": {
-        "cleanliness": 4.8,
-        "equipmentQuality": 5.0,
-        "crowdLevel": 3.4
-      },
-      "openHours": "24/7/365 Keyless Access | Staffed: Mon-Fri 11am-9pm, Sat-Sun 11am-6pm",
-      "reviews": [
-        {
-          "id": "tiger-r1",
-          "authorName": "Victor Zheng",
-          "authorDiscipline": "NPC Bodybuilder",
-          "authorBadges": [
-            "verified-regular"
-          ],
-          "overallRating": 5.0,
-          "subRatings": {
-            "cleanliness": 4.9,
-            "equipmentQuality": 5.0,
-            "cultureVibe": 5.0,
-            "crowdLevel": 3.3
-          },
-          "comment": "Finally a true lifter's paradise on the Eastside! Calibrated steel plates, dumbbells up to 150, posing room, and a sauna. Open 24/7.",
-          "date": "1 week ago",
-          "helpfulCount": 41
-        }
-      ]
+      "activeDeal": null,
+      "reviews": []
     },
     {
       "id": "iron-works-gym-bellevue",
@@ -1386,14 +937,20 @@
       "city": "Seattle, WA",
       "neighborhood": "Bellevue",
       "address": "12708 Northup Way, Bellevue, WA 98005",
+      "phone": "(425) 883-9993",
+      "website": "https://iron-works.com",
       "distanceMiles": 9.2,
       "priceLevel": "$",
       "rating": 4.8,
       "reviewCount": 230,
-      "matchPercentage": 95,
+      "openHours": "Mon-Fri: 6:00 AM – 9:00 PM | Sat: 8:00 AM – 6:00 PM | Sun: 9:00 AM – 5:00 PM",
+      "facilitySize": "Authentic iron temple operating since 1974",
+      "pricingNotes": "$15 Day Pass | Independent gym memberships",
+      "dayPassAvailable": true,
+      "dayPassPrice": 15.0,
       "images": [
-        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=1200&q=80"
+        "https://iron-works.com/images/gym-atmosphere.jpg",
+        "https://iron-works.com/images/trainer-client-shoulders.jpg"
       ],
       "badges": [
         "verified-operator",
@@ -1405,10 +962,11 @@
         "bodybuilding"
       ],
       "equipment": [
+        "hammer-strength",
         "deadlift-platforms",
         "chalk-allowed",
         "dumbbells-over-120",
-        "hammer-strength"
+        "specialty-bars"
       ],
       "equipmentHighlights": [
         "Classic Atlantis & Hammer Strength Plate-Loaded Arsenal",
@@ -1423,72 +981,43 @@
         "personal-training",
         "open-gym"
       ],
-      "dayPassAvailable": true,
-      "dayPassPrice": 15.0,
-      "activeDeal": {
-        "id": "deal-ironworks-1",
-        "title": "$10 Old-School Drop-In Pass",
-        "description": "Experience genuine PNW iron history with heavy dumbbells and squat racks.",
-        "code": "IRONWORKS74",
-        "discountType": "percentage",
-        "expiresAt": "2026-11-30",
-        "bonusPoints": 40
-      },
-      "vibeMetrics": {
-        "cleanliness": 4.6,
-        "equipmentQuality": 4.9,
-        "crowdLevel": 3.3
-      },
-      "openHours": "Mon-Fri: 6:00 AM – 9:00 PM | Sat: 8:00 AM – 6:00 PM | Sun: 9:00 AM – 5:00 PM",
-      "reviews": [
-        {
-          "id": "ironworks-r1",
-          "authorName": "Ray Callahan",
-          "authorDiscipline": "Powerlifter & Strongman",
-          "authorBadges": [
-            "verified-regular",
-            "powerlifter"
-          ],
-          "overallRating": 5.0,
-          "subRatings": {
-            "cleanliness": 4.5,
-            "equipmentQuality": 5.0,
-            "cultureVibe": 5.0,
-            "crowdLevel": 3.2
-          },
-          "comment": "An endangered species of authentic gym. No influencers filming, just serious people lifting heavy iron. Dumbbells go to 160.",
-          "date": "3 weeks ago",
-          "helpfulCount": 33
-        }
-      ]
+      "activeDeal": null,
+      "reviews": []
     },
     {
       "id": "bay-club-bellevue",
       "name": "Bay Club Bellevue",
-      "tagline": "World-class resort-style mega athletic club with 4 indoor pools, 26 racquet/pickleball courts, cryogenic recovery, and luxury spa.",
+      "tagline": "World-class resort athletic club with 4 indoor pools, 26 racquet/pickleball courts, cryogenic recovery, and luxury spa.",
       "city": "Seattle, WA",
       "neighborhood": "Bellevue",
       "address": "4455 148th Ave NE, Bellevue, WA 98007",
+      "phone": "(425) 885-5566",
+      "website": "https://bayclubs.com/clubs/bellevue/",
       "distanceMiles": 12.0,
       "priceLevel": "$$$$",
       "rating": 4.8,
       "reviewCount": 680,
-      "matchPercentage": 90,
+      "openHours": "Mon-Fri: 5:00 AM – 11:00 PM | Sat-Sun: 7:00 AM – 10:00 PM",
+      "facilitySize": "Resort-scale athletic campus (formerly PRO Club)",
+      "pricingNotes": "$40 Day Pass | Comprehensive Resort Memberships",
+      "dayPassAvailable": true,
+      "dayPassPrice": 40.0,
       "images": [
-        "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80"
+        "https://cdn.prod.website-files.com/6881e0680b14937cf2a11855/6ac53397f2da3c0a0802c658_Bellevue_DRONE-09_under4mb.jpg",
+        "https://cdn.prod.website-files.com/6880df1cd4d8f058923cfe69/6881f0a650b2161b0bfc31ed_Club_Nav_Header.webp"
       ],
       "badges": [
         "verified-operator",
         "gear-certified"
       ],
       "vibes": [
-        "bodybuilding",
         "boutique-wellness",
         "commercial-fitness"
       ],
       "equipment": [
         "hammer-strength",
+        "deadlift-platforms",
+        "turf-sled-strip",
         "eleiko-rogue"
       ],
       "equipmentHighlights": [
@@ -1500,49 +1029,16 @@
       "amenities": [
         "sauna",
         "cold-plunge",
+        "showers",
         "smoothie-bar"
       ],
       "training": [
         "personal-training",
+        "group-classes",
         "open-gym"
       ],
-      "dayPassAvailable": true,
-      "dayPassPrice": 40.0,
-      "activeDeal": {
-        "id": "deal-bayclub-1",
-        "title": "VIP Day Pass with Spa & Aquatic Access",
-        "description": "Full access to resort athletic facilities, saunas, cold therapy, and towel service.",
-        "code": "BAYCLUBBEL",
-        "discountType": "percentage",
-        "expiresAt": "2026-11-30",
-        "bonusPoints": 75
-      },
-      "vibeMetrics": {
-        "cleanliness": 5.0,
-        "equipmentQuality": 4.9,
-        "crowdLevel": 3.9
-      },
-      "openHours": "Mon-Fri: 5:00 AM – 11:00 PM | Sat-Sun: 7:00 AM – 10:00 PM",
-      "reviews": [
-        {
-          "id": "bayclub-r1",
-          "authorName": "Dr. Keith Miller",
-          "authorDiscipline": "Masters Athlete & Recovery",
-          "authorBadges": [
-            "verified-regular"
-          ],
-          "overallRating": 4.9,
-          "subRatings": {
-            "cleanliness": 5.0,
-            "equipmentQuality": 4.9,
-            "cultureVibe": 4.8,
-            "crowdLevel": 4.0
-          },
-          "comment": "Formerly PRO Club, still the gold standard for athletic amenities anywhere in Washington. Unbelievable recovery facilities and pristine pools.",
-          "date": "2 weeks ago",
-          "helpfulCount": 34
-        }
-      ]
+      "activeDeal": null,
+      "reviews": []
     },
     {
       "id": "eastside-gym-redmond",
@@ -1551,14 +1047,20 @@
       "city": "Seattle, WA",
       "neighborhood": "Redmond",
       "address": "15040 NE 95th St, Redmond, WA 98052",
+      "phone": "(425) 882-7764",
+      "website": "https://eastsidegym.com",
       "distanceMiles": 14.2,
       "priceLevel": "$",
       "rating": 4.9,
       "reviewCount": 160,
-      "matchPercentage": 96,
+      "openHours": "24/7 Member Key Access | Staffed: Mon-Fri 10am-7pm",
+      "facilitySize": "Independent free weight gym",
+      "pricingNotes": "$12 Day Pass | $69/3mo, $130/6mo, $199/12mo Annual Membership",
+      "dayPassAvailable": true,
+      "dayPassPrice": 12.0,
       "images": [
-        "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80"
+        "https://eastsidegym.com/img/logo.jpg",
+        "https://eastsidegym.com/img/map.jpg"
       ],
       "badges": [
         "verified-operator",
@@ -1566,13 +1068,15 @@
         "gear-certified"
       ],
       "vibes": [
-        "bodybuilding",
-        "commercial-fitness"
+        "hardcore-powerlifting",
+        "bodybuilding"
       ],
       "equipment": [
+        "deadlift-platforms",
         "chalk-allowed",
+        "hammer-strength",
         "dumbbells-over-120",
-        "hammer-strength"
+        "specialty-bars"
       ],
       "equipmentHighlights": [
         "10 Heavy-Duty Commercial Power Racks",
@@ -1585,46 +1089,11 @@
         "24-7-access"
       ],
       "training": [
-        "personal-training",
-        "open-gym"
+        "open-gym",
+        "personal-training"
       ],
-      "dayPassAvailable": true,
-      "dayPassPrice": 12.0,
-      "activeDeal": {
-        "id": "deal-eastside-1",
-        "title": "$10 Drop-In Day Pass",
-        "description": "Train at Redmond's premier independent strength club. Cash/honor box available.",
-        "code": "EASTSIDEIRON",
-        "discountType": "percentage",
-        "expiresAt": "2026-12-31",
-        "bonusPoints": 40
-      },
-      "vibeMetrics": {
-        "cleanliness": 4.7,
-        "equipmentQuality": 4.9,
-        "crowdLevel": 3.1
-      },
-      "openHours": "24/7 Member Key Access | Staffed: Mon-Fri 10am-7pm",
-      "reviews": [
-        {
-          "id": "eastside-r1",
-          "authorName": "Nate Carlson",
-          "authorDiscipline": "Bodybuilding & Strength",
-          "authorBadges": [
-            "verified-regular"
-          ],
-          "overallRating": 5.0,
-          "subRatings": {
-            "cleanliness": 4.7,
-            "equipmentQuality": 5.0,
-            "cultureVibe": 5.0,
-            "crowdLevel": 3.0
-          },
-          "comment": "10 power racks in Redmond! No waiting, great cast iron weights, and the owners are fantastic people who love lifting.",
-          "date": "1 month ago",
-          "helpfulCount": 27
-        }
-      ]
+      "activeDeal": null,
+      "reviews": []
     },
     {
       "id": "paramount-strength-mountlake-terrace",
@@ -1633,181 +1102,19 @@
       "city": "Seattle, WA",
       "neighborhood": "Mountlake Terrace",
       "address": "22402 44th Ave W, Ste A, Mountlake Terrace, WA 98043",
+      "phone": "(425) 678-0050",
+      "website": "https://paramountsc.com",
       "distanceMiles": 13.8,
       "priceLevel": "$$",
       "rating": 5.0,
       "reviewCount": 172,
-      "matchPercentage": 98,
-      "images": [
-        "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=1200&q=80"
-      ],
-      "badges": [
-        "verified-operator",
-        "chalk-friendly",
-        "gear-certified"
-      ],
-      "vibes": [
-        "hardcore-powerlifting"
-      ],
-      "equipment": [
-        "deadlift-platforms",
-        "calibrated-plates",
-        "chalk-allowed",
-        "eleiko-rogue"
-      ],
-      "equipmentHighlights": [
-        "7 Dedicated Olympic Weightlifting Platforms",
-        "Eleiko & Uesaka Competition Barbells",
-        "Calibrated Kilo Training Plates & Blocks",
-        "24/7 Door Code Keyless Athlete Access"
-      ],
-      "amenities": [
-        "showers",
-        "24-7-access"
-      ],
-      "training": [
-        "powerlifting-coaching",
-        "open-gym"
-      ],
+      "openHours": "24/7 Door Code Access for Athletes | Staffed: Mon-Fri 6am-8pm",
+      "facilitySize": "Dedicated USAW Olympic weightlifting training hall",
+      "pricingNotes": "$20 Weightlifting Drop-In | 24/7 Door Code Access",
       "dayPassAvailable": true,
       "dayPassPrice": 20.0,
-      "activeDeal": {
-        "id": "deal-paramount-1",
-        "title": "$15 Weightlifting Drop-In Pass",
-        "description": "Train on competition wood platforms with Eleiko bars and calibrated kilos.",
-        "code": "PARAMOUNT247",
-        "discountType": "percentage",
-        "expiresAt": "2026-12-31",
-        "bonusPoints": 50
-      },
-      "vibeMetrics": {
-        "cleanliness": 4.8,
-        "equipmentQuality": 5.0,
-        "crowdLevel": 3.3
-      },
-      "openHours": "24/7 Door Code Access for Athletes | Staffed: Mon-Fri 6am-8pm",
-      "reviews": [
-        {
-          "id": "paramount-r1",
-          "authorName": "Zachary Taylor",
-          "authorDiscipline": "USAW Senior Competitor",
-          "authorBadges": [
-            "verified-regular",
-            "powerlifter"
-          ],
-          "overallRating": 5.0,
-          "subRatings": {
-            "cleanliness": 4.8,
-            "equipmentQuality": 5.0,
-            "cultureVibe": 5.0,
-            "crowdLevel": 3.1
-          },
-          "comment": "Home to one of the strongest weightlifting teams in the Pacific Northwest. 7 pristine platforms, jerk blocks, and Eleiko bars.",
-          "date": "2 weeks ago",
-          "helpfulCount": 35
-        }
-      ]
-    },
-    {
-      "id": "dungeon-strength-rx-auburn",
-      "name": "Dungeon Strength RX",
-      "tagline": "9,000+ sq ft monster strength facility open 24/7/365. 20+ squat stations, dumbbells to 200 lbs, strongman stones, and infrared sauna.",
-      "city": "Seattle, WA",
-      "neighborhood": "Auburn",
-      "address": "2705 Auburn Way N, #101, Auburn, WA 98002",
-      "distanceMiles": 24.5,
-      "priceLevel": "$$",
-      "rating": 5.0,
-      "reviewCount": 220,
-      "matchPercentage": 99,
       "images": [
-        "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=1200&q=80"
-      ],
-      "badges": [
-        "verified-operator",
-        "gear-certified"
-      ],
-      "vibes": [
-        "hardcore-powerlifting",
-        "boutique-wellness"
-      ],
-      "equipment": [
-        "deadlift-platforms",
-        "calibrated-plates",
-        "dumbbells-over-120",
-        "specialty-bars",
-        "turf-sled-strip"
-      ],
-      "equipmentHighlights": [
-        "20+ Dedicated Squat Stations & Competition Monolift",
-        "Strongman Atlas Stones, Kegs, Logs & Power Stairs",
-        "Dumbbells Ranging all the way up to 200 lbs",
-        "800 sq ft Turf Lane & 8-Person Infrared Sauna"
-      ],
-      "amenities": [
-        "sauna",
-        "showers",
-        "24-7-access"
-      ],
-      "training": [
-        "open-gym"
-      ],
-      "dayPassAvailable": true,
-      "dayPassPrice": 15.0,
-      "activeDeal": {
-        "id": "deal-dungeon-1",
-        "title": "$12 24/7 Drop-In Pass",
-        "description": "Access the heaviest powerlifting and strongman arsenal in Washington State.",
-        "code": "DUNGEONRX",
-        "discountType": "percentage",
-        "expiresAt": "2026-12-31",
-        "bonusPoints": 60
-      },
-      "vibeMetrics": {
-        "cleanliness": 4.7,
-        "equipmentQuality": 5.0,
-        "crowdLevel": 3.1
-      },
-      "openHours": "24 Hours / 7 Days / 365 Days Keyless Access",
-      "reviews": [
-        {
-          "id": "dungeon-r1",
-          "authorName": "Brock Hendershot",
-          "authorDiscipline": "Strongman & Powerlifter",
-          "authorBadges": [
-            "verified-regular",
-            "powerlifter"
-          ],
-          "overallRating": 5.0,
-          "subRatings": {
-            "cleanliness": 4.7,
-            "equipmentQuality": 5.0,
-            "cultureVibe": 5.0,
-            "crowdLevel": 3.0
-          },
-          "comment": "Nothing in the Pacific Northwest compares. Monolift, yokes, Atlas stones, power stairs, and dumbbells up to 200 lbs. Plus the 8-person sauna is fantastic.",
-          "date": "1 week ago",
-          "helpfulCount": 49
-        }
-      ]
-    },
-    {
-      "id": "tacoma-strength-tacoma",
-      "name": "Tacoma Strength",
-      "tagline": "South Sound’s community-driven strength powerhouse with Olympic lifting platforms, Rogue racks, and dedicated open gym.",
-      "city": "Seattle, WA",
-      "neighborhood": "Tacoma",
-      "address": "2354 Jefferson Ave, Tacoma, WA 98402",
-      "distanceMiles": 32.0,
-      "priceLevel": "$$",
-      "rating": 4.9,
-      "reviewCount": 140,
-      "matchPercentage": 95,
-      "images": [
-        "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80"
+        "https://cdn.prod.website-files.com/63b6ed37c6284a1416dad5bc/63ced4351d6c6392dbad30aa_Homepage%20at%20Paramount%20Strength%20and%20Conditioning%20Mountlake%20Terrace.jpg"
       ],
       "badges": [
         "verified-operator",
@@ -1823,8 +1130,121 @@
         "calibrated-plates",
         "chalk-allowed",
         "specialty-bars",
-        "turf-sled-strip",
         "eleiko-rogue"
+      ],
+      "equipmentHighlights": [
+        "7 Dedicated Olympic Weightlifting Platforms",
+        "Eleiko & Uesaka Competition Barbells",
+        "Calibrated Kilo Training Plates & Blocks",
+        "24/7 Door Code Keyless Athlete Access"
+      ],
+      "amenities": [
+        "showers",
+        "24-7-access"
+      ],
+      "training": [
+        "powerlifting-coaching",
+        "open-gym",
+        "personal-training"
+      ],
+      "activeDeal": null,
+      "reviews": []
+    },
+    {
+      "id": "dungeon-strength-rx-auburn",
+      "name": "Dungeon Strength RX",
+      "tagline": "9,000+ sq ft monster strength facility open 24/7/365. 20+ squat stations, dumbbells to 200 lbs, strongman stones, and infrared sauna.",
+      "city": "Seattle, WA",
+      "neighborhood": "Auburn",
+      "address": "2705 Auburn Way N, #101, Auburn, WA 98002",
+      "phone": "(253) 249-7431",
+      "website": "https://dungeonstrengthrx.com",
+      "distanceMiles": 24.5,
+      "priceLevel": "$$",
+      "rating": 5.0,
+      "reviewCount": 220,
+      "openHours": "24 Hours / 7 Days / 365 Days Keyless Access",
+      "facilitySize": "9,000+ sq ft heavy powerlifting and strongman warehouse",
+      "pricingNotes": "$15 Drop-In Day Pass | 24/7 All-Access Memberships",
+      "dayPassAvailable": true,
+      "dayPassPrice": 15.0,
+      "images": [
+        "https://dungeonstrengthrx.com/wp-content/uploads/DSC09970-1536x1024.webp",
+        "https://dungeonstrengthrx.com/wp-content/uploads/Lucas-Hatton-Hero-Shot-1.webp"
+      ],
+      "badges": [
+        "verified-operator",
+        "chalk-friendly",
+        "gear-certified"
+      ],
+      "vibes": [
+        "hardcore-powerlifting",
+        "bodybuilding"
+      ],
+      "equipment": [
+        "deadlift-platforms",
+        "calibrated-plates",
+        "chalk-allowed",
+        "dumbbells-over-120",
+        "specialty-bars",
+        "hammer-strength",
+        "turf-sled-strip"
+      ],
+      "equipmentHighlights": [
+        "20+ Dedicated Squat Stations & Competition Monolift",
+        "Strongman Atlas Stones, Kegs, Logs & Power Stairs",
+        "Dumbbells Ranging all the way up to 200 lbs",
+        "800 sq ft Turf Lane & 8-Person Infrared Sauna"
+      ],
+      "amenities": [
+        "sauna",
+        "showers",
+        "24-7-access"
+      ],
+      "training": [
+        "powerlifting-coaching",
+        "open-gym",
+        "personal-training"
+      ],
+      "activeDeal": null,
+      "reviews": []
+    },
+    {
+      "id": "tacoma-strength-tacoma",
+      "name": "Tacoma Strength",
+      "tagline": "South Sound’s community-driven strength powerhouse with Olympic lifting platforms, Rogue racks, and dedicated open gym.",
+      "city": "Seattle, WA",
+      "neighborhood": "Tacoma",
+      "address": "2354 Jefferson Ave, Tacoma, WA 98402",
+      "phone": "(253) 383-0402",
+      "website": "https://tacomastrength.com",
+      "distanceMiles": 32.0,
+      "priceLevel": "$$",
+      "rating": 4.9,
+      "reviewCount": 140,
+      "openHours": "Mon-Wed, Fri: 6:30am-7:30pm | Thu: 9am-7:30pm | Sat: 8am-12:30pm | Sun: Closed",
+      "facilitySize": "Downtown Tacoma strength training facility",
+      "pricingNotes": "$20 Drop-In Session | Coached Classes & Open Gym",
+      "dayPassAvailable": true,
+      "dayPassPrice": 20.0,
+      "images": [
+        "https://images.squarespace-cdn.com/content/v1/677bff6e6eb6ce46471e4c34/fd380659-a1ce-42f9-80ee-f549e89f7b57/IMG_3862+copy.jpg"
+      ],
+      "badges": [
+        "verified-operator",
+        "chalk-friendly",
+        "gear-certified"
+      ],
+      "vibes": [
+        "crossfit-functional",
+        "hardcore-powerlifting"
+      ],
+      "equipment": [
+        "deadlift-platforms",
+        "chalk-allowed",
+        "eleiko-rogue",
+        "specialty-bars",
+        "turf-sled-strip"
       ],
       "equipmentHighlights": [
         "Rogue Infinity Rig & Olympic Lifting Platforms",
@@ -1836,47 +1256,12 @@
         "showers"
       ],
       "training": [
-        "personal-training",
         "group-classes",
-        "open-gym"
+        "open-gym",
+        "personal-training"
       ],
-      "dayPassAvailable": true,
-      "dayPassPrice": 20.0,
-      "activeDeal": {
-        "id": "deal-tacoma-1",
-        "title": "Free First Drop-In Session",
-        "description": "Join an Olympic weightlifting or strength session in downtown Tacoma.",
-        "code": "TACOMAFIT",
-        "discountType": "free-pass",
-        "expiresAt": "2026-11-30",
-        "bonusPoints": 50
-      },
-      "vibeMetrics": {
-        "cleanliness": 4.8,
-        "equipmentQuality": 4.9,
-        "crowdLevel": 3.4
-      },
-      "openHours": "Mon-Wed, Fri: 6:30am-7:30pm | Thu: 9am-7:30pm | Sat: 8am-12:30pm | Sun: Closed",
-      "reviews": [
-        {
-          "id": "tacoma-r1",
-          "authorName": "Gavin Reed",
-          "authorDiscipline": "Olympic Lifting & CrossFit",
-          "authorBadges": [
-            "verified-regular"
-          ],
-          "overallRating": 5.0,
-          "subRatings": {
-            "cleanliness": 4.8,
-            "equipmentQuality": 5.0,
-            "cultureVibe": 5.0,
-            "crowdLevel": 3.3
-          },
-          "comment": "Great coaches who know proper Olympic lifting technique and progressive overload. Platforms are solid and Rogue equipment is well cared for.",
-          "date": "3 weeks ago",
-          "helpfulCount": 17
-        }
-      ]
+      "activeDeal": null,
+      "reviews": []
     }
   ]
 }

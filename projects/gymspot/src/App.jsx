@@ -381,13 +381,24 @@ export default function App() {
                           alt={gym.name} 
                           className="card-image"
                           loading="lazy"
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80';
+                          }}
                         />
                         
-                        {/* Lifter Match percentage */}
-                        <div className="match-badge high">
-                          <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>bolt</span>
-                          {gym.matchPercentage}% Match
-                        </div>
+                        {/* Day Pass or Match Tag */}
+                        {gym.dayPassAvailable ? (
+                          <div className="match-badge high" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                            <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>confirmation_number</span>
+                            Day Pass ${gym.dayPassPrice ? gym.dayPassPrice.toFixed(0) : 'Available'}
+                          </div>
+                        ) : gym.matchPercentage ? (
+                          <div className="match-badge high">
+                            <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>bolt</span>
+                            {gym.matchPercentage}% Match
+                          </div>
+                        ) : null}
 
                         {/* Favorite Button */}
                         <button 
@@ -484,53 +495,75 @@ export default function App() {
               <p>Special introductory rates, free day passes, and contrast therapy sessions negotiated directly with verified gym operators.</p>
             </div>
 
-            <div className="gym-grid">
-              {gymsList.filter(g => g.activeDeal).map(gym => {
-                const deal = gym.activeDeal;
-                const isClaimed = !!claimedDeals[gym.id];
+            {gymsList.filter(g => g.activeDeal).length === 0 ? (
+              <div style={{ textAlign: 'center', padding: '60px 20px', background: '#ffffff', borderRadius: '16px', border: '1px solid #e2e8f0', margin: '20px 0' }}>
+                <span className="material-symbols-outlined" style={{ fontSize: '48px', color: '#94a3b8', marginBottom: '12px', display: 'block' }}>local_offer</span>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#0f172a', marginBottom: '8px' }}>No Active Promotional Deals</h3>
+                <p style={{ color: '#64748b', maxWidth: '500px', margin: '0 auto 20px', fontSize: '0.9rem', lineHeight: '1.5' }}>
+                  All deals on GymSpot represent real verified partnerships with local gym operators. Explore Seattle gym listings to view current drop-in rates and day passes.
+                </p>
+                <button 
+                  className="btn-primary" 
+                  onClick={() => setActiveTab('explore')}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+                >
+                  <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>explore</span>
+                  Browse Greater Seattle Gyms
+                </button>
+              </div>
+            ) : (
+              <div className="gym-grid">
+                {gymsList.filter(g => g.activeDeal).map(gym => {
+                  const deal = gym.activeDeal;
+                  const isClaimed = !!claimedDeals[gym.id];
 
-                return (
-                  <div key={gym.id} className="gym-card" style={{ padding: '20px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-                      <img 
-                        src={gym.images[0]} 
-                        alt={gym.name}
-                        style={{ width: '64px', height: '64px', borderRadius: '12px', objectFit: 'cover' }}
-                      />
-                      <div>
-                        <h3 style={{ fontSize: '1.05rem', fontWeight: 700 }}>{gym.name}</h3>
-                        <p style={{ fontSize: '0.8rem', color: '#64748b' }}>{gym.city} • {gym.neighborhood}</p>
+                  return (
+                    <div key={gym.id} className="gym-card" style={{ padding: '20px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+                        <img 
+                          src={gym.images[0]} 
+                          alt={gym.name} 
+                          style={{ width: '64px', height: '64px', borderRadius: '12px', objectFit: 'cover' }}
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80';
+                          }}
+                        />
+                        <div>
+                          <h3 style={{ fontSize: '1.05rem', fontWeight: 700 }}>{gym.name}</h3>
+                          <p style={{ fontSize: '0.8rem', color: '#64748b' }}>{gym.city} • {gym.neighborhood}</p>
+                        </div>
                       </div>
+
+                      <div style={{
+                        backgroundColor: '#fff7ed',
+                        border: '1px dashed #f97316',
+                        borderRadius: '12px',
+                        padding: '16px',
+                        marginBottom: '16px'
+                      }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#c2410c', fontWeight: 800, marginBottom: '6px' }}>
+                          <span className="material-symbols-outlined">local_offer</span>
+                          {deal.title}
+                        </div>
+                        <p style={{ fontSize: '0.85rem', color: '#7c2d12', marginBottom: '12px' }}>{deal.description}</p>
+                        <div style={{ fontSize: '0.75rem', color: '#9a3412', fontWeight: 600 }}>
+                          Bonus: +{deal.bonusPoints} Iron Passport Points upon claiming
+                        </div>
+                      </div>
+
+                      <button 
+                        className="btn-primary" 
+                        style={{ width: '100%' }}
+                        onClick={() => handleClaimDeal(gym)}
+                      >
+                        {isClaimed ? `Claimed (Code: ${claimedDeals[gym.id]})` : 'Claim Exclusive Pass'}
+                      </button>
                     </div>
-
-                    <div style={{
-                      backgroundColor: '#fff7ed',
-                      border: '1px dashed #f97316',
-                      borderRadius: '12px',
-                      padding: '16px',
-                      marginBottom: '16px'
-                    }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#c2410c', fontWeight: 800, marginBottom: '6px' }}>
-                        <span className="material-symbols-outlined">local_offer</span>
-                        {deal.title}
-                      </div>
-                      <p style={{ fontSize: '0.85rem', color: '#7c2d12', marginBottom: '12px' }}>{deal.description}</p>
-                      <div style={{ fontSize: '0.75rem', color: '#9a3412', fontWeight: 600 }}>
-                        Bonus: +{deal.bonusPoints} Iron Passport Points upon claiming
-                      </div>
-                    </div>
-
-                    <button 
-                      className="btn-primary" 
-                      style={{ width: '100%' }}
-                      onClick={() => handleClaimDeal(gym)}
-                    >
-                      {isClaimed ? `Claimed (Code: ${claimedDeals[gym.id]})` : 'Claim Exclusive Pass'}
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         )}
 
@@ -544,67 +577,85 @@ export default function App() {
               <p>Connect with lifters who train at your home gym, match your schedule, and share your training goals.</p>
             </div>
 
-            <div className="gym-grid">
-              {data.gymBuddies.map(buddy => {
-                const isConnected = !!connectedBuddies[buddy.id];
+            {(!data.gymBuddies || data.gymBuddies.length === 0) ? (
+              <div style={{ textAlign: 'center', padding: '60px 20px', background: '#ffffff', borderRadius: '16px', border: '1px solid #e2e8f0', margin: '20px 0' }}>
+                <span className="material-symbols-outlined" style={{ fontSize: '48px', color: '#94a3b8', marginBottom: '12px', display: 'block' }}>group_off</span>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#0f172a', marginBottom: '8px' }}>No Gym Buddy Listings Yet</h3>
+                <p style={{ color: '#64748b', maxWidth: '500px', margin: '0 auto 20px', fontSize: '0.9rem', lineHeight: '1.5' }}>
+                  Connect with real powerlifters, bodybuilders, and fitness enthusiasts in Greater Seattle. Profile creation will unlock once community accounts open.
+                </p>
+                <button 
+                  className="btn-primary" 
+                  onClick={() => setActiveTab('explore')}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+                >
+                  <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>explore</span>
+                  Find A Gym Near You
+                </button>
+              </div>
+            ) : (
+              <div className="gym-grid">
+                {data.gymBuddies.map(buddy => {
+                  const isConnected = !!connectedBuddies[buddy.id];
 
-                return (
-                  <div key={buddy.id} className="gym-card" style={{ padding: '20px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '16px' }}>
-                      <img 
-                        src={buddy.avatar} 
-                        alt={buddy.name}
-                        style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover' }}
-                      />
-                      <div>
-                        <h3 style={{ fontSize: '1.1rem', fontWeight: 700 }}>{buddy.name}</h3>
-                        <span style={{ 
-                          fontSize: '0.75rem', 
-                          background: '#e0f2fe', 
-                          color: '#0369a1', 
-                          padding: '3px 8px', 
-                          borderRadius: '9999px',
-                          fontWeight: 600 
-                        }}>
-                          {buddy.lookingFor}
-                        </span>
+                  return (
+                    <div key={buddy.id} className="gym-card" style={{ padding: '20px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '16px' }}>
+                        <img 
+                          src={buddy.avatar} 
+                          alt={buddy.name} 
+                          style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover' }}
+                        />
+                        <div>
+                          <h3 style={{ fontSize: '1.1rem', fontWeight: 700 }}>{buddy.name}</h3>
+                          <span style={{ 
+                            fontSize: '0.75rem', 
+                            background: '#e0f2fe', 
+                            color: '#0369a1', 
+                            padding: '3px 8px', 
+                            borderRadius: '9999px', 
+                            fontWeight: 600 
+                          }}>
+                            {buddy.lookingFor}
+                          </span>
+                        </div>
                       </div>
+
+                      <div style={{ fontSize: '0.85rem', marginBottom: '12px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#0f172a', fontWeight: 600, marginBottom: '4px' }}>
+                          <span className="material-symbols-outlined" style={{ fontSize: '16px', color: '#ff5722' }}>fitness_center</span>
+                          Trains at: {buddy.homeGymName}
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#64748b' }}>
+                          <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>schedule</span>
+                          {buddy.preferredTimes}
+                        </div>
+                      </div>
+
+                      <p style={{
+                        backgroundColor: '#f8fafc',
+                        padding: '12px',
+                        borderRadius: '8px',
+                        fontSize: '0.85rem',
+                        color: '#334155',
+                        fontStyle: 'italic',
+                        marginBottom: '16px'
+                      }}>
+                        "{buddy.goals}"
+                      </p>
+
+                      <button 
+                        className={isConnected ? "btn-secondary" : "btn-primary"}
+                        style={{ width: '100%' }}
+                        onClick={() => handleConnectBuddy(buddy.id)}
+                      >
+                        {isConnected ? 'Request Sent ✓' : 'Connect & Spot'}
+                      </button>
                     </div>
-
-                    <div style={{ fontSize: '0.85rem', marginBottom: '12px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#0f172a', fontWeight: 600, marginBottom: '4px' }}>
-                        <span className="material-symbols-outlined" style={{ fontSize: '16px', color: '#ff5722' }}>fitness_center</span>
-                        Trains at: {buddy.homeGymName}
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#64748b' }}>
-                        <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>schedule</span>
-                        {buddy.preferredTimes}
-                      </div>
-                    </div>
-
-                    <p style={{
-                      backgroundColor: '#f8fafc',
-                      padding: '12px',
-                      borderRadius: '8px',
-                      fontSize: '0.85rem',
-                      color: '#334155',
-                      fontStyle: 'italic',
-                      marginBottom: '16px'
-                    }}>
-                      "{buddy.goals}"
-                    </p>
-
-                    <button 
-                      className={isConnected ? "btn-secondary" : "btn-primary"}
-                      style={{ width: '100%' }}
-                      onClick={() => handleConnectBuddy(buddy.id)}
-                    >
-                      {isConnected ? 'Request Sent ✓' : 'Connect & Spot'}
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         )}
 
@@ -704,6 +755,10 @@ export default function App() {
                 src={selectedGym.images[0]} 
                 alt={selectedGym.name} 
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80';
+                }}
               />
               <button 
                 className="modal-close-btn"
@@ -743,48 +798,91 @@ export default function App() {
                 {selectedGym.address} • {selectedGym.priceLevel}
               </p>
 
-              {/* Vibe & Community Breakdown (Progress Bars) */}
+              {/* Verified Contact & Facilities Metadata */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', marginBottom: '16px', fontSize: '0.85rem' }}>
+                {selectedGym.phone && (
+                  <a 
+                    href={`tel:${selectedGym.phone.replace(/[^0-9+]/g, '')}`} 
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: '#ff5722', textDecoration: 'none', fontWeight: 600 }}
+                  >
+                    <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>call</span>
+                    {selectedGym.phone}
+                  </a>
+                )}
+                {selectedGym.website && (
+                  <a 
+                    href={selectedGym.website} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: '#0284c7', textDecoration: 'none', fontWeight: 600 }}
+                  >
+                    <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>language</span>
+                    Official Website
+                  </a>
+                )}
+                {selectedGym.facilitySize && (
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: '#64748b' }}>
+                    <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>straighten</span>
+                    {selectedGym.facilitySize}
+                  </span>
+                )}
+              </div>
+
+              {selectedGym.pricingNotes && (
+                <div style={{ backgroundColor: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '10px', padding: '10px 14px', marginBottom: '16px', fontSize: '0.85rem', color: '#334155' }}>
+                  <strong style={{ color: '#0f172a' }}>Pricing & Drop-in Notes:</strong> {selectedGym.pricingNotes}
+                </div>
+              )}
+
+              {/* Vibe & Community Breakdown (Progress Bars or Community Note) */}
               <div className="vibe-section">
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#0f172a' }}>
                     Vibe & Community Breakdown
                   </h4>
                   <span style={{ fontSize: '0.8rem', color: '#64748b' }}>
-                    Based on {selectedGym.reviewCount} member reviews
+                    {selectedGym.vibeMetrics ? `Based on ${selectedGym.reviewCount} member reviews` : 'Awaiting member ratings'}
                   </span>
                 </div>
 
-                <div className="vibe-meter-row">
-                  <div className="vibe-meter-item">
-                    <div className="vibe-meter-labels">
-                      <span>Cleanliness & Locker Rooms</span>
-                      <span>{selectedGym.vibeMetrics.cleanliness} / 5.0</span>
+                {selectedGym.vibeMetrics ? (
+                  <div className="vibe-meter-row">
+                    <div className="vibe-meter-item">
+                      <div className="vibe-meter-labels">
+                        <span>Cleanliness & Locker Rooms</span>
+                        <span>{selectedGym.vibeMetrics.cleanliness} / 5.0</span>
+                      </div>
+                      <div className="vibe-progress-bar">
+                        <div className="vibe-progress-fill fill-clean" style={{ width: `${(selectedGym.vibeMetrics.cleanliness / 5) * 100}%` }}></div>
+                      </div>
                     </div>
-                    <div className="vibe-progress-bar">
-                      <div className="vibe-progress-fill fill-clean" style={{ width: `${(selectedGym.vibeMetrics.cleanliness / 5) * 100}%` }}></div>
-                    </div>
-                  </div>
 
-                  <div className="vibe-meter-item">
-                    <div className="vibe-meter-labels">
-                      <span>Equipment Quality & Maintenance</span>
-                      <span>{selectedGym.vibeMetrics.equipmentQuality} / 5.0</span>
+                    <div className="vibe-meter-item">
+                      <div className="vibe-meter-labels">
+                        <span>Equipment Quality & Maintenance</span>
+                        <span>{selectedGym.vibeMetrics.equipmentQuality} / 5.0</span>
+                      </div>
+                      <div className="vibe-progress-bar">
+                        <div className="vibe-progress-fill fill-equipment" style={{ width: `${(selectedGym.vibeMetrics.equipmentQuality / 5) * 100}%` }}></div>
+                      </div>
                     </div>
-                    <div className="vibe-progress-bar">
-                      <div className="vibe-progress-fill fill-equipment" style={{ width: `${(selectedGym.vibeMetrics.equipmentQuality / 5) * 100}%` }}></div>
-                    </div>
-                  </div>
 
-                  <div className="vibe-meter-item">
-                    <div className="vibe-meter-labels">
-                      <span>Peak Hours Space (Congestion)</span>
-                      <span>{selectedGym.vibeMetrics.crowdLevel > 3.8 ? 'Spacious' : 'Moderate'}</span>
-                    </div>
-                    <div className="vibe-progress-bar">
-                      <div className="vibe-progress-fill fill-crowd" style={{ width: `${(selectedGym.vibeMetrics.crowdLevel / 5) * 100}%` }}></div>
+                    <div className="vibe-meter-item">
+                      <div className="vibe-meter-labels">
+                        <span>Peak Hours Space (Congestion)</span>
+                        <span>{selectedGym.vibeMetrics.crowdLevel > 3.8 ? 'Spacious' : 'Moderate'}</span>
+                      </div>
+                      <div className="vibe-progress-bar">
+                        <div className="vibe-progress-fill fill-crowd" style={{ width: `${(selectedGym.vibeMetrics.crowdLevel / 5) * 100}%` }}></div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                ) : (
+                  <div style={{ padding: '14px 16px', background: '#f8fafc', borderRadius: '10px', marginTop: '10px', fontSize: '0.85rem', color: '#64748b', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#94a3b8' }}>insights</span>
+                    <span>Cleanliness, equipment quality, and crowd flow scores will compute dynamically as local lifters submit verified ratings.</span>
+                  </div>
+                )}
               </div>
 
               {/* Equipment Highlights Matrix */}
@@ -837,7 +935,7 @@ export default function App() {
               <div style={{ marginTop: '24px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
                   <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#0f172a' }}>
-                    Member Reviews ({selectedGym.reviews.length})
+                    Member Reviews ({selectedGym.reviews?.length || 0})
                   </h4>
                   <button 
                     className="btn-secondary"
@@ -851,56 +949,100 @@ export default function App() {
                   </button>
                 </div>
 
-                <div className="reviews-list">
-                  {selectedGym.reviews.map(rev => (
-                    <div key={rev.id} className="review-item">
-                      <div className="review-header">
-                        <span className="review-author">
-                          {rev.authorName}
-                          {rev.authorBadges?.includes('verified-regular') && (
-                            <span className="reviewer-badge">Verified Regular</span>
-                          )}
-                          {rev.authorBadges?.includes('powerlifter') && (
-                            <span className="reviewer-badge" style={{ backgroundColor: '#ffedd5', color: '#c2410c' }}>Powerlifter</span>
-                          )}
-                        </span>
-                        <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>{rev.date}</span>
-                      </div>
-                      <p className="review-discipline">{rev.authorDiscipline}</p>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '4px', margin: '4px 0' }}>
-                        {[...Array(5)].map((_, i) => (
-                          <span key={i} className="material-symbols-outlined" style={{ fontSize: '15px', color: i < rev.overallRating ? '#f59e0b' : '#cbd5e1' }}>
-                            star
+                {selectedGym.reviews && selectedGym.reviews.length > 0 ? (
+                  <div className="reviews-list">
+                    {selectedGym.reviews.map(rev => (
+                      <div key={rev.id} className="review-item">
+                        <div className="review-header">
+                          <span className="review-author">
+                            {rev.authorName}
+                            {rev.authorBadges?.includes('verified-regular') && (
+                              <span className="reviewer-badge">Verified Regular</span>
+                            )}
+                            {rev.authorBadges?.includes('powerlifter') && (
+                              <span className="reviewer-badge" style={{ backgroundColor: '#ffedd5', color: '#c2410c' }}>Powerlifter</span>
+                            )}
                           </span>
-                        ))}
+                          <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>{rev.date}</span>
+                        </div>
+                        <p className="review-discipline">{rev.authorDiscipline}</p>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '4px', margin: '4px 0' }}>
+                          {[...Array(5)].map((_, i) => (
+                            <span key={i} className="material-symbols-outlined" style={{ fontSize: '15px', color: i < rev.overallRating ? '#f59e0b' : '#cbd5e1' }}>
+                              star
+                            </span>
+                          ))}
+                        </div>
+                        <p style={{ fontSize: '0.85rem', color: '#334155', marginTop: '6px' }}>{rev.comment}</p>
                       </div>
-                      <p style={{ fontSize: '0.85rem', color: '#334155', marginTop: '6px' }}>{rev.comment}</p>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div style={{ textAlign: 'center', padding: '32px 16px', background: '#f8fafc', borderRadius: '12px', border: '1px dashed #cbd5e1' }}>
+                    <span className="material-symbols-outlined" style={{ fontSize: '32px', color: '#94a3b8', marginBottom: '6px', display: 'block' }}>rate_review</span>
+                    <p style={{ fontWeight: 600, color: '#334155', marginBottom: '4px', fontSize: '0.9rem' }}>No community reviews yet</p>
+                    <p style={{ color: '#64748b', fontSize: '0.8rem', maxWidth: '400px', margin: '0 auto 12px' }}>
+                      Have you trained at {selectedGym.name}? Share your insights on squat racks, chalk tolerance, and crowd levels!
+                    </p>
+                    <button 
+                      className="btn-primary"
+                      style={{ padding: '8px 18px', fontSize: '0.85rem' }}
+                      onClick={() => {
+                        setReviewGymTarget(selectedGym);
+                        setIsReviewModalOpen(true);
+                      }}
+                    >
+                      Be the First to Review
+                    </button>
+                  </div>
+                )}
               </div>
 
               {/* Bottom Sticky Action Bar */}
               <div style={{ display: 'flex', gap: '12px', marginTop: '24px', paddingTop: '16px', borderTop: '1px solid #e2e8f0' }}>
-                <button 
-                  className="btn-primary" 
-                  style={{ flex: 1 }}
-                  onClick={() => handleClaimDeal(selectedGym)}
-                >
-                  <span className="material-symbols-outlined">confirmation_number</span>
-                  Get Day Pass (${selectedGym.dayPassPrice || 15})
-                </button>
-                <button 
-                  className="btn-secondary" 
-                  style={{ flex: 1 }}
-                  onClick={() => {
-                    setSelectedGym(null);
-                    setActiveTab('buddies');
-                  }}
-                >
-                  <span className="material-symbols-outlined">person_add</span>
-                  Find Spotter Here
-                </button>
+                {selectedGym.website ? (
+                  <a 
+                    href={selectedGym.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary" 
+                    style={{ flex: 1, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
+                  >
+                    <span className="material-symbols-outlined">public</span>
+                    Visit Website
+                  </a>
+                ) : (
+                  <button 
+                    className="btn-primary" 
+                    style={{ flex: 1 }}
+                    onClick={() => handleClaimDeal(selectedGym)}
+                  >
+                    <span className="material-symbols-outlined">confirmation_number</span>
+                    Get Day Pass (${selectedGym.dayPassPrice || 15})
+                  </button>
+                )}
+                {selectedGym.phone ? (
+                  <a 
+                    href={`tel:${selectedGym.phone.replace(/[^0-9+]/g, '')}`}
+                    className="btn-secondary" 
+                    style={{ flex: 1, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
+                  >
+                    <span className="material-symbols-outlined">call</span>
+                    Call Gym
+                  </a>
+                ) : (
+                  <button 
+                    className="btn-secondary" 
+                    style={{ flex: 1 }}
+                    onClick={() => {
+                      setSelectedGym(null);
+                      setActiveTab('explore');
+                    }}
+                  >
+                    <span className="material-symbols-outlined">close</span>
+                    Close
+                  </button>
+                )}
               </div>
             </div>
           </div>
