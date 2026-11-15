@@ -1461,7 +1461,7 @@ export default function App() {
                 className="bg-surface border border-border rounded-xl py-3.5 px-4 text-sm font-medium hover:bg-surface/80 transition-colors flex items-center justify-center gap-2"
               >
                 <Copy className="w-4 h-4" />
-                {copied ? 'Copied Summary!' : 'Copy Summary'}
+                {copied ? 'Copied Summary & Link!' : 'Copy Summary & Link'}
               </button>
 
               <button
@@ -1469,17 +1469,15 @@ export default function App() {
                 className="bg-surface border border-border rounded-xl py-3.5 px-4 text-sm font-medium hover:bg-surface/80 transition-colors flex items-center justify-center gap-2"
               >
                 <Link2 className="w-4 h-4" />
-                {copiedLink ? 'Link Copied!' : 'Copy Link'}
+                {copiedLink ? 'Link Copied!' : 'Copy Link Only'}
               </button>
               
               <button
                 onClick={() => {
-                  const url = getShareUrl()
                   if (navigator.share) {
                     navigator.share({
                       title: `${activeSplit.name} — Bill Split`,
-                      text: getShareableText(),
-                      url
+                      text: getShareableText()
                     }).catch(console.error)
                   } else {
                     copyToClipboard()
@@ -2223,12 +2221,23 @@ export function encodeSharePayload(split) {
     v: 1,
     n: String(split?.name || 'Shared Split'),
     p: Array.isArray(split?.people) ? split.people.map(String) : [],
-    i: Array.isArray(split?.items) ? split.items.map(item => ({
-      n: String(item.name || 'Item'),
-      p: roundCents(Math.max(0, Number(item.price) || 0)),
-      m: item.splitMode || 'equal',
-      s: item.splits && typeof item.splits === 'object' ? item.splits : {}
-    })) : [],
+    i: Array.isArray(split?.items) ? split.items.map(item => {
+      const mode = item.splitMode || 'equal'
+      const compactSplits = {}
+      if (item.splits && typeof item.splits === 'object') {
+        Object.entries(item.splits).forEach(([person, val]) => {
+          if (mode === 'equal' ? val === true : (Number(val) || 0) > 0) {
+            compactSplits[person] = mode === 'equal' ? true : Number(val)
+          }
+        })
+      }
+      return {
+        n: String(item.name || 'Item'),
+        p: roundCents(Math.max(0, Number(item.price) || 0)),
+        m: mode,
+        s: compactSplits
+      }
+    }) : [],
     tx: String(split?.taxInput ?? '0.00'),
     tp: String(split?.tipInput ?? '0'),
     pct: Boolean(split?.tipIsPercentage)
