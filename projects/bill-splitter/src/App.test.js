@@ -1,5 +1,16 @@
 import { describe, it, expect } from 'vitest'
-import { calculateResults, parseReceiptTextPure, isItemUnassignedPure } from './App'
+import {
+  calculateResults,
+  parseReceiptTextPure,
+  isItemUnassignedPure,
+  getItemValidationError,
+  distributeUnits,
+  encodeSharePayload,
+  decodeSharePayload,
+  buildShareUrl,
+  getShareParamFromLocation,
+  formatShareableText
+} from './App'
 import fs from 'fs'
 import path from 'path'
 import Tesseract from 'tesseract.js'
@@ -243,6 +254,183 @@ describe('calculateResults split and math logic', () => {
     const aliceBreakdown = results.breakdown.find(p => p.name === 'Alice')
     expect(aliceBreakdown.subtotal).toBe(0)
     expect(aliceBreakdown.total).toBe(0)
+  })
+
+  it('should reconcile cents using largest remainder so person totals sum exactly to grandTotal', () => {
+    const people = ['Alice', 'Bob', 'Charlie']
+    const items = [
+      {
+        id: '1',
+        name: 'Appetizer',
+        price: 10,
+        splitMode: 'equal',
+        splits: { Alice: true, Bob: true, Charlie: true }
+      }
+    ]
+    const results = calculateResults({
+      people,
+      items,
+      taxInput: '1.00',
+      tipInput: '15',
+      tipIsPercentage: true
+    })
+
+    expect(results.totalSubtotal).toBe(10)
+    expect(results.absoluteTax).toBe(1)
+    expect(results.absoluteTip).toBe(1.5)
+    expect(results.grandTotal).toBe(12.5)
+
+    const sumTotalsCents = results.breakdown.reduce((sum, p) => sum + Math.round(p.total * 100), 0)
+    expect(sumTotalsCents).toBe(1250)
+    results.breakdown.forEach(p => {
+      expect(Math.round((p.subtotal + p.taxShare + p.tipShare) * 100)).toBe(Math.round(p.total * 100))
+    })
+  })
+
+  it('should track per-person assigned items and split details accurately', () => {
+    const people = ['Alice', 'Bob', 'Charlie']
+    const items = [
+      {
+        id: '1',
+        name: 'Solo Coffee',
+        price: 5,
+        splitMode: 'equal',
+        splits: { Alice: true }
+      },
+      {
+        id: '2',
+        name: 'Shared Pizza',
+        price: 24,
+        splitMode: 'equal',
+        splits: { Alice: true, Bob: true }
+      },
+      {
+        id: '3',
+        name: 'Wine Bottle',
+        price: 30,
+        splitMode: 'shares',
+        splits: { Alice: 0, Bob: 2, Charlie: 1 }
+      }
+    ]
+
+    const results = calculateResults({
+      people,
+      items,
+      taxInput: '0.00',
+      tipInput: '0',
+      tipIsPercentage: true
+    })
+
+    const alice = results.breakdown.find(p => p.name === 'Alice')
+    const bob = results.breakdown.find(p => p.name === 'Bob')
+    const charlie = results.breakdown.find(p => p.name === 'Charlie')
+
+    expect(alice.items).toHaveLength(2)
+    expect(alice.items[0]).toMatchObject({ name: 'Solo Coffee', shareAmount: 5, splitDetail: '' })
+    expect(alice.items[1]).toMatchObject({ name: 'Shared Pizza', shareAmount: 12, splitDetail: '$24.00 ÷ 2' })
+
+    expect(bob.items).toHaveLength(2)
+    expect(bob.items[1]).toMatchObject({ name: 'Wine Bottle', shareAmount: 20, splitDetail: '2/3 shares of $30.00' })
+
+    expect(charlie.items).toHaveLength(1)
+    expect(charlie.items[0]).toMatchObject({ name: 'Wine Bottle', shareAmount: 10, splitDetail: '1/3 shares of $30.00' })
+  })
+})
+
+describe('validation, share links, and copy-paste formatting', () => {
+  it('should distribute units across positive weights without giving remainders to zero weights', () => {
+    expect(distributeUnits(1000, [1, 0, 1, 1])).toEqual([334, 0, 333, 333])
+    expect(distributeUnits(100, [0, 0])).toEqual([0, 0])
+  })
+
+  it('should detect percentage and exact split mismatches via getItemValidationError', () => {
+    const people = ['Alice', 'Bob']
+    expect(getItemValidationError({ splitMode: 'equal', splits: {} }, people)).toBe('Unassigned')
+    expect(getItemValidationError({
+      price: 20,
+      splitMode: 'percentage',
+      splits: { Alice: 50 }
+    }, people)).toBe('Splits 50.0% ≠ 100%')
+    expect(getItemValidationError({
+      price: 20,
+      splitMode: 'exact',
+      splits: { Alice: 10, Bob: 5 }
+    }, people)).toBe('Splits ≠ $20.00')
+    expect(getItemValidationError({
+      price: 20,
+      splitMode: 'exact',
+      splits: { Alice: 12.5, Bob: 7.5 }
+    }, people)).toBeNull()
+  })
+
+  it('should format copy-paste breakdown per person with assigned items and shareable link without reporting equal split for everything', () => {
+    const people = ['Alice', 'Bob']
+    const items = [
+      { id: '1', name: 'Pad Thai', price: 16, splitMode: 'equal', splits: { Alice: true } },
+      { id: '2', name: 'Appetizer', price: 12, splitMode: 'equal', splits: { Alice: true, Bob: true } },
+      { id: '3', name: 'Sake', price: 30, splitMode: 'shares', splits: { Alice: 1, Bob: 2 } }
+    ]
+    const results = calculateResults({
+      people,
+      items,
+      taxInput: '5.80',
+      tipInput: '20',
+      tipIsPercentage: true
+    })
+    const shareUrl = 'https://nahtonaj.github.io/bill-splitter/?s=abc123'
+    const text = formatShareableText({
+      splitName: 'Thai Dinner',
+      results,
+      tipInput: '20',
+      tipIsPercentage: true,
+      shareUrl
+    })
+
+    expect(text).not.toContain('(equal split)')
+    expect(text).toContain('🧾 Thai Dinner')
+    expect(text).toContain('• Alice — $')
+    expect(text).toContain('  - Pad Thai: $16.00\n')
+    expect(text).toContain('  - Appetizer: $6.00 ($12.00 ÷ 2)')
+    expect(text).toContain('  - Sake: $10.00 (1/3 shares of $30.00)')
+    expect(text).toContain('• Bob — $')
+    expect(text).toContain('  - Sake: $20.00 (2/3 shares of $30.00)')
+    expect(text).toContain(`View breakdown: ${shareUrl}`)
+  })
+
+  it('should round-trip shareable split URLs including Unicode names', () => {
+    const split = {
+      name: '🍜 Ramen Night — José & Friends',
+      people: ['José', 'Mina'],
+      items: [
+        { id: 'a', name: 'Tonkotsu 豚骨', price: 18.5, splitMode: 'equal', splits: { 'José': true, Mina: false } },
+        { id: 'b', name: 'Gyoza', price: 10, splitMode: 'percentage', splits: { 'José': 40, Mina: 60 } }
+      ],
+      taxInput: '2.85',
+      tipInput: '18',
+      tipIsPercentage: true
+    }
+
+    const url = buildShareUrl(split, 'https://nahtonaj.github.io/bill-splitter/')
+    const token = new URL(url).searchParams.get('s')
+    expect(token).toBeTruthy()
+
+    const decoded = decodeSharePayload(token)
+    expect(decoded).not.toBeNull()
+    expect(decoded.name).toBe(split.name)
+    expect(decoded.people).toEqual(['José', 'Mina'])
+    expect(decoded.step).toBe('results')
+    expect(decoded.items).toHaveLength(2)
+    expect(decoded.items[0].name).toBe('Tonkotsu 豚骨')
+    expect(decoded.items[0].price).toBe(18.5)
+    expect(decoded.items[1].splitMode).toBe('percentage')
+    expect(decoded.items[1].splits).toEqual({ 'José': 40, Mina: 60 })
+    expect(decoded.taxInput).toBe('2.85')
+    expect(decoded.tipInput).toBe('18')
+    expect(decoded.tipIsPercentage).toBe(true)
+
+    expect(getShareParamFromLocation({ search: `?s=${token}`, hash: '' })).toBe(token)
+    expect(getShareParamFromLocation({ search: '', hash: `#s=${token}` })).toBe(token)
+    expect(decodeSharePayload('not-valid-base64!!!')).toBeNull()
   })
 })
 
