@@ -795,7 +795,7 @@ export default function App() {
     <div className="min-h-screen bg-background text-primary font-sans antialiased flex flex-col transition-colors duration-200">
       
       {/* Top Navbar */}
-      <header className="fixed top-0 w-full z-40 bg-white/95 dark:bg-black/95 backdrop-blur-sm border-b border-border transition-colors duration-200">
+      <header className="fixed top-0 w-full z-40 bg-background/90 backdrop-blur-sm border-b border-border transition-colors duration-200">
         <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2 min-w-0">
             <button
@@ -913,11 +913,11 @@ export default function App() {
         {/* Step 1: Upload / Choose Receipt Source */}
         {step === 'upload' && (
           <div className="flex-1 flex flex-col justify-center items-center py-12 max-w-md mx-auto w-full">
-            <div className="w-16 h-16 rounded-2xl bg-surface border border-border flex items-center justify-center text-accent mb-6 animate-pulse">
-              <Sparkles className="w-8 h-8" />
+            <div className="w-16 h-16 rounded-2xl bg-surface border border-border flex items-center justify-center text-accent mb-6">
+              <Sparkles className="w-7 h-7" />
             </div>
             
-            <h1 className="text-3xl font-extrabold tracking-tight text-center mb-2">Scan & Split Bills</h1>
+            <h1 className="text-3xl font-bold tracking-tight text-center mb-2">Scan & Split Bills</h1>
             <p className="text-sm text-muted text-center mb-8 max-w-xs">
               Upload or snap a receipt photo. Our client-side OCR engine will extract line items automatically.
             </p>
@@ -1141,14 +1141,14 @@ export default function App() {
                             aria-label="Item name"
                             value={item.name}
                             onChange={(e) => handleUpdateItem(item.id, 'name', e.target.value)}
-                            className="flex-1 bg-background border border-transparent hover:border-border focus:border-accent rounded-lg px-2 py-1 text-sm font-semibold outline-none transition-colors min-w-0"
+                            className="flex-1 bg-transparent hover:bg-background focus:bg-background border border-transparent hover:border-border focus:border-accent rounded-lg px-2 py-1 text-sm font-semibold outline-none transition-colors min-w-0"
                           />
                           {itemIssue && (
                             <span className="text-[10px] text-red-500 font-mono font-bold bg-red-500/10 border border-red-500/20 px-2 py-1 rounded-md shrink-0 self-center">
                               {itemIssue}
                             </span>
                           )}
-                          <div className="flex items-center bg-background border border-border rounded-lg px-2 py-1 w-24 shrink-0">
+                          <div className="flex items-center bg-background border border-border focus-within:border-accent rounded-lg px-2.5 py-1 w-24 shrink-0 transition-colors">
                             <span className="text-xs text-muted mr-0.5 font-mono">$</span>
                             <input
                               type="number"
@@ -1157,7 +1157,7 @@ export default function App() {
                               aria-label="Item price"
                               value={item.price || ''}
                               onChange={(e) => handleUpdateItem(item.id, 'price', e.target.value)}
-                              className="w-full bg-transparent text-right text-sm font-mono outline-none"
+                              className="w-full bg-transparent text-right text-sm font-mono tabular-nums outline-none"
                             />
                           </div>
                           <button
@@ -1242,7 +1242,7 @@ export default function App() {
             </div>
 
             {/* Column 2: Bill Summary, Taxes, Preview & Finalize (Col span 2) */}
-            <div className="md:col-span-2 space-y-6">
+            <div className="md:col-span-2 space-y-6 md:sticky md:top-24 md:self-start">
               
               {/* Receipt Preview Card */}
               {croppedImage && (
@@ -1336,23 +1336,23 @@ export default function App() {
               <div className="rounded-xl border border-border bg-surface p-5 space-y-4">
                 <h3 className="text-xs font-semibold tracking-widest uppercase text-muted">Bill Summary</h3>
                 
-                <div className="space-y-2 font-mono text-sm">
+                <div className="space-y-2 text-sm">
                   <div className="flex justify-between text-muted">
-                    <span>Items Subtotal:</span>
-                    <span>${results.totalSubtotal.toFixed(2)}</span>
+                    <span>Items Subtotal</span>
+                    <span className="font-mono tabular-nums">${results.totalSubtotal.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-muted">
-                    <span>Proportional Tax:</span>
-                    <span>${results.absoluteTax.toFixed(2)}</span>
+                    <span>Proportional Tax</span>
+                    <span className="font-mono tabular-nums">${results.absoluteTax.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-muted">
-                    <span>Proportional Tip:</span>
-                    <span>${results.absoluteTip.toFixed(2)}</span>
+                    <span>Proportional Tip</span>
+                    <span className="font-mono tabular-nums">${results.absoluteTip.toFixed(2)}</span>
                   </div>
                   <hr className="border-border" />
                   <div className="flex justify-between font-bold text-base">
-                    <span>Total Bill:</span>
-                    <span className="text-accent">${results.grandTotal.toFixed(2)}</span>
+                    <span>Total Bill</span>
+                    <span className="text-accent font-mono tabular-nums">${results.grandTotal.toFixed(2)}</span>
                   </div>
                 </div>
 
@@ -1377,56 +1377,56 @@ export default function App() {
               <div className="inline-flex p-3 bg-accent/10 border border-accent/20 rounded-full text-accent">
                 <Sparkles className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl font-extrabold tracking-tight">Splits Finalized</h2>
+              <h2 className="text-3xl font-bold tracking-tight">Splits Finalized</h2>
               <p className="text-sm text-muted">Here is each person&apos;s itemized breakdown and shareable summary.</p>
             </div>
 
-            {/* Clean Monospaced Receipt Breakdown Card */}
-            <div className="rounded-xl border border-border bg-surface p-6 font-mono text-sm space-y-4 shadow-sm">
-              <div className="text-center font-bold text-lg border-b border-border pb-3 truncate">
+            {/* Clean Receipt Breakdown Card */}
+            <div className="rounded-xl border border-border bg-surface p-6 text-sm space-y-4 shadow-sm">
+              <div className="text-center font-semibold tracking-tight text-base border-b border-border pb-3 truncate">
                 {activeSplit.name}
               </div>
               
-              <div className="space-y-4 pt-1">
+              <div className="space-y-3 pt-1">
                 {results.breakdown.map((person) => {
                   const isCollapsed = expandedPersonNames[person.name] === false
                   return (
-                  <div key={person.name} className="rounded-xl border border-border/60 bg-background/60 p-3.5 space-y-2">
+                  <div key={person.name} className="rounded-xl border border-border bg-background p-4 space-y-2.5">
                     <div className="flex items-center justify-between gap-2">
                       <button
                         onClick={() => setExpandedPersonNames(prev => ({ ...prev, [person.name]: isCollapsed }))}
-                        className="flex items-center gap-1.5 font-bold text-base text-left hover:text-accent transition-colors"
+                        className="flex items-center gap-1.5 font-semibold text-base text-left hover:text-accent transition-colors"
                       >
                         {isCollapsed ? <ChevronDown className="w-4 h-4 text-muted" /> : <ChevronUp className="w-4 h-4 text-muted" />}
                         <span>{person.name}</span>
-                        <span className="text-[11px] font-normal text-muted">
+                        <span className="text-xs font-normal text-muted">
                           ({person.items.length} {person.items.length === 1 ? 'item' : 'items'})
                         </span>
                       </button>
-                      <span className="text-accent font-bold text-base">${person.total.toFixed(2)}</span>
+                      <span className="text-accent font-mono tabular-nums font-bold text-base">${person.total.toFixed(2)}</span>
                     </div>
 
                     {!isCollapsed && (
-                      <div className="space-y-1 pl-5 text-xs">
+                      <div className="space-y-1.5 pl-5 text-xs">
                         {person.items.length === 0 ? (
                           <div className="text-muted italic">No items assigned</div>
                         ) : (
                           person.items.map((item, idx) => (
-                            <div key={`${item.id}-${idx}`} className="flex justify-between gap-2 text-primary/90">
+                            <div key={`${item.id}-${idx}`} className="flex justify-between gap-3 text-primary/90">
                               <span className="truncate">
-                                • {item.name}
+                                {item.name}
                                 {item.splitDetail && (
-                                  <span className="text-muted ml-1.5">({item.splitDetail})</span>
+                                  <span className="text-muted ml-1.5 font-mono text-[11px]">({item.splitDetail})</span>
                                 )}
                               </span>
-                              <span className="shrink-0">${item.shareAmount.toFixed(2)}</span>
+                              <span className="shrink-0 font-mono tabular-nums">${item.shareAmount.toFixed(2)}</span>
                             </div>
                           ))
                         )}
                       </div>
                     )}
 
-                    <div className="flex justify-between text-[11px] text-muted pl-5 pt-1 border-t border-border/40">
+                    <div className="flex justify-between text-[11px] font-mono tabular-nums text-muted pl-5 pt-2 border-t border-border/60">
                       <span>Items: ${person.subtotal.toFixed(2)} · Tax: ${person.taxShare.toFixed(2)} · Tip: ${person.tipShare.toFixed(2)}</span>
                     </div>
                   </div>
@@ -1437,19 +1437,19 @@ export default function App() {
               <div className="border-t border-border pt-4 space-y-2 text-xs text-muted">
                 <div className="flex justify-between">
                   <span>Grand Subtotal</span>
-                  <span>${results.totalSubtotal.toFixed(2)}</span>
+                  <span className="font-mono tabular-nums">${results.totalSubtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Grand Tax</span>
-                  <span>${results.absoluteTax.toFixed(2)}</span>
+                  <span className="font-mono tabular-nums">${results.absoluteTax.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Grand Tip</span>
-                  <span>${results.absoluteTip.toFixed(2)}</span>
+                  <span className="font-mono tabular-nums">${results.absoluteTip.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between font-bold text-sm text-primary pt-1">
                   <span>Sum of All Splits</span>
-                  <span>${results.grandTotal.toFixed(2)}</span>
+                  <span className="font-mono tabular-nums">${results.grandTotal.toFixed(2)}</span>
                 </div>
               </div>
             </div>
@@ -1530,7 +1530,7 @@ export default function App() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="bg-white dark:bg-black border border-border rounded-2xl max-w-md w-full overflow-hidden shadow-2xl"
+            className="bg-background border border-border rounded-2xl max-w-md w-full overflow-hidden shadow-2xl"
           >
             
             <div className="border-b border-border p-4 flex items-center justify-between">
@@ -1585,7 +1585,7 @@ export default function App() {
                         setEditSplits(buildModeDefaults(mode, editingItem, editSplitMode, editSplits))
                         setEditSplitMode(mode)
                       }}
-                      className={`text-[10px] uppercase font-bold py-2 rounded-lg text-center transition-colors ${
+                      className={`text-[11px] uppercase tracking-wide font-semibold py-2 rounded-lg text-center transition-colors ${
                         editSplitMode === mode
                           ? 'bg-accent text-white shadow-sm'
                           : 'text-muted hover:text-primary'
@@ -1734,7 +1734,7 @@ export default function App() {
 
         {/* Drawer container */}
         <div 
-          className={`absolute inset-y-0 left-0 w-80 max-w-[90vw] bg-white dark:bg-black border-r border-border p-5 flex flex-col justify-between shadow-2xl transition-transform duration-200 ease-out transform ${
+          className={`absolute inset-y-0 left-0 w-80 max-w-[90vw] bg-background border-r border-border p-5 flex flex-col justify-between shadow-2xl transition-transform duration-200 ease-out transform ${
             isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
         >
@@ -1944,7 +1944,7 @@ export default function App() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-w-3xl w-full bg-white dark:bg-black border border-border rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+            className="relative max-w-3xl w-full bg-background border border-border rounded-2xl overflow-hidden shadow-2xl flex flex-col"
           >
             <div className="border-b border-border p-4 flex items-center justify-between bg-surface">
               <h4 className="font-bold text-base">Receipt Reference</h4>
