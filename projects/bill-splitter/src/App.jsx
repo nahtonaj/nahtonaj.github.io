@@ -24,7 +24,8 @@ import {
   Link2,
   AlertCircle,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Download
 } from 'lucide-react'
 import Tesseract from 'tesseract.js'
 import Cropper from 'cropperjs'
@@ -357,6 +358,34 @@ export default function App() {
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [editingItem, showReceiptPreviewModal, isSidebarOpen])
+
+  // PWA install prompt state (Chrome beforeinstallprompt)
+  const [installPrompt, setInstallPrompt] = useState(null)
+
+  useEffect(() => {
+    const onBeforeInstallPrompt = (e) => {
+      e.preventDefault()
+      setInstallPrompt(e)
+    }
+    const onAppInstalled = () => {
+      setInstallPrompt(null)
+    }
+    window.addEventListener('beforeinstallprompt', onBeforeInstallPrompt)
+    window.addEventListener('appinstalled', onAppInstalled)
+    return () => {
+      window.removeEventListener('beforeinstallprompt', onBeforeInstallPrompt)
+      window.removeEventListener('appinstalled', onAppInstalled)
+    }
+  }, [])
+
+  const handleInstallApp = async () => {
+    if (!installPrompt) return
+    installPrompt.prompt()
+    const { outcome } = await installPrompt.userChoice
+    if (outcome === 'accepted') {
+      setInstallPrompt(null)
+    }
+  }
 
   // Handle Theme
   useEffect(() => {
@@ -871,6 +900,17 @@ export default function App() {
           </div>
 
           <div className="flex items-center gap-2">
+            {installPrompt && (
+              <button
+                onClick={handleInstallApp}
+                aria-label="Install Bill Splitter App"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-border bg-surface text-xs font-medium text-primary hover:border-accent/40 transition-colors"
+                title="Install Bill Splitter as an app"
+              >
+                <Download className="w-3.5 h-3.5 text-accent" />
+                <span className="hidden sm:inline">Install</span>
+              </button>
+            )}
             <button
               onClick={() => setDarkMode(!darkMode)}
               aria-label="Toggle Light/Dark Mode"
